@@ -10,10 +10,22 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+    transition: color .3s ease;
+    -webkit-transition: color .3s ease;
+    -moz-transition: color .3s ease;
+    -ms-transition: color .3s ease;
+    -o-transition: color .3s ease;
+}
   body{
     line-height: 1.625;
     font-family: 'Nunito Sans', sans-serif;
+  }
+
+  .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
   }
 
   a, button {
@@ -30,6 +42,26 @@
   .nav-link{
     @apply text-sm uppercase font-semibold leading-100px text-tGreay-600 hover:text-primary-900
   }
+  .hero-ctg{
+    @apply text-lg font-semibold pl-50px block mb-15px text-tGreay-500 relative before:content-[""] before:absolute before:w-30px before:h-3px before:block before:bg-primary-900 before:top-1/2 before:left-0
+  
+  }
+  .hero-title-1{
+    @apply text-7xl font-light mb-2.5 text-tGreay-500 uppercase leading-1.2
+  }
+
+  .hero-title-2{
+    @apply text-7xl font-bold mb-47px text-tGreay-500 uppercase leading-1.2
+  }
+  .btn-primary{
+    @apply text-base leading-none text-white font-normal inline-block rounded-[50px] uppercase hover:shadow-lg hover:shadow-primary-200;
+    background: linear-gradient(155deg, #fd3f6b 0%, #fd7863 98%, #f3dfe0 100%);
+  }
+  .hero-card{
+    @apply flex w-[252px] h-[156px] bg-white p-25px justify-between rounded-md absolute bottom-[106px] right-0;
+    box-shadow: 0px 0px 29px 0px rgba(0, 0, 0, 0.22);
+  }
+
 }
 
 @layer utilities{
