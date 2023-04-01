@@ -9,6 +9,7 @@ import Newarrivals from '@/components/newarrivals/Newarrivals'
 import Deal from '@/components/deal/Deal'
 import Blog from '@/components/blog/Blog'
 import Footer from '@/components/footer/Footer'
+import QuickView from '@/components/quickView/QuickView'
 
 export default function Home() {
   return (

@@ -1,10 +1,14 @@
 import Image from 'next/image'
 import {BsStarFill, BsHeart, BsSearch} from 'react-icons/bs'
 import {SlRefresh} from 'react-icons/sl'
+import QuickView from '../quickView/QuickView'
+import {useState } from 'react'
 // Images
 
 
 function ProductCard(props) {
+    const [showModal, setShowModal] = useState(false)
+
   return (
     <>
         <div className="group w-full">
@@ -21,9 +25,9 @@ function ProductCard(props) {
                     <a href="#" className="product-card-action">
                         <BsHeart className="text-xl"/>
                     </a>
-                    <a href="#" className="product-card-action translate-y-5 invisible opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible">
+                    <button type="button" onClick={() => setShowModal(true)} className="product-card-action translate-y-5 invisible opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible">
                         <BsSearch className="text-xl"/>
-                    </a>
+                    </button>
                     <a href="#" className="product-card-action translate-y-5 invisible opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible">
                         <SlRefresh className="text-xl"/>
                     </a>
@@ -49,6 +53,7 @@ function ProductCard(props) {
                 </div>
             </div>
         </div>
+            <QuickView modalVisibility={showModal}/>
     </>
   )
 }

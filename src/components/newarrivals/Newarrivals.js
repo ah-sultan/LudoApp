@@ -22,7 +22,7 @@ function Newarrivals() {
                 </div>
                 <div className="border-t border-[#ececec] pt-60px">
                     <div className="group/btn relative">
-                        <div className="flex gap-x-6">
+                        <div className="flex gap-x-6 px-3">
                             <ProductCard img={productImg} discount="-10%" new="new" review="5" title="Women's Elizabeth Coat" price="60.65" discountPrice="56.70"/>
                             <ProductCard img={productImg} discount="-10%" new="new" review="5" title="Women's Elizabeth Coat" price="60.65" discountPrice="56.70"/>
                             <ProductCard img={productImg} discount="-10%" new="new" review="5" title="Women's Elizabeth Coat" price="60.65" discountPrice="56.70"/>

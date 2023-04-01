@@ -8,7 +8,8 @@ function Deal() {
   return (
     <>
         <section className=" mx-30px bg-[url(../../public/img/deal/deal-bg-2.jpg)] bg-center bg-no-repeat rounded-[10px]">
-          <div className="flex">
+         <div className="container">
+         <div className="flex">
               <div className="w-1/2 text-center py-100px">
                   <span className="text-primary-900 text-base font-semibold leading-1.2">#FASHION SHOP</span>
                   <h6 className="text-4xl font-bold text-[#464444] mt-3 mb-21px">Deal Of The Day</h6>
@@ -41,6 +42,7 @@ function Deal() {
                 <Image src={women} alt="women"/>
               </div>
           </div>
+         </div>
         </section>
     </>
   )
