@@ -5,6 +5,7 @@ import { TfiAngleDown } from 'react-icons/tfi'
 
 // Images
 import whiteLogo from '../../../public/img/header/white-logo.webp'
+import Dropdown from '../dropdown/Dropdown';
 
 function Header() {
   return (
@@ -16,8 +17,11 @@ function Header() {
               <Image src={whiteLogo} alt="logo" />
             </a>
             <ul className="flex items-center gap-x-50px">
-              <li className="relative"><a href="#" className="nav-link">Home <TfiAngleDown className="inline-block absolute top-[41%] ml-1" />  </a></li>
-              <li className="relative"><a href="#" className="nav-link">Shop <TfiAngleDown className="inline-block absolute top-[41%] ml-1" />  </a></li>
+              <li className="relative"><a href="/" className="nav-link">Home <TfiAngleDown className="inline-block absolute top-[41%] ml-1" />  </a></li>
+              <li className="relative group"><a href="#" className="nav-link">Shop 
+              <TfiAngleDown className="inline-block absolute top-[41%] ml-1" />  </a>
+                <Dropdown item={[['single item', '/SingleProduct'], ['Variable Product', '/single-product']]}/>
+              </li>
               <li className="relative"><a href="#" className="nav-link">Blog <TfiAngleDown className="inline-block absolute top-[41%] ml-1" />  </a></li>
               <li className="relative"><a href="#" className="nav-link">About Us</a></li>
               <li className="relative"><a href="#" className="nav-link">Contact US </a></li>

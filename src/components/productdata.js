@@ -5,7 +5,7 @@ import img2 from '../../public/img/quick-view/1.jpg'
 import img3 from '../../public/img/quick-view/1.jpg'
 import img4 from '../../public/img/quick-view/1.jpg'
 
-export const productData = [
+export const productdata = [
     {
         id : 0,
         Categories: `Fashion`,

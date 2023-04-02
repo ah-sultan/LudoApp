@@ -80,7 +80,6 @@
     background-clip: border-box;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: inline-block;
   }
 
   .product-tab-btn{
@@ -128,6 +127,9 @@
   }
   .t-shadow-2{
     box-shadow: 0 5px 15px 0 rgba(153,63,107,.5);
+  }
+  .t-shadow-3{
+    box-shadow: 0 0 3.76px .24px rgba(0,0,0,.15);
   }
 
 }

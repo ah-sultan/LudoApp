@@ -8,12 +8,14 @@ import img2 from '../../../public/img/quick-view/2.jpg'
 import img3 from '../../../public/img/quick-view/3.jpg'
 import img4 from '../../../public/img/quick-view/4.jpg'
 
-function QuickView() {
+function QuickView(props) {
+  
   return (
     <>
-      <div className="fixed left-0 right-0 top-0 bottom-0 z-40 w-full h-full overflow-scroll hidden">
-            <div className="relative w-full h-full before:content-[''] before:absolute before:bg-[rgba(0,0,0,0.8)] before:w-full before:h-full before:left-0 before:top-0 before:block before:z-[-1]">
-              <div className="w-[960px] mx-auto p-[35px]">
+      <div className={`fixed left-0 right-0 top-0 bottom-0 z-40 w-full h-full overflow-scroll ${props.showModal? 'block' : 'hidden'}`}>
+            <div className="absolute z-[-1] w-full h-full before:content-[''] before:absolute before:bg-[rgba(0,0,0,0.8)] before:w-full before:h-full before:left-0 before:top-0 before:block before:z-[-1]" onClick={() => props.modalHandler(false)}>
+            </div>
+            <div className="w-[960px] mx-auto p-[35px]">
                 <div className="p-4 bg-white flex rounded  gap-x-6">
                   {/* Images Section */}
                     <div className="w-1/2">
@@ -21,7 +23,7 @@ function QuickView() {
                         <Image src={img1} alt="img-1" />
                       </div>
                       <div className="flex my-4 mx-auto gap-x-2.5 w-[95%]">
-                        {/* <Image src={img1} alt="img-1" className="w-1/4" /> */}
+                        <Image src={img1} alt="img-1" className="w-1/4" />
                         <Image src={img2} alt="img-1" className="w-1/4" />
                         <Image src={img3} alt="img-1" className="w-1/4" />
                         <Image src={img4} alt="img-1" className="w-1/4" />
@@ -57,7 +59,7 @@ function QuickView() {
                       </div>
                       {/* info section */}
                       <p className="text-base leading-relaxed text-tGreay-200 font-bold">SKU <span className="font-normal text-tGreay-150 hover:text-primary-900">Ch-256xl</span></p>
-                      <p className="text-base leading-relaxed text-tGreay-200 font-bold">Categories: <span className="font-normal text-tGreay-150 hover:text-primary-900">Fashion.eCommerce</span></p>
+                      <p className="text-base leading-relaxed text-tGreay-200 font-bold my-2.5">Categories: <span className="font-normal text-tGreay-150 hover:text-primary-900">Fashion.eCommerce</span></p>
                       {/* Share */}
                       <div>
                         <span className="text-base leading-relaxed text-tGreay-200 font-bold">Share</span>
@@ -71,7 +73,6 @@ function QuickView() {
                     </div>
                 </div>
               </div>
-            </div>
       </div>
     </>
   )

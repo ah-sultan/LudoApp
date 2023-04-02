@@ -9,6 +9,11 @@ import {useState } from 'react'
 function ProductCard(props) {
     const [showModal, setShowModal] = useState(false)
 
+    function modalHandler (value){
+        setShowModal(value)
+    }
+  
+    console.log(showModal)
   return (
     <>
         <div className="group w-full">
@@ -25,7 +30,7 @@ function ProductCard(props) {
                     <a href="#" className="product-card-action">
                         <BsHeart className="text-xl"/>
                     </a>
-                    <button type="button" onClick={() => setShowModal(true)} className="product-card-action translate-y-5 invisible opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible">
+                    <button type="button" onClick={() => modalHandler(true)} className="product-card-action translate-y-5 invisible opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible">
                         <BsSearch className="text-xl"/>
                     </button>
                     <a href="#" className="product-card-action translate-y-5 invisible opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible">
@@ -53,7 +58,7 @@ function ProductCard(props) {
                 </div>
             </div>
         </div>
-            <QuickView modalVisibility={showModal}/>
+            <QuickView modalHandler={modalHandler} showModal={showModal}/>
     </>
   )
 }

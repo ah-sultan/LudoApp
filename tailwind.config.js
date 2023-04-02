@@ -28,7 +28,9 @@ module.exports = {
         },
 
         "light" : {
+          700 : "#f4f4f4",
           600: "#f8f8f8",
+          
         },
         'tGreay': {
           900 : "#a7a7a7",
