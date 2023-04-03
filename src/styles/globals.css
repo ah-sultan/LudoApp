@@ -98,6 +98,11 @@
     @apply bg-white h-10 w-10 text-sm leading-[40px] center-child rounded-full t-shadow-1 absolute top-1/2 -translate-y-1/2 hover:bg-primary-900 hover:text-white
   }
 
+  .offcanvas-overlay{
+    @apply before:content-[""]  before:fixed before:w-full before:right-0 before:top-0 before:bottom-0 before:bg-[rgba(0,0,0,.5)] before:z-[-1];
+
+  }
+
 }
 
 @layer utilities{

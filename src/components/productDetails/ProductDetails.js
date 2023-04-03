@@ -9,7 +9,7 @@ import img3 from '../../../public/img/pdetails/3.jpg'
 import img4 from '../../../public/img/pdetails/4.jpg'
 
 
-function Pdetails() {
+function Pdetails(props) {
   return (
     <section className="py-100px">
         <div className="container">
@@ -40,6 +40,31 @@ function Pdetails() {
                             <FaStar className="text-accent-900 text-base leading-none"/>
                             </div>
                             <span className="text-base leading-none text-tGreay-150 font-normal">( 5 Customer Review )</span>
+                        </div>
+                        {/* Product types */}
+                        <div className={`${props.variable ? 'block' : 'hidden'}`} style={{display : 'none'}}>
+                            {/* Colors */}
+                            <div className="flex items-center mt-35px mb-15px">
+                                <span className="text-lg leading-relaxed text-dark-300 inline-block min-w-[70px]">Color:</span>
+                                <div>
+                                    {
+                                        props.variable ? props.color.map((color, id) => {
+                                            return <button key={id} className={`w-[36px] h-[36px] rounded-full outline outline-offset-2 outline-solid outline-[#d9d9d9] outline-1 mr-2  hover:outline-primary-900 focus:outline-primary-900`} style={{background : color}}></button>
+                                         }) :undefined
+                                    }
+                                </div>
+                            </div>
+                            {/* Size */}
+                            <div className="flex items-center mt-35px mb-15px">
+                                <span className="text-lg leading-relaxed text-dark-300 inline-block min-w-[70px]">Size:</span>
+                                <div>
+                                    {
+                                        props.variable ?props.size.map((size, id) => {
+                                            return <button key={id} className={`w-[36px] h-[36px] bg-[#D6D6D6] rounded-full outline outline-offset-2 outline-solid outline-[#d9d9d9] outline-1 mr-2 text-base text-dark-300 uppercase font-bold hover:outline-primary-900 focus:outline-primary-900`}>{size}</button>
+                                         }) : undefined
+                                    }
+                                </div>
+                            </div>
                         </div>
                         {/* Drescription section */}
                         <p className="text-base leading-[30px] text-tGreay-300 font-light my-30px">Lorem ipsum dolor sit amet, consect adipisicing elit, sed do eiusmod tempor incidi ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercita ullamco laboris nisi ut aliquip ex ea commodo </p>
