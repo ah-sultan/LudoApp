@@ -30,7 +30,7 @@ function Header() {
               <li className="relative"><a href="/" className="nav-link">Home <TfiAngleDown className="inline-block absolute top-[41%] ml-1" />  </a></li>
               <li className="relative group"><a href="#" className="nav-link">Shop 
               <TfiAngleDown className="inline-block absolute top-[41%] ml-1" />  </a>
-                <Dropdown item={[['single item', '/SingleProduct'], ['Variable Product', '/VariableProduct'], ['Four Column', '/FourColumn']]}/>
+                <Dropdown item={[['single item', '/SingleProduct'], ['Variable Product', '/VariableProduct'], ['Four Column', '/FourColumn'], ['Left Side Bar', '/LeftSideBar' ]]}/>
               </li>
               <li className="relative"><a href="#" className="nav-link">Blog <TfiAngleDown className="inline-block absolute top-[41%] ml-1" />  </a></li>
               <li className="relative"><a href="#" className="nav-link">About Us</a></li>

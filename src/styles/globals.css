@@ -103,6 +103,10 @@
 
   }
 
+  .sidebar-title{
+    @apply pl-5 text-lg leading-1.2 text-dark-300  font-semibold relative before:content-[''] before:absolute before:w-11px before:h-11px before:block before:rounded-full before:border-2 before:border-primary-900 before:left-0 before:top-1/2 before:-translate-y-1/2
+  }
+
 }
 
 @layer utilities{
