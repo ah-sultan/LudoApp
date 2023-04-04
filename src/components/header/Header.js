@@ -32,7 +32,9 @@ function Header() {
               <TfiAngleDown className="inline-block absolute top-[41%] ml-1" />  </a>
                 <Dropdown item={[['single item', '/SingleProduct'], ['Variable Product', '/VariableProduct'], ['Four Column', '/FourColumn'], ['Left Side Bar', '/LeftSideBar' ]]}/>
               </li>
-              <li className="relative"><a href="#" className="nav-link">Blog <TfiAngleDown className="inline-block absolute top-[41%] ml-1" />  </a></li>
+              <li className="relative group"><a href="#" className="nav-link">Cart <TfiAngleDown className="inline-block absolute top-[41%] ml-1" />  </a>
+                <Dropdown item={[['Cart Pages', '/Cart'],['single item', '/SingleProduct'], ]}/>
+              </li>
               <li className="relative"><a href="#" className="nav-link">About Us</a></li>
               <li className="relative"><a href="#" className="nav-link">Contact US </a></li>
             </ul>

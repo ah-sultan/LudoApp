@@ -10,7 +10,7 @@ import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
 import ShopTopBar from "@/components/shopTopBar/ShopTopBar"
 import ProductCard from "@/components/productCard/ProductCard"
 import ProductCardList from "@/components/productCard/ProductCardList"
-import { ColorFilter, SidebarCategory, SizeFilter, TagFilter } from "@/components/sidebarCategory/SidebarWidget"
+import { ColorFilter, SidebarCategory, SizeFilter, TagFilter } from "@/components/sidebarWidget/SidebarWidget"
 
 
 // images 
