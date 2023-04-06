@@ -4,17 +4,16 @@ import { FiRefreshCw } from 'react-icons/fi'
 
 // Images
 import img1 from '../../../public/img/quick-view/1.jpg'
-import img2 from '../../../public/img/quick-view/2.jpg'
-import img3 from '../../../public/img/quick-view/3.jpg'
-import img4 from '../../../public/img/quick-view/4.jpg'
+
 
 function QuickView(props) {
+
   const product = props.product
-  // const images = product.images
-  console.log(typeof images)
+  const images = product.images.slice(0,4)
+
   return (
     <>
-      <div className={`fixed left-0 right-0 top-0 bottom-0 z-40 w-full h-full overflow-scroll ${props.showModal ? 'block' : 'hidden'}`}>
+      <div className={`fixed left-0 right-0 top-0 bottom-0 z-40 w-full overflow-scroll ${props.showModal ? 'block' : 'hidden'}`}>
         <div className="absolute z-[-1] w-full h-full before:content-[''] before:absolute before:bg-[rgba(0,0,0,0.8)] before:w-full before:h-full before:left-0 before:top-0 before:block before:z-[-1]" onClick={() => props.modalHandler(false)}>
         </div>
         <div className="w-[960px] mx-auto p-[35px]">
@@ -25,11 +24,11 @@ function QuickView(props) {
                 <Image src={product.thumbnail} alt="img-1" width={500} height={500} />
               </div>
               <div className="grid grid-cols-4 my-4 mx-auto gap-2.5 w-[95%]">
-                <Image src={img1} alt="img-1" />
+                {/* <Image src={img1} alt="img-1" /> */}
 
-                {/* {
+                {
                   images.map((img, id) => <Image key={id} src={img} width={100} height={100} />)
-                } */}
+                }
 
               </div>
             </div>

@@ -9,8 +9,10 @@ import Blog from '@/components/blog/Blog'
 import Footer from '@/components/footer/Footer'
 import THead from '@/components/thead/THead'
 
+// https://api.npoint.io/44d9930f29cc64084a3a
 
-export default function Home() {
+export default function Home({productdata}) {
+
   return (
 
     <>
@@ -20,9 +22,9 @@ export default function Home() {
         <Header />
         <Hero />
         <Feature/>
-        <Products/>
+        <Products product={productdata}/>
         <Banner/>
-        <Newarrivals/>
+        <Newarrivals product={productdata}/>
         <Deal/>
         <Blog/>
         <Footer/>
@@ -30,3 +32,13 @@ export default function Home() {
     </>
   )
 }
+
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(`https://api.npoint.io/44d9930f29cc64084a3a`)
+  const productdata = await res.json()
+
+  // Pass data to the page via props
+  return { props: { productdata } }
+}
+
