@@ -7,9 +7,8 @@ import Newarrivals from '@/components/newarrivals/Newarrivals'
 import Deal from '@/components/deal/Deal'
 import Blog from '@/components/blog/Blog'
 import Footer from '@/components/footer/Footer'
-import QuickView from '@/components/quickView/QuickView'
 import THead from '@/components/thead/THead'
-// https://api.npoint.io/097fe96c7521b67eddaf
+
 
 export default function Home() {
   return (

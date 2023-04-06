@@ -12,8 +12,7 @@ function ProductCard(props) {
     function modalHandler(value) {
         setShowModal(value)
     }
-  
-    console.log(showModal)
+
   return (
     <>
         <div className="group w-full">
