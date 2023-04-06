@@ -2,7 +2,6 @@ import ProductCard from "../productCard/ProductCard"
 import {BiRightArrowAlt} from 'react-icons/bi'
 
 // images 
-import productImg from '../../../public/img/products/1.jpg'
 
 
 function Products(props) {
@@ -39,6 +38,7 @@ function Products(props) {
             </div>
         </div>
     </section>
+
     </>
   )
 }

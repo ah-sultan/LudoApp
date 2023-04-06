@@ -11,16 +11,17 @@ import QuickView from '@/components/quickView/QuickView'
 import THead from '@/components/thead/THead'
 // https://api.npoint.io/097fe96c7521b67eddaf
 
-export default function Home({productsData}) {
+export default function Home() {
   return (
+
     <>
-      
+
       <main>
-        <THead/>
+        <THead />
         <Header />
         <Hero />
         <Feature/>
-        <Products productsData={productsData}/>
+        <Products/>
         <Banner/>
         <Newarrivals/>
         <Deal/>
@@ -30,15 +31,3 @@ export default function Home({productsData}) {
     </>
   )
 }
-
-export async function getServerSideProps(context) {
-
-  const res = await fetch('https://api.npoint.io/097fe96c7521b67eddaf')
-  const productsData = await res.json()
-  
- 
-  return {
-    props: {productsData}, 
-  }
-}
-
