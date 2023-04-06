@@ -13,18 +13,17 @@ function ProductCard(props) {
         setShowModal(value)
     }
   
-    console.log(showModal)
   return (
     <>
         <div className="group w-full">
             {/* Product Images */}
             <div className="relative thumb">
-                <a href="#" className="block overflow-hidden">
-                    <Image src={props.img} alt="productImg" className="trns-1 group-hover:scale-110 group-hover:rotate-3"/>
+                <a href="#" className="block overflow-hidden h-[320px]">
+                    <Image src={props.thumbnail} height={40} width={320} alt="productImg" className="trns-1 group-hover:scale-110 group-hover:rotate-3"/>
                 </a>
                 <div className="badge absolute top-18px -left-0.5">
-                    <span className="gradient-primary text-3 text-xs px-2 rounded-[3px] leading-[19px] text-white font-semibold mb-2.5 block">{props.discount}</span>
-                    <span className="bg-black uppercase text-3 text-xs px-2 rounded-[3px] leading-[19px] text-white font-semibold mb-2.5 block">{props.new}</span>
+                    <span className="gradient-primary text-3 text-xs px-2 rounded-[3px] leading-[19px] text-white font-semibold mb-2.5 block">{}</span>
+                    <span className="bg-black uppercase text-3 text-xs px-2 rounded-[3px] leading-[19px] text-white font-semibold mb-2.5 block">{props.brand}</span>
                 </div>
                 <div className="absolute top-18px right-18px">
                     <a href="#" className="product-card-action">

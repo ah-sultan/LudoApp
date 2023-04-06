@@ -5,7 +5,7 @@ import {BiRightArrowAlt} from 'react-icons/bi'
 import productImg from '../../../public/img/products/1.jpg'
 
 
-function Products() {
+function Products(props) {
   return (
     <>
     <section className="py-100px">
@@ -21,12 +21,18 @@ function Products() {
                 <button className="product-tab-btn active">KIds</button>
             </div>
             <div>
-                <div className="flex gap-x-6 px-3">
-                    <ProductCard img={productImg} discount="-10%" new="new" review="5" title="Women's Elizabeth Coat" price="60.65" discountPrice="56.70"/>
-                    <ProductCard img={productImg} discount="-10%" new="new" review="5" title="Women's Elizabeth Coat" price="60.65" discountPrice="56.70"/>
-                    <ProductCard img={productImg} discount="-10%" new="new" review="5" title="Women's Elizabeth Coat" price="60.65" discountPrice="56.70"/>
-                    <ProductCard img={productImg} discount="-10%" new="new" review="5" title="Women's Elizabeth Coat" price="60.65" discountPrice="56.70"/>
+                <div className="grid grid-cols-4 gap-30px">
+                    {
+                        props.productsData.map((product) => {
+
+                        const {id, sku, rate, brand, price, stock, title, images, category, thumbnail, description} = product
+                        
+                        return (<ProductCard key={id} sku={sku} rate={rate} brand={brand} price={price} stock={stock} images={images} category={category} thumbnail={thumbnail} title={title} description={description}  />)
+                        
+                    })
+                    }
                 </div>
+                
             </div>
             <div className="text-center mt-60px">
                 <button className="btn-primary  w-[210px] h-[65px] font-bold center-child mx-auto gap-x-15px">Load More <BiRightArrowAlt className="inline-block text-xl"/></button>

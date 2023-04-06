@@ -11,6 +11,7 @@ import ShopTopBar from "@/components/shopTopBar/ShopTopBar"
 import ProductCard from "@/components/productCard/ProductCard"
 import ProductCardList from "@/components/productCard/ProductCardList"
 import { ColorFilter, SidebarCategory, SizeFilter, TagFilter } from "@/components/sidebarWidget/SidebarWidget"
+import Footer from "@/components/footer/Footer"
 
 
 // images 
@@ -26,8 +27,8 @@ function LeftSideBar() {
       setViewType(value)
     }
   
-    const showGridTab = viewType === 'grid' ? { visibility: 'visible', opacity: 1, height: 'auto' } : undefined
-    const showlistTab = viewType === 'list' ? { visibility: 'visible', opacity: 1, height: 'auto' } : undefined
+    const showGridTab = viewType === 'grid' ? {display: 'grid' ,visibility: 'visible', opacity: 1, height: 'auto' } : undefined
+    const showlistTab = viewType === 'list' ? {display: 'grid' ,visibility: 'visible', opacity: 1, height: 'auto' } : undefined
   return (
     <>
         <THead/>
@@ -83,11 +84,11 @@ function LeftSideBar() {
                     <div className="w-9/12">
                     <ShopTopBar pViewHandler={pViewHandler} viewTypeBtn={viewType} />
                     {/* Grid View */}
-                        <div className="grid-cols-3 gap-x-6 gap-y-30px  grid invisible opacity-0 h-0 trns-1" style={showGridTab}>
+                        <div className="grid-cols-3 gap-x-6 gap-y-30px  hidden opacity-0  trns-1" style={showGridTab}>
                         {Array(12).fill(<ProductCard img={productImg} discount="-10%" new="new" review="5" title="Women's Elizabeth Coat" price="60.65" discountPrice="56.70" />)}
                         </div>
                         {/* List View */}
-                        <div className="gap-y-50px  grid invisible opacity-0 h-0 trns-1" style={showlistTab}>
+                        <div className="gap-y-50px  hidden opacity-0 h-0 trns-1" style={showlistTab}>
                         {Array(12).fill(<ProductCardList img={productImg} discount="-10%" new="new" review="5" title="Women's Elizabeth Coat" price="60.65" discountPrice="56.70" description="More room to move.With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or.." />)}
                         </div>
                         <div className="text-center mt-60px">
@@ -96,7 +97,9 @@ function LeftSideBar() {
                     </div>
                 </div>
             </div>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta fugit id exercitationem omnis modi similique aut maxime error optio, doloribus repellendus rem corporis, ducimus dolore obcaecati! Laboriosam, doloremque iste. Corporis!
         </main>
+        <Footer/>
     </>
   )
 }

@@ -8,8 +8,11 @@ function Cart() {
     <>
         <THead/>
         <Header/>
-        <main className="py-100px">
+        <main>
         <Breadcrumb pages="home" title="cart"/>
+        <div className="py-100px">
+            <h4 className="text-2xl leading-4 font font-semibold mb-30px">Your cart items</h4>
+        </div>
         </main>
         <Footer/>
     </>
