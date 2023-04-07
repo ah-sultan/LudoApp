@@ -11,10 +11,10 @@ import OffCanvasCart from '../offcanvasCart/OffCanvasCart';
 
 function Header() {
   const [showSideCart, setShowSideCart] = useState(false)
- 
-    const  siteCartToggler = (value) =>{
-      setShowSideCart(value)
-    }
+
+  const siteCartToggler = (value) => {
+    setShowSideCart(value)
+  }
 
   return (
     <>
@@ -28,12 +28,12 @@ function Header() {
             {/* Navbar Menu --------- */}
             <ul className="flex items-center gap-x-50px">
               <li className="relative"><a href="/" className="nav-link">Home <TfiAngleDown className="inline-block absolute top-[41%] ml-1" />  </a></li>
-              <li className="relative group"><a href="#" className="nav-link">Shop 
-              <TfiAngleDown className="inline-block absolute top-[41%] ml-1" />  </a>
-                <Dropdown item={[['single item', '/SingleProduct'], ['Variable Product', '/VariableProduct'], ['Four Column', '/FourColumn'], ['Left Side Bar', '/LeftSideBar' ]]}/>
+              <li className="relative group"><a href="#" className="nav-link">Shop
+                <TfiAngleDown className="inline-block absolute top-[41%] ml-1" />  </a>
+                <Dropdown item={[['single item', '/SingleProduct'], ['Variable Product', '/VariableProduct'], ['Four Column', '/FourColumn'], ['Left Side Bar', '/LeftSideBar']]} />
               </li>
               <li className="relative group"><a href="#" className="nav-link">Cart <TfiAngleDown className="inline-block absolute top-[41%] ml-1" />  </a>
-                <Dropdown item={[['Cart Pages', '/Cart'],['single item', '/SingleProduct'], ]}/>
+                <Dropdown item={[['Cart Pages', '/Cart'], ['Checkout Pages', '/Checkout'],]} />
               </li>
               <li className="relative"><a href="#" className="nav-link">About Us</a></li>
               <li className="relative"><a href="#" className="nav-link">Contact US </a></li>
@@ -47,7 +47,7 @@ function Header() {
                 <CgShoppingBag className="text-black text-25px hover:text-primary-900" />
                 <span className="bg-primary-900 text-white h-21px w-21px text-11px rounded-full center-child absolute -top-2.5 font-semibold -right-7px">01</span>
               </button>
-              <OffCanvasCart offCanvasVisibilty={showSideCart} cartHandler={siteCartToggler}/>
+              <OffCanvasCart offCanvasVisibilty={showSideCart} cartHandler={siteCartToggler} />
             </div>
           </div>
         </div>

@@ -9,9 +9,8 @@ import Blog from '@/components/blog/Blog'
 import Footer from '@/components/footer/Footer'
 import THead from '@/components/thead/THead'
 
-// https://api.npoint.io/44d9930f29cc64084a3a
 
-export default function Home({productdata}) {
+export default function Home({ productdata }) {
 
   return (
 
@@ -21,13 +20,13 @@ export default function Home({productdata}) {
         <THead />
         <Header />
         <Hero />
-        <Feature/>
-        <Products product={productdata}/>
-        <Banner/>
-        <Newarrivals product={productdata}/>
-        <Deal/>
-        <Blog/>
-        <Footer/>
+        <Feature />
+        <Products product={productdata} />
+        <Banner />
+        <Newarrivals product={productdata} />
+        <Deal />
+        <Blog />
+        <Footer />
       </main>
     </>
   )
