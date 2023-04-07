@@ -145,4 +145,8 @@
     box-shadow: 0 0 0 1px rgba(68,68,68,.11);
   }
 
+  .t-shadow-5{
+    box-shadow: 0 0 6px rgba(0,0,0,.1);
+  }
+
 }

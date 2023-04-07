@@ -1,29 +1,60 @@
-import { useEffect, useRef } from "react"
+import { use, useEffect, useRef, useState } from "react"
 
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
 import Header from "@/components/header/Header"
 import Footer from "@/components/footer/Footer"
 import THead from "@/components/thead/THead"
 
+
+function Accordion(props){
+    const [activeAcrr, setActiveAcrr] = useState(0)
+    const [isTrue, setIsTrue] = useState(false)
+
+    function handleAcrr(value){
+        setActiveAcrr(value)
+        setIsTrue(!isTrue)
+    }
+
+    const showAcc = {
+        visibility : "visible",
+        height : 'auto',
+        paddingTop : '6px',
+        opacity : 1,
+    }
+    return(
+        <>
+            <div className="mb-3">
+                <div onClick={() => handleAcrr(props.id)}>
+                    <h4 className="text-base font-semibold text-black leading-1.2 mb-2">{props.title}</h4>
+                </div>
+                <div className="pt-0 pl-2.5 trns-1 duration-500 invisible h-0 opacity-0" style={activeAcrr === props.id && isTrue ?showAcc : undefined}>
+                    <p className="text-dark-700 text-sm leading-relaxed">{props.text}</p>
+                </div>
+            </div>
+        </>
+    )
+}
+
+const accor = [
+    {
+        title : 'Direct bank transfer',
+        text : 'Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.',
+    },
+
+    {
+        title : 'Check payments',
+        text : 'Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.',
+    },
+
+    {
+        title : 'Cash on delivery',
+        text : 'Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.',
+    }
+
+]
+
 function Checkout() {
 
-    const accordion = useRef()
-    useEffect(() => {
-        const accordionBlock = accordion.current
-        const accordionItem = accordionBlock.children
-
-        for (let i = 0; i < accordionItem.length; i++) {
-            accordionItem[i].firstChild.addEventListener('click', function () {
-
-                if (this.nextSibling.classList === "block") {
-                    this.nextSibling.style.display = "none"
-                } else {
-                    this.nextSibling.style.display = "block"
-                }
-            })
-        }
-
-    })
 
     return (
         <>
@@ -128,36 +159,16 @@ function Checkout() {
                                         </ul>
                                     </div>
                                     {/* Accordion Section */}
-                                    <div className="mt-9" ref={accordion}>
+                                    <div className="mt-9">
                                         {/* Accordion Items */}
-                                        <div className="mb-4">
-                                            <div>
-                                                <h4 className="text-base font-semibold text-black leading-1.2 mb-2">Direct bank transfer</h4>
-                                            </div>
-                                            <div className="pt-1.5 pl-2.5 trns-1 hidden">
-                                                <p className="text-dark-700 text-sm leading-relaxed">Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
-                                            </div>
-                                        </div>
-                                        {/* Accordion Items */}
-                                        <div className="mb-4">
-                                            <div>
-                                                <h4 className="text-base font-semibold text-black leading-1.2 mb-2">Check payments</h4>
-                                            </div>
-                                            <div className="pt-1.5 pl-2.5 trns-1 hidden">
-                                                <p className="text-dark-700 text-sm leading-relaxed">Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
-                                            </div>
-                                        </div>
-                                        {/* Accordion Items */}
-                                        <div>
-                                            <div>
-                                                <h4 className="text-base font-semibold text-black leading-1.2 mb-2">Cash on delivery</h4>
-                                            </div>
-                                            <div className="pt-1.5 pl-2.5 trns-1 hidden">
-                                                <p className="text-dark-700 text-sm leading-relaxed">Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
-                                            </div>
-                                        </div>
+                                        {
+                                            accor.map((items, index) => {
+                                                return <Accordion key={index} id={index} title={items.title} text={items.text}/>
+                                            })
+                                        }
                                     </div>
                                 </div>
+                                <button className="w-full mt-6 h-45px bg-primary-900 text-center block text-white text-base leading-none uppercase hover:bg-black font-bold">Place Order</button>
                             </div>
                         </div>
                     </div>
