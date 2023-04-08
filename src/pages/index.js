@@ -26,7 +26,7 @@ export default function Home({ productdata }) {
         <Newarrivals product={productdata} />
         <Deal />
         <Blog />
-        <Footer />
+        <Footer/>
       </main>
     </>
   )

@@ -1,11 +1,26 @@
+import Image from "next/image"
 import THead from "@/components/thead/THead"
 import Header from "@/components/header/Header"
-import Image from "next/image"
+import TeamCard from "@/components/teamCard/TeamCard"
+import Footer from "@/components/footer/Footer"
 import { FaShoppingBasket } from "react-icons/fa"
 // images 
 import bag from '../../public/img/about/bag.png'
 import aboutImg from '../../public/img/about/about-right.png'
 import servicesImg from '../../public/img/about/srevice-left-img.png'
+import FeatureCard from "@/components/feature/FeatureCard"
+
+// Team Section Images
+import team1 from '../../public/img/team/1.jpg'
+import team2 from '../../public/img/team/2.jpg'
+import team3 from '../../public/img/team/3.jpg'
+
+// Feature Section Images
+import shipping from '../../public/img/feature/1.png'
+import payments from '../../public/img/feature/2.png'
+import returns from '../../public/img/feature/3.png'
+import Brand from "@/components/brand/Brand"
+import Testtimonial from "@/components/testimonial/Testimonial"
 
 function About() {
     return (
@@ -44,20 +59,37 @@ function About() {
                         </div>
                     </div>
                 </section>
-                {/* Team Section */}
+                {/* Team Section ===========================*/}
                 <section className="py-100px">
                     <div>
                         <div className="container">
-                            <h2 className="section-title text-center">#ourteam</h2>
-                            <div className="grid grid-col-3 gap-x-6">
-                                {
-
-                                }
+                            <h2 className="section-title text-center mb-60px">#ourteam</h2>
+                            <div className="grid grid-cols-3 gap-x-6">
+                                <TeamCard img={team1} name="Howard Burns" title="Our Team"/>
+                                <TeamCard img={team2} name="Lester Houser" title="Our Team"/>
+                                <TeamCard img={team3} name="Craig Chaney" title="Our Team"/>
                             </div>
                         </div>
                     </div>
                 </section>
+                {/* Feature Section ===========================*/}
+                <section className="py-100px bg-[#F4F4F4]">
+                    <div className="container">
+                        <div className="grid grid-cols-3 gap-x-6">
+                            <FeatureCard icon={shipping} title="Free Shipping" text=" Capped at $39 per order "/>
+                            <FeatureCard icon={payments} title="Card Payments" text="  12 Months Installments "/>
+                            <FeatureCard icon={returns} title="Easy Returns" text="  Shop With Confidence "/>
+                        </div>
+                    </div>
+                </section>
+                {/* Testimonial Section =========================== */}
+                <Testtimonial/>
+                {/* Brand Area ===========================*/}
+                <div className="border-t pt-60px pb-100px">
+                    <Brand/>
+                </div>
             </main>
+            <Footer/>
         </>
     )
 }
