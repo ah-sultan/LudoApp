@@ -99,8 +99,13 @@ module.exports = {
         "25px": "25px",
         "30px": "30px",
       },
+      lineClamp: {
+        3.5: '3.5'
+      }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/line-clamp'),
+  ],
 }
 

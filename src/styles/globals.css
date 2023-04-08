@@ -106,6 +106,14 @@
   .sidebar-title{
     @apply pl-5 text-lg leading-1.2 text-dark-300  font-semibold relative before:content-[''] before:absolute before:w-11px before:h-11px before:block before:rounded-full before:border-2 before:border-primary-900 before:left-0 before:top-1/2 before:-translate-y-1/2
   }
+  .paginatio-btn{
+    @apply w-10 h-10 rounded-full bg-light-700 center-child border border-solid  border-tGreay-100 hover:bg-primary-900 trns-1 hover:text-white hover:border-primary-900 hover:shadow-lg hover:shadow-primary-900/30
+  }
+
+  .form-input{
+    @apply w-full border border-tGreay-100 h-45px px-5 text-base leading-[50px] text-dark-700 placeholder:text-[#999] placeholder:text-sm focus:border-primary-900
+  }
+
 
 }
 

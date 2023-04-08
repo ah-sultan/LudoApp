@@ -35,7 +35,7 @@ function Header() {
               <li className="relative group"><a href="#" className="nav-link">Cart <TfiAngleDown className="inline-block absolute top-[41%] ml-1" />  </a>
                 <Dropdown item={[['Cart Pages', '/Cart'], ['Checkout Pages', '/Checkout'],]} />
               </li>
-              <li className="relative"><a href="#" className="nav-link">About Us</a></li>
+              <li className="relative"><a href="/About" className="nav-link">About Us</a></li>
               <li className="relative"><a href="#" className="nav-link">Contact US </a></li>
             </ul>
             {/* Navbar Button --------- */}
