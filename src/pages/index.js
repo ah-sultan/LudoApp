@@ -8,6 +8,7 @@ import Deal from '@/components/deal/Deal'
 import Blog from '@/components/blog/Blog'
 import Footer from '@/components/footer/Footer'
 import THead from '@/components/thead/THead'
+import BackTop from '@/components/backtop/BackTop'
 
 
 export default function Home({ productdata }) {
@@ -27,6 +28,7 @@ export default function Home({ productdata }) {
         <Deal />
         <Blog />
         <Footer/>
+        <BackTop/>
       </main>
     </>
   )
