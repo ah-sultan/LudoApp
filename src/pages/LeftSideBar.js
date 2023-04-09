@@ -18,6 +18,7 @@ import Footer from "@/components/footer/Footer"
 import productImg from '../../public/img/products/1.jpg'
 import bannerImg from '../../public/img/left-sidebar/2.jpg'
 import Footer from "@/components/footer/Footer"
+import BackTop from "@/components/backtop/BackTop"
 
 
 function LeftSideBar() {
@@ -99,6 +100,7 @@ function LeftSideBar() {
                 </div>
             </div>
         </main>
+        <BackTop/>
     </>
   )
 }

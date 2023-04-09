@@ -21,6 +21,7 @@ import payments from '../../public/img/feature/2.png'
 import returns from '../../public/img/feature/3.png'
 import Brand from "@/components/brand/Brand"
 import Testtimonial from "@/components/testimonial/Testimonial"
+import BackTop from "@/components/backtop/BackTop"
 
 function About() {
     return (
@@ -90,6 +91,7 @@ function About() {
                 </div>
             </main>
             <Footer/>
+            <BackTop/>
         </>
     )
 }

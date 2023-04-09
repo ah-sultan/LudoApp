@@ -5,6 +5,7 @@ import THead from "@/components/thead/THead"
 import Image from "next/image"
 
 import img1 from '../../public/img/cart/1.jpg'
+import BackTop from "@/components/backtop/BackTop"
 
 function CartCard(props){
   return(
@@ -111,6 +112,7 @@ function Cart() {
         </div>
         </main>
         <Footer/>
+        <BackTop/>
     </>
   )
 }

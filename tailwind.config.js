@@ -101,6 +101,15 @@ module.exports = {
       },
       lineClamp: {
         3.5: '3.5'
+      },
+      keyframes : {
+        "stickyNav" : {
+          "0%" : {top : '-100px'},
+          "100%" : {top : "0"}
+        }
+      },
+      animation : {
+        "stickyNav" : 'stickyNav .3s linear'
       }
     },
   },

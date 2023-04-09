@@ -1,3 +1,4 @@
+import BackTop from "@/components/backtop/BackTop"
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
 import DescriptionReview from "@/components/descriptionReview/DescriptionReview"
 import Footer from "@/components/footer/Footer"
@@ -20,6 +21,7 @@ function SingleProduct() {
    <footer>
     <Footer/>
    </footer>
+   <BackTop/>
    </>
   )
 }

@@ -4,6 +4,8 @@ import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
 import Header from "@/components/header/Header"
 import THead from "@/components/thead/THead"
 import { useState } from 'react'
+import Footer from '@/components/footer/Footer'
+import BackTop from '@/components/backtop/BackTop'
 
 const faqContent = [
     {
@@ -110,7 +112,8 @@ function Faq() {
                     </div>
                 </section>
             </main>
-
+        <Footer/>
+        <BackTop/>
         </>
     )
 }

@@ -4,6 +4,7 @@ import Breadcrumb from '@/components/breadcrumb/Breadcrumb'
 import Footer from '@/components/footer/Footer'
 import Header from '@/components/header/Header'
 import THead from '@/components/thead/THead'
+import BackTop from '@/components/backtop/BackTop'
 
 function Login() {
     const [active, setActive] = useState('')
@@ -69,6 +70,7 @@ function Login() {
         </section>
     </main>
     <Footer/>
+    <BackTop/>
     </>
   )
 }

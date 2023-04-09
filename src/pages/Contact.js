@@ -1,4 +1,3 @@
-import BackTop from "@/components/backtop/BackTop"
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
 import Footer from "@/components/footer/Footer"
 import Header from "@/components/header/Header"
@@ -7,6 +6,9 @@ import Image from "next/image"
 
 // icons 
 import { FaPhone, FaEnvelope, FaLocationArrow, FaArrowRight } from "react-icons/fa"
+import { CiLocationOn } from "react-icons/ci"
+import BackTop from "@/components/backtop/BackTop"
+
 
 function ContactCard(props) {
     return (
@@ -55,23 +57,23 @@ function Contact() {
                                                     <input type="Email" className="form-input" placeholder="Email *" />
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="pt-30px">
-                                            <textarea placeholder="Your Message *" className="form-input h-[200px] focus:outline-none py-6 leading-normal"/>
-                                        </div>
-                                        <button className="btn-primary center-child text-sm leading-none w-[210px] h-[65px] mt-30px tracking-wide font-semibold">Post Comment <FaArrowRight className="ml-1"/> </button>
-                                    </form>
+                                            <div className="pt-30px">
+                                                <textarea placeholder="Your Message *" className="form-input h-[200px] focus:outline-none py-6 leading-normal" />
+                                            </div>
+                                            <button className="btn-primary center-child text-sm leading-none w-[210px] h-[65px] mt-30px tracking-wide font-semibold">Post Comment <FaArrowRight className="ml-1" /> </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
-                </div>
-            </section>
-        </main>
-        <Footer/>
-    
-    </>
-  )
+                </section>
+            </main>
+            <Footer />
+            <BackTop/>
+        </>
+    )
 }
 
 export default Contact

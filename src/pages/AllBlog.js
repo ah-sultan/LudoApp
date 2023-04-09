@@ -6,6 +6,7 @@ import THead from "@/components/thead/THead"
 
 import blogImg from '../../public/img/blog/1.jpg'
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi'
+import BackTop from "@/components/backtop/BackTop"
 
 function Blog() {
     return (
@@ -33,6 +34,7 @@ function Blog() {
                 </section>
             </main>
             <Footer />
+            <BackTop/>
         </>
     )
 }

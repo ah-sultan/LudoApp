@@ -1,13 +1,12 @@
-import ProductCard from "../productCard/ProductCard"
-
 import { TfiAngleLeft, TfiAngleRight } from 'react-icons/tfi'
+import ProductCard from "../productCard/ProductCard"
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper';
+import 'swiper/css'
 
-
-// images 
-import productImg from '../../../public/img/products/1.jpg'
 
 function Newarrivals(props) {
-    const product = props.product.slice(0, 4);
+    const product = props.product.slice(0, 6);
 
     return (
         <>
@@ -24,20 +23,33 @@ function Newarrivals(props) {
                     </div>
                     <div className="border-t border-[#ececec] pt-60px">
                         <div className="group/btn relative">
-                            <div className="grid grid-cols-4 gap-30px">
+                                <Swiper
+                                    modules={[Navigation, Pagination]}
+                                    spaceBetween={30}
+                                    slidesPerView={4}
+                                    loop = {true}
+                                    navigation={{
+                                        prevEl : "#newArrivalsSliderPrev",
+                                        nextEl : "#newArrivalsSliderNext",
+                                    }}
+                                >
                                 {
                                     product.map((product) => {
                                         const { id, brand, rating, title, reviews, thumbnail, images, price, description, category, sku } = product
-
-                                        return <ProductCard key={id} id={id} brand={brand} title={title} rating={rating} reviews={reviews} thumbnail={thumbnail} price={price} description={description} category={category} sku={sku} images={images} />
+                                           
+                                        return (
+                                            <SwiperSlide key={id}>
+                                                <ProductCard  id={id} brand={brand} title={title} rating={rating} reviews={reviews} thumbnail={thumbnail} price={price} description={description} category={category} sku={sku} images={images} />
+                                            </SwiperSlide>
+                                        )
                                     })
                                 }
-                            </div>
+                            </Swiper>
                             <div>
-                                <button className="slider-btn left-0 opacity-0  group-hover/btn:left-3 group-hover/btn:opacity-100 ">
+                                <button className="slider-btn left-0 opacity-0 z-50  group-hover/btn:left-3 group-hover/btn:opacity-100 " id="newArrivalsSliderPrev">
                                     <TfiAngleLeft />
                                 </button>
-                                <button className="slider-btn right-0 opacity-0 group-hover/btn:right-3 group-hover/btn:opacity-100">
+                                <button className="slider-btn right-0 opacity-0 z-50 group-hover/btn:right-3 group-hover/btn:opacity-100" id="newArrivalsSliderNext">
                                     <TfiAngleRight />
                                 </button>
                             </div>

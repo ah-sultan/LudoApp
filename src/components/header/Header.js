@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CiSearch, CiHeart } from 'react-icons/ci';
 import { CgShoppingBag } from 'react-icons/cg'
 import { TfiAngleDown } from 'react-icons/tfi'
@@ -14,36 +14,48 @@ import Megamenu from '../megamenu/Megamenu';
 const shopMegamenu = [
   {
     title: "Shop Page",
-    navlink: [['Shop 4 Column', 'Shop 4 Column'], ['Shop Left Sidebar', 'Shop Left Sidebar']]
+    navlink: [['Shop 4 Column', '/FourColumn'], ['Shop Left Sidebar', '/LeftSideBar']]
   },
   {
     title: "product Details Page",
-    navlink: [['Product Single', 'url'], ['Product Variable', 'url']]
+    navlink: [['Product Single', '/SingleProduct'], ['Product Variable', '/VariableProduct']]
   },
 
   {
     title: "Other Shop Pages",
-    navlink: [['Cart Page', 'url'], ['Checkout Page', 'url'], ['Account Page', 'url'], ['Login & Register Page'],]
+    navlink: [['Cart Page', '/Cart'], ['Checkout Page', '/Cheackout'], ['Account Page', '/Account'], ['Login & Register Page', '/Login'],]
   },
 
   {
     title: "Other Shop Pages",
-    navlink: [['404 Page', 'url'], ['Privacy Policy', 'url'], ['Faq Page', 'url'], ['Coming Soon Page'],]
+    navlink: [['404 Page', 'url'], ['Privacy Policy', '/Privacy'], ['Faq Page', 'url'], ['Coming Soon Page'],]
   },
 
 ]
 
 function Header() {
+  const [stickyNav, setStickyNav] = useState(false)
   const [showSideCart, setShowSideCart] = useState(false)
 
   const siteCartToggler = (value) => {
     setShowSideCart(value)
   }
 
+  useEffect(() => {
+
+    const stickyNavHandler = () => {
+       window.pageYOffset > 300 ? setStickyNav(true) : setStickyNav(false)
+    }
+
+    window.addEventListener('scroll',stickyNavHandler )
+
+  })
+
   return (
     <>
-      <header className="bg-white">
-        <div className="bg-dark-900 py-4">
+      <header className={`bg-white ${stickyNav ? 'navbarSticky': undefined}`}>
+        {/* Notification Bar */}
+        <div className="bg-dark-900 py-4" style={{display : stickyNav ? "none": "block"}}>
           <p className="text-center text-white text-sm ">HELLO EVERYONE! 25% Off All Products </p>
         </div>
         <div className="container">
@@ -60,7 +72,7 @@ function Header() {
                 <Megamenu shopMegamenu={shopMegamenu} />
               </li>
               <li className="relative group"><a href="#" className="nav-link">Blogs <TfiAngleDown className="inline-block ml-1" />  </a>
-                <Dropdown item={[['Cart Pages', '/Cart'], ['Checkout Pages', '/Checkout'],]} />
+                <Dropdown item={[['Blog Grid Page', '/AllBlog'], ['Blog Single Page', '/BlogDetails'],]} />
               </li>
               <li className="relative"><a href="/About" className="nav-link">About Us</a></li>
               <li className="relative"><a href="/Contact" className="nav-link">Contact US </a></li>

@@ -13,10 +13,10 @@ function QuickView(props) {
 
   return (
     <>
-      <div className={`fixed left-0 right-0 top-0 bottom-0 z-40 w-full overflow-scroll ${props.showModal ? 'block' : 'hidden'}`}>
-        <div className="absolute z-[-1] w-full h-full before:content-[''] before:absolute before:bg-[rgba(0,0,0,0.8)] before:w-full before:h-full before:left-0 before:top-0 before:block before:z-[-1]" onClick={() => props.modalHandler(false)}>
+      <div className={`fixed left-0 right-0 top-0 bottom-0 z-[120] w-full h-full overflow-scroll ${props.showModal ? 'block' : 'hidden'}`}>
+        <div className="absolute z-[-1] w-full h-[100vh] before:content-[''] before:absolute before:bg-[rgba(0,0,0,0.8)] before:w-full before:h-full before:left-0 before:top-0 before:bottom-0 before:block before:z-[-1]" onClick={() => props.modalHandler(false)}>
         </div>
-        <div className="w-[960px] mx-auto p-[35px]">
+        <div className="w-[960px] mx-auto p-[35px] mb-100px">
           <div className="p-4 bg-white flex rounded  gap-x-6">
             {/* Images Section */}
             <div className="w-1/2">
@@ -24,8 +24,6 @@ function QuickView(props) {
                 <Image src={product.thumbnail} alt="img-1" width={500} height={500} />
               </div>
               <div className="grid grid-cols-4 my-4 mx-auto gap-2.5 w-[95%]">
-                {/* <Image src={img1} alt="img-1" /> */}
-
                 {
                   images.map((img, id) => <Image key={id} src={img} width={100} height={100} />)
                 }

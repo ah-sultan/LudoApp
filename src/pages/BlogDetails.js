@@ -10,6 +10,7 @@ import { BsArrowRightShort } from 'react-icons/bs'
 
 import singleBlog from '../../public/img/blog/single-blog.jpg'
 import BlogCommentCard from "@/components/blog/BlogCommentCard"
+import BackTop from "@/components/backtop/BackTop"
 
 
 
@@ -70,6 +71,7 @@ function BlogDetails() {
                 </section>
             </main>
             <Footer />
+            <BackTop/>
         </>
     )
 }

@@ -1,3 +1,4 @@
+import BackTop from "@/components/backtop/BackTop"
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
 import Category from "@/components/category/Category"
 import Footer from "@/components/footer/Footer"
@@ -14,7 +15,7 @@ function FourColumn() {
         <Category />
       </main>
       <Footer />
-
+      <BackTop/>
     </>
   )
 }

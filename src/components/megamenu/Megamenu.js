@@ -16,7 +16,7 @@ function Megamenu(props) {
                             props.shopMegamenu.map((navlist, id) => {
                                 return (
                                     <div key={id}>
-                                        <h6 className="text-base leading-relaxed pb-1 mb-15px border-b w-full hover:text-primary-900 border-tGreay-100">{navlist.title}</h6>
+                                        <h6 className="text-base capitalize leading-relaxed pb-1 mb-15px border-b w-full hover:text-primary-900 border-tGreay-100">{navlist.title}</h6>
                                         <ul>
                                             {
                                                 navlist.navlink.map(([title, url], id) => {

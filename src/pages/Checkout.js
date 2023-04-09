@@ -4,6 +4,7 @@ import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
 import Header from "@/components/header/Header"
 import Footer from "@/components/footer/Footer"
 import THead from "@/components/thead/THead"
+import BackTop from "@/components/backtop/BackTop"
 
 
 function Accordion(props){
@@ -175,6 +176,7 @@ function Checkout() {
                 </div>
             </main>
             <Footer />
+            <BackTop/>
 
         </>
     )

@@ -1,3 +1,4 @@
+import BackTop from '@/components/backtop/BackTop'
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb'
 import Footer from '@/components/footer/Footer'
 import Header from '@/components/header/Header'
@@ -36,6 +37,7 @@ function Privacy() {
             </section>
         </main>
         <Footer/>
+        <BackTop/>
     </>
   )
 }
