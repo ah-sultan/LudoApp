@@ -32,11 +32,8 @@ function scrolToTop(){
 
   return (
     <>
-        <div className="w-50px h-50px rounded-full fixed right-5 bottom-0 invisible trns-1 duration-1000 bg-primary-900 t-shadow-2 " style={showBtn ? {visibility : "visible", bottom : "60px"} : undefined}>
-            <button className="w-full h-full center-child" onClick={() => {
-              scrolToTop()
-
-        }}>
+        <div className="w-50px h-50px rounded-full fixed right-5 bottom-0 invisible trns-1 duration-1000 bg-primary-900 t-shadow-2 z-40" style={showBtn ? {visibility : "visible", bottom : "60px"} : undefined}>
+            <button className="w-full h-full center-child" onClick={() => {scrolToTop()}}>
                 <BsChevronUp className="text-white"/>
             </button>
         </div>

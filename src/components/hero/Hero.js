@@ -11,25 +11,18 @@ function Hero() {
     <>
       <section className="bg-primary-100">
         <div className="container">
-          <div className="flex h-[800px] items-center">
-            <div className="w-5/12">
+          <div className="flex flex-col sm:flex-row h-[780px] sm:h-[470px] md:h-[600px] lg:h-[850px] items-center justify-center sm:justify-between">
+            {/* Content Section */}
+            <div className="text-center sm:text-left md:w-6/12 lg:w-7/12 xl:w-5/12">
               <span className="hero-ctg">Offer 2021</span>
               <h2 className="hero-title-1">Sale Up to</h2>
               <h2 className="hero-title-2">50% OFF</h2>
-              <button className="btn-primary h-[65px] w-[210px] font-bold items-center flex justify-center">shop Now <RiShoppingBasket2Line className="ml-15px text-lg" /></button>
-
+              <button className="btn-primary h-50px w-[150px] md:h-[65px] md:w-[210px] font-bold items-center flex justify-center">shop Now <RiShoppingBasket2Line className="ml-15px text-lg" /></button>
             </div>
-            <div className="w-7/12">
-              <div className="text-center relative">
-                <Image src={heroImg1} alt="her img" className="inline-block" />
-                <div className="hero-card">
-                  <div>
-                    <h3 className="text-21px font-semibold text-tGreay-700">Full Dress</h3>
-                    <span className="block text-lg leading-relaxed font-bold text-tGreay-650 text-left">$21.00</span>
-                    <a href="#" className="text-primary-900 underline block mt-auto text-15px capitalize text-left">shop now</a>
-                  </div>
-                  <Image src={productImg1} alt="Product 1" />
-                </div>
+            {/* Image Section */}
+            <div className="sm:w-6/12 lg:w-5/12 xl:w-7/12 mt-50px sm:mt-0">
+              <div className="text-center xl:text-right relative">
+                <Image src={heroImg1} alt="her img" className="inline-block max-w-[300px] sm:max-w-full" />
               </div>
             </div>
           </div>

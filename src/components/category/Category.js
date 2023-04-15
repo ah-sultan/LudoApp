@@ -11,7 +11,8 @@ import productImg from '../../../public/img/products/1.jpg'
 
 
 
-function Category() {
+function Category(props) {
+  const products = props.product
   const [viewType, setViewType] = useState('grid')
 
   function pViewHandler(value) {
@@ -22,16 +23,33 @@ function Category() {
   const showlistTab = viewType === 'list' ? { visibility: 'visible', opacity: 1, height: 'auto' } : undefined
 
   return (
-    <section className="py-100px">
+    <section className="py-60px lg:py-100px">
       <div className="container">
         <ShopTopBar pViewHandler={pViewHandler} viewTypeBtn={viewType} />
         {/* Grid View */}
-        <div className="grid-cols-4 gap-30px  grid invisible opacity-0 h-0 trns-1" style={showGridTab}>
-          {Array(12).fill(<ProductCard img={productImg} discount="-10%" new="new" review="5" title="Women's Elizabeth Coat" price="60.65" discountPrice="56.70" />)}
+        <div className="invisible overflow-hidden opacity-0 h-0 trns-1" style={showGridTab}>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-30px">
+            {
+              products.map((product, index) => {
+                  const { id, brand, rating, title, reviews, thumbnail, price, description, category, sku, images } = product
+
+                  return <ProductCard key={index} id={id} brand={brand} title={title} rating={rating} reviews={reviews} thumbnail={thumbnail} price={price} description={description} category={category} sku={sku} images={images} />
+              })
+            }        
+          </div>
         </div>
+        
         {/* List View */}
-        <div className="gap-y-50px  grid invisible opacity-0 h-0 trns-1" style={showlistTab}>
-          {Array(12).fill(<ProductCardList img={productImg} discount="-10%" new="new" review="5" title="Women's Elizabeth Coat" price="60.65" discountPrice="56.70" description="More room to move.With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or.." />)}
+        <div className="invisible overflow-hidden opacity-0 h-0 trns-1" style={showlistTab}>
+          <div className="gap-y-50px  grid">
+            {
+              products.map((product, index) => {
+                  const { id, brand, rating, title, reviews, thumbnail, price, description, category, sku, images } = product
+
+                  return <ProductCardList key={index} id={id} brand={brand} title={title} rating={rating} reviews={reviews} thumbnail={thumbnail} price={price} description={description} category={category} sku={sku} images={images} />
+              })
+            }
+          </div>
         </div>
         <div className="text-center mt-60px">
           <button className="btn-primary text-base font-bold leading-none w-[210px] h-[65px] ">Load More <SlRefresh className="inline-block ml-4" /> </button>

@@ -11,13 +11,28 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: "15px"
+      padding: '12px'
     },
 
     screens: {
-      "xl": '1200px'
-    }
-    ,
+      'xs' : '479px',
+      // => @media (min-width: 479px) { ... }
+
+      'sm': '540px',
+      // => @media (min-width: 640px) { ... }
+
+      'md': '720px',
+      // => @media (min-width: 768px) { ... }
+
+      'lg': '960px',
+      // => @media (min-width: 1024px) { ... }
+
+      'xl': '1200px',
+      // => @media (min-width: 1280px) { ... }
+
+      '2xl': '1200px',
+      // => @media (min-width: 1536px) { ... }
+    },
     extend: {
       colors: {
         "primary": {
@@ -84,6 +99,7 @@ module.exports = {
         "45px": "45px",
         "50px": "50px",
         "60px": "60px",
+        "65px": "65px",
         "70px": "70px",
         "100px": "100px"
       },
@@ -94,6 +110,7 @@ module.exports = {
       fontSize: {
         "11px": "11px",
         "15px": "15px",
+        "20px": "20px",
         "21px": "21px",
         "22px": "22px",
         "25px": "25px",

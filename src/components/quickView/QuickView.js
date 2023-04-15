@@ -25,7 +25,7 @@ function QuickView(props) {
               </div>
               <div className="grid grid-cols-4 my-4 mx-auto gap-2.5 w-[95%]">
                 {
-                  images.map((img, id) => <Image key={id} src={img} width={100} height={100} />)
+                  images.map((img, id) => <Image key={id} src={img} width={100} height={100} alt="img"/>)
                 }
 
               </div>

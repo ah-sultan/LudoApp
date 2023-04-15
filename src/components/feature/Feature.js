@@ -9,14 +9,12 @@ import returns from '../../../public/img/feature/3.png'
 function Feature() {
   return (
     <>
-    <section className="-mt-[65px]">
+    <section className="lg:-mt-[130px]">
         <div className="container">
-            <div className="">
-            <div className="flex items-center gap-x-6 w-full">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 items-center gap-x-6 gap-y-30px mt-65px">
                 <FeatureCard icon={shipping} title="Free Shipping" text=" Capped at $39 per order "/>
                 <FeatureCard icon={payments} title="Card Payments" text="  12 Months Installments "/>
                 <FeatureCard icon={returns} title="Easy Returns" text="  Shop With Confidence "/>
-            </div>
             </div>
         </div>
     </section>

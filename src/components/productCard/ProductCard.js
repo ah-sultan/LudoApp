@@ -21,7 +21,7 @@ function ProductCard(props) {
                 {/* Product Images */}
                 <div className="relative thumb">
                     <a href="#" className="block overflow-hidden">
-                        <Image width={320} height={100} src={props.thumbnail} alt="productImg" className="trns-1 group-hover:scale-110 group-hover:rotate-3" />
+                        <Image width={320} height={100} src={props.thumbnail} alt="productImg" className="w-full trns-1 group-hover:scale-110 group-hover:rotate-3" />
                     </a>
                     <div className="badge absolute top-18px -left-0.5">
                         <span className="gradient-primary text-3 text-xs px-2 rounded-[3px] leading-[19px] text-white font-semibold mb-2.5 block">{props.brand}</span>
@@ -31,10 +31,10 @@ function ProductCard(props) {
                         <a href="#" className="product-card-action">
                             <BsHeart className="text-xl" />
                         </a>
-                        <button type="button" onClick={() => modalHandler(true)} className="product-card-action translate-y-5 invisible opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible">
+                        <button type="button" onClick={() => modalHandler(true)} className="product-card-action xl:translate-y-5 xl:invisible xl:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible">
                             <BsSearch className="text-xl" />
                         </button>
-                        <a href="#" className="product-card-action translate-y-5 invisible opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible">
+                        <a href="#" className="product-card-action xl:translate-y-5 xl:invisible xl:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible">
                             <SlRefresh className="text-xl" />
                         </a>
                     </div>

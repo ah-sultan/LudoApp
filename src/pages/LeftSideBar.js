@@ -10,24 +10,26 @@ import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
 import ShopTopBar from "@/components/shopTopBar/ShopTopBar"
 import ProductCard from "@/components/productCard/ProductCard"
 import ProductCardList from "@/components/productCard/ProductCardList"
-import { ColorFilter, SidebarCategory, SizeFilter, TagFilter } from "@/components/sidebarWidget/SidebarWidget"
 import Footer from "@/components/footer/Footer"
+import BackTop from "@/components/backtop/BackTop"
+
+import { ColorFilter, SidebarCategory, SizeFilter, TagFilter } from "@/components/sidebarWidget/SidebarWidget"
 
 
 // images 
 import productImg from '../../public/img/products/1.jpg'
 import bannerImg from '../../public/img/left-sidebar/2.jpg'
-import Footer from "@/components/footer/Footer"
-import BackTop from "@/components/backtop/BackTop"
+import PriceFilterRange from "@/components/priceFilterRange/PriceFilterRange"
 
+import { ProducrData } from "../../product"
 
 function LeftSideBar() {
-
     const [viewType, setViewType] = useState('grid')
 
     function pViewHandler(value) {
         setViewType(value)
     }
+    const products = ProducrData
   
     const showGridTab = viewType === 'grid' ? { visibility: 'visible', opacity: 1, height: 'auto' } : undefined
     const showlistTab = viewType === 'list' ? { visibility: 'visible', opacity: 1, height: 'auto' } : undefined
@@ -38,9 +40,9 @@ function LeftSideBar() {
         <main>
             <Breadcrumb title="Shop" pages="Home"/>
             <div className="container">
-                <div className="flex py-100px gap-x-6">
+                <div className="flex flex-col lg:flex-row gap-x-6 py-60px lg:py-20 xl:py-100px">
                 {/* Left Side Product Filter Area =======*/}
-                    <div className="w-3/12">
+                    <div className="w-full lg:w-3/12 order-last lg:order-first mt-60px lg:mt-0">
                         <div>
                             {/* Search Box */}
                             <div className="flex items-center px-15px border border-[#cfcfcf] rounded-lg mb-10">
@@ -50,17 +52,7 @@ function LeftSideBar() {
                                 </button>
                             </div>
                             {/*Price Filter  */}
-                            <div className="py-10 px-30px rounded-[10px] bg-[#fafafa] mb-10">
-                                <h5 className="sidebar-title mb-5">Price Filter</h5>
-                                <div>
-                                    <input type="text" placeholder="$0 - $100" className="text-sm font-normal text-[#474747] bg-transparent"/>
-                                </div>
-                                <div className="relative h-3px mt-5 border border-primary-900">
-                                    <div className="h-full absolute top-0 left-0 right-0 bg-primary-900"></div>
-                                    <span className="w-4 h-4 rounded-full bg-white absolute top-1/2 -translate-y-1/2 block border-4 border-primary-900 left-full"></span>
-                                    <span className="w-4 h-4 rounded-full bg-white absolute top-1/2 -translate-y-1/2 block border-4 border-primary-900 right-full"></span>
-                                </div>
-                            </div>
+                            <PriceFilterRange/>
                             {/* Sidebar Category */}
                             <SidebarCategory list={['Accesasories (6)', 'Computer (4)', 'Covid-19 (2)', 'Electronics (6)', 'Frame Sunglasses (12)', 'Furniture (7)', 'Genuine Leather (9) ']}/>
                             {/* Left Sidebar Color */}
@@ -83,15 +75,27 @@ function LeftSideBar() {
                         </div>
 
                     {/* Right Side Product Area ===========*/}
-                    <div className="w-9/12">
+                    <div className="w-full lg:w-9/12">
                     <ShopTopBar pViewHandler={pViewHandler} viewTypeBtn={viewType} />
                     {/* Grid View */}
-                        <div className="grid-cols-3 gap-x-6 gap-y-30px  grid invisible opacity-0 h-0 trns-1" style={showGridTab}>
-                        {Array(12).fill(<ProductCard img={productImg} discount="-10%" new="new" review="5" title="Women's Elizabeth Coat" price="60.65" discountPrice="56.70" />)}
+                        <div className="xs:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-30px overflow-hidden grid invisible opacity-0 h-0 trns-1" style={showGridTab}>
+                            {
+                                products.map((product, index) => {
+                                    const { id, brand, rating, title, reviews, thumbnail, price, description, category, sku, images } = product
+
+                                    return <ProductCard key={index} id={id} brand={brand} title={title} rating={rating} reviews={reviews} thumbnail={thumbnail} price={price} description={description} category={category} sku={sku} images={images} />
+                                })
+                            }
                         </div>
                         {/* List View */}
-                        <div className="gap-y-50px  grid invisible opacity-0 h-0 trns-1" style={showlistTab}>
-                        {Array(12).fill(<ProductCardList img={productImg} discount="-10%" new="new" review="5" title="Women's Elizabeth Coat" price="60.65" discountPrice="56.70" description="More room to move.With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or.." />)}
+                        <div className="gap-y-50px overflow-hidden grid invisible opacity-0 h-0 trns-1" style={showlistTab}>
+                            {
+                                products.map((product, index) => {
+                                    const { id, brand, rating, title, reviews, thumbnail, price, description, category, sku, images } = product
+
+                                    return <ProductCardList key={index} id={id} brand={brand} title={title} rating={rating} reviews={reviews} thumbnail={thumbnail} price={price} description={description} category={category} sku={sku} images={images} />
+                                })
+                            }
                         </div>
                         <div className="text-center mt-60px">
                         <button className="btn-primary text-base font-bold leading-none w-[210px] h-[65px] ">Load More <SlRefresh className="inline-block ml-4" /> </button>
@@ -101,6 +105,7 @@ function LeftSideBar() {
             </div>
         </main>
         <BackTop/>
+        <Footer/>
     </>
   )
 }

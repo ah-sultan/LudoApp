@@ -9,9 +9,9 @@ import Blog from '@/components/blog/Blog'
 import Footer from '@/components/footer/Footer'
 import THead from '@/components/thead/THead'
 import BackTop from '@/components/backtop/BackTop'
+import { ProducrData } from '../../product'
 
-
-export default function Home({ productdata }) {
+export default function Home() {
 
   return (
 
@@ -22,24 +22,24 @@ export default function Home({ productdata }) {
         <Header />
         <Hero />
         <Feature />
-        <Products product={productdata} />
+        <Products product={ProducrData} />
         <Banner />
-        <Newarrivals product={productdata} />
+        <Newarrivals product={ProducrData} />
         <Deal />
         <Blog />
-        <Footer/>
-        <BackTop/>
       </main>
+      <Footer/>
+      <BackTop/>
     </>
   )
 }
 
-export async function getServerSideProps() {
-  // Fetch data from external API
-  const res = await fetch(`https://api.npoint.io/44d9930f29cc64084a3a`)
-  const productdata = await res.json()
+// export async function getServerSideProps() {
+//   // Fetch data from external API
+//   const res = await fetch(`https://api.npoint.io/44d9930f29cc64084a3a`)
+//   const productdata = await res.json()
 
-  // Pass data to the page via props
-  return { props: { productdata } }
-}
+//   // Pass data to the page via props
+//   return { props: { productdata } }
+// }
 

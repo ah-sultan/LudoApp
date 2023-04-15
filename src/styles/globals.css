@@ -47,24 +47,24 @@
   .navbarSticky{
     @apply fixed top-0 w-full animate-stickyNav;
     box-shadow: 2px 4px 8px rgba(51,51,51,.25);
-    z-index: 99;
+    z-index: 300;
   }
   .nav-link{
-    @apply text-sm uppercase font-semibold leading-100px text-tGreay-600 hover:text-primary-900
+    @apply text-base sm:text-sm capitalize sm:uppercase font-semibold flex justify-between items-center border-b border-solid border-[#eee] lg:border-0 py-2.5 leading-7 lg:leading-100px text-tGreay-600 hover:text-primary-900
   }
   .hero-ctg{
-    @apply text-lg font-semibold pl-50px block mb-15px text-tGreay-500 relative before:content-[""] before:absolute before:w-30px before:h-3px before:block before:bg-primary-900 before:top-1/2 before:left-0
+    @apply md:text-lg font-semibold pl-50px block mb-15px text-tGreay-500 relative before:content-[""] before:absolute before:w-30px before:h-3px before:block before:bg-primary-900 before:top-1/2 before:left-0
   
   }
   .hero-title-1{
-    @apply text-7xl font-light mb-2.5 text-tGreay-500 uppercase leading-1.2
+    @apply text-xl md:text-3xl lg:text-7xl font-light mb-2.5 text-tGreay-500 uppercase leading-1.2
   }
 
   .hero-title-2{
-    @apply text-7xl font-bold mb-47px text-tGreay-500 uppercase leading-1.2
+    @apply text-3xl  md:text-4xl lg:text-7xl font-bold mb-47px text-tGreay-500 uppercase leading-1.2
   }
   .btn-primary{
-    @apply text-base leading-none text-white font-normal inline-block rounded-[50px] uppercase;
+    @apply text-sm md:text-base leading-none text-white font-normal inline-block rounded-[50px] uppercase;
     background: linear-gradient(155deg, #fd3f6b 0%, #fd7863 98%, #f3dfe0 100%);
     
   }
@@ -80,7 +80,7 @@
 
   
   .section-title{
-    @apply text-4xl leading-1.2 mb-11px font-extrabold;
+    @apply text-30px md:text-4xl leading-1.2 mb-11px font-extrabold;
     background: linear-gradient(-96deg,#fd3d6b 0,#fd7863 98%,#f3dfe0 100%);
     background: linear-gradient(-96deg,#fd3d6b 0,#fd7863 98%,#f3dfe0 100%);
     background-clip: border-box;
@@ -92,12 +92,19 @@
     @apply trns-1 py-9px px-23px rounded-[5px] bg-light-600 hover:gradient-primary text-tGreay-200 hover:text-white uppercase font-semibold text-sm leading-none
   }
 
+  .product-tab-btn.active {
+    @apply gradient-primary text-white
+  }
   .product-card-action{
     @apply text-black hover:text-white block h-10 w-10 rounded-full center-child relative z-[1] overflow-hidden  after:content-[''] after:absolute after:top-0 after:left-0 after:hover:gradient-primary after:block after:w-full after:h-full after:-z-[1] after:trns-1 after:opacity-0 after:hover:opacity-100
   }
 
   .product-tab-list-btn{
-    @apply block text-lg leading-relaxed text-tGreay-900 hover:text-primary-900 font-normal relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-[14px] after:bg-primary-900 after:h-0.5 after:w-0 after:trns-1 hover:after:w-full
+    @apply block text-base md:text-lg leading-relaxed text-tGreay-900 pb-2.5 md:pb-0 hover:text-primary-900 font-normal relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-0.5 md:after:-bottom-3.5 after:bg-primary-900 after:h-0.5 after:w-0 after:trns-1 hover:after:w-full
+  }
+
+  .product-tab-list-btn.active{
+    @apply after:w-full 
   }
 
   .slider-btn{
@@ -169,6 +176,10 @@
 
   .t-shadow-7{
     box-shadow: 0 0 30px 0 rgba(0,0,0,.07);
+  }
+
+  .t-shadow-8{
+    box-shadow: 0 0 41px 1px rgba(0,0,0,.46);
   }
 
 
