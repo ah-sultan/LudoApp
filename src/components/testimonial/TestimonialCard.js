@@ -15,12 +15,12 @@ function TestimonialCard(props) {
                     Array(5 -rate).fill().map((_,id) => <AiFillStar className="text-sm text-tGreay-100"/>)
                 }
             </div>
-            <p className="text-lg leading-relaxed text-tGreay-300 text-justify italic">{props.text}</p>
+            <p className="text-base lg:text-lg leading-relaxed text-tGreay-300 text-justify italic">{props.text}</p>
             <div className="mt-10 flex items-center">
-                <div>
-                    <Image height={56} width={56} alt="img" src={props.img}/>
+                <div className="basis-[56px]">
+                    <Image alt="img" src={props.img} className="w-full"/>
                 </div>
-                <div className="pl-25px">
+                <div className="pl-5 lg:pl-25px flex-[5]">
                     <h6 className="text-dark-900 text-lg leading-1.2 font-medium mb-0">{props.name}</h6>
                     <span className="text-sm leading-none text-tGreay-300">{props.title}</span>
                 </div>

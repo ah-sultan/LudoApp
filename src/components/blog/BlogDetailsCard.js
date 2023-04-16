@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { BiRightArrowAlt, BiCalendar } from 'react-icons/bi'
+import { BiCalendar } from 'react-icons/bi'
 import { FaFacebookF, FaTwitter, FaGoogle, FaComments } from 'react-icons/fa'
 
 function BlogDetailsCard(props) {
@@ -23,29 +23,29 @@ function BlogDetailsCard(props) {
                             {props.comment}
                         </a>
                     </div>
-                    <h5 className="mb-15px mt-21px text-4xl text-dark-650 leading-relaxed font-bold">
+                    <h5 className="blog-title">
                         {props.title}
                     </h5>
                     <p className={`text-dark-300 text-base leading-relaxed ${props.text === undefined ? 'mb-0' : 'mb-10'}`}>{props.text}</p>
-                    <h5 className="mb-15px mt-21px text-4xl text-dark-650 leading-relaxed font-bold">
+                    <h5 className="blog-title">
                         {props.title}
                     </h5>
                     <p className={`text-dark-300 text-base leading-relaxed ${props.text === undefined ? 'mb-0' : 'mb-10'}`}>{props.text}</p>
                     <p className={`text-dark-300 text-base leading-relaxed ${props.text === undefined ? 'mb-0' : 'mb-10'}`}>{props.text}</p>
-                    <div className="grid grid-cols-2 gap-x-30px mb-10">
+                    <div className="grid grid-cols-2 gap-x-6 lg:gap-x-30px mb-10">
                         <Image src={props.img} alt="img-1" />
                         <Image src={props.img} alt="img-1" />
                     </div>
                     <p className={`text-dark-300 text-base leading-relaxed ${props.text === undefined ? 'mb-0' : 'mb-10'}`}>{props.text}</p>
                 </div>
-                <div className="flex justify-between items-center bg-tGreay-100 py-3 px-5 mb-10">
+                <div className="md:flex justify-between items-center bg-tGreay-100 py-3 px-5 mb-10">
                     <div>
                         <a href="#" className="inline-block text-black text-sm mr-2.5 font-semibold"><FaFacebookF /></a>
                         <a href="#" className="inline-block text-black text-sm mr-2.5 font-semibold"><FaTwitter /></a>
                         <a href="#" className="inline-block text-black text-sm mr-2.5 font-semibold"><FaGoogle /></a>
                         <a href="#" className="text-black text-base mr-2.5 font-semibold inline-flex items-center">2 <FaComments className="inline-block ml-1 text-base" /></a>
                     </div>
-                    <div className="flex">
+                    <div className="flex mt-4 md:mt-0">
                         <p className="text-base text-dark-700 mr-4 font-semibold">Tags:</p>
                         <ul className="flex gap-x-1">
                             <li><a href="#" className="text-base text-tGreay-200 hover:text-primary-900">Fashion,</a></li>

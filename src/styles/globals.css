@@ -127,6 +127,17 @@
     @apply w-full border border-tGreay-100 h-45px px-5 text-base leading-[50px] text-dark-700 placeholder:text-[#999] placeholder:text-sm focus:border-primary-900
   }
 
+  .privacy-title{
+    @apply text-black text-20px sm:text-22px leading-1.2 font-semibold;
+  }
+
+  .privacy-text{
+    @apply text-base leading-relaxed text-tGreay-300 mb-5
+  }
+
+  .blog-title{
+    @apply mb-15px mt-21px text-[28px] lg:text-4xl text-dark-650 leading-relaxed font-bold
+  }
 
 }
 

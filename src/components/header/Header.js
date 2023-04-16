@@ -33,7 +33,7 @@ const shopMegamenu = [
 
   {
     title: "Other Shop Pages",
-    navlink: [['404 Page', 'url'], ['Privacy Policy', '/Privacy'], ['Faq Page', 'url'], ['Coming Soon Page'],]
+    navlink: [['404 Page', 'url'], ['Privacy Policy', '/Privacy'], ['Faq Page', '/Faq'], ['Coming Soon Page'],]
   },
 
 ]

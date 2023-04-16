@@ -23,7 +23,7 @@ function BlogCard(props) {
                         </a>
                     </div>
                     <h5 className="mb-15px mt-21px">
-                        <a href="#" className="text-22px lg:text-lg xl:text-22px text-dark-650 font-bold hover:text-primary-900">{props.title}</a>
+                        <a href="#" className="text-xl lg:text-lg xl:text-22px text-dark-650 font-bold hover:text-primary-900">{props.title}</a>
                     </h5>
                     <p className={`text-dark-700 text-base leading-relaxed line-clamp-2 ${props.text === undefined ? 'mb-0' : 'mb-25px'}`}>{props.text}</p>
                     <button href="#" className="uppercase text-11px leading-none font-bold text-white gradient-dark rounded-full w-[119px] h-[35px] center-child hover:gradient-primary trns-1 hover:-translate-y-px hover:t-shadow-2">Read More <BiRightArrowAlt className="text-sm" /></button>

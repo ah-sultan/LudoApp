@@ -6,8 +6,8 @@ import { BsArrowRightShort } from 'react-icons/bs'
 function BlogCommentCard() {
     return (
         <>
-            <div className="flex mb-60px">
-                <div className="mr-30px basis-auto flex-grow-0 flex-shrink-0">
+            <div className="md:flex mb-60px">
+                <div className="mr-30px basis-auto flex-grow-0 flex-shrink-0 mb-5 md:mb-0">
                     <Image src={user} alt='user' />
                 </div>
                 <div>
