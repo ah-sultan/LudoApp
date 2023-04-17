@@ -13,7 +13,7 @@ function ProductCard(props) {
         setShowModal(value)
     }
 
-    const rating = Math.floor(props.rating)
+    const rating = props.rating > 0 ? Math.floor(props.rating) : 0
 
     return (
         <>

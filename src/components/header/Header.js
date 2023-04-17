@@ -70,7 +70,7 @@ function Header() {
 
   return (
     <>
-      <header className={`bg-white${stickyNav ? 'navbarSticky': undefined}`}>
+      <header className={`bg-white ${stickyNav ? 'navbarSticky': undefined}`}>
         {/* Notification Bar */}
         <div className="bg-dark-900 py-4" style={{display : stickyNav ? "none": "block"}}>
           <p className="text-center text-white text-sm ">HELLO EVERYONE! 25% Off All Products </p>

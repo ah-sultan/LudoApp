@@ -47,7 +47,7 @@
   .navbarSticky{
     @apply fixed top-0 w-full animate-stickyNav;
     box-shadow: 2px 4px 8px rgba(51,51,51,.25);
-    z-index: 300;
+    z-index: 102;
   }
   .nav-link{
     @apply text-base sm:text-sm capitalize sm:uppercase font-semibold flex justify-between items-center border-b border-solid border-[#eee] lg:border-0 py-2.5 leading-7 lg:leading-100px text-tGreay-600 hover:text-primary-900

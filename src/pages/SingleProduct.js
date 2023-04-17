@@ -7,6 +7,8 @@ import ProductDetails from "@/components/productDetails/ProductDetails"
 import ReletedProducts from "@/components/reletedProduct/ReletedProducts"
 import THead from "@/components/thead/THead"
 
+import { ProductData } from "../../product"
+
 function SingleProduct() {
   return (
    <>
@@ -16,7 +18,6 @@ function SingleProduct() {
     <Breadcrumb title="Products" pages="Home"/>
     <ProductDetails/>
     <DescriptionReview/>
-    <ReletedProducts/>
    </main>
    <footer>
     <Footer/>

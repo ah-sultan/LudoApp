@@ -1,6 +1,6 @@
 import img from './(5).png'
 
-export const ProducrData = [
+export const ProductData = [
     {
         "": " ",
         " ": " ",
@@ -11,7 +11,7 @@ export const ProducrData = [
         "color": ["red", "blue", "white"],
         "price": "24",
         "title": "Reclaimed Vintage unisex grosgrain belt in purple",
-        "images": [img,img,img,img,img],
+        "images": [img,img,img,img,img,img,img],
         "rating": "4.5",
         "details": ["Something for your wrist", "Model number: 1788", "Bracelet strap", "Circular bezel", "Branded dial", "Mixed hour markers", "Date window", "Quartz movement", "Fold-over clasp", "5ATM  water resistant to 50 meters", " (160 feet)", "Think showering and swimming", "2 years manufacturing warranty", "Product will only be refunded if", " returned unworn/unused in its ", "original packaging with all tags and ", "labels attached"],
         "reviews": "45",

@@ -9,7 +9,7 @@ import Blog from '@/components/blog/Blog'
 import Footer from '@/components/footer/Footer'
 import THead from '@/components/thead/THead'
 import BackTop from '@/components/backtop/BackTop'
-import { ProducrData } from '../../product'
+import { ProductData } from '../../product'
 
 export default function Home() {
 
@@ -22,9 +22,9 @@ export default function Home() {
         <Header />
         <Hero />
         <Feature />
-        <Products product={ProducrData} />
+        <Products product={ProductData} />
         <Banner />
-        <Newarrivals product={ProducrData} />
+        <Newarrivals product={ProductData} />
         <Deal />
         <Blog />
       </main>

@@ -13,13 +13,12 @@ import ProductCardList from "@/components/productCard/ProductCardList"
 import Footer from "@/components/footer/Footer"
 import BackTop from "@/components/backtop/BackTop"
 
-import { ColorFilter, SidebarCategory, SizeFilter, TagFilter } from "@/components/sidebarWidget/SidebarWidget"
+import { PriceFilter,ColorFilter, SidebarCategory, SizeFilter, TagFilter } from "@/components/sidebarWidget/SidebarWidget"
 
 
 // images 
 import productImg from '../../public/img/products/1.jpg'
 import bannerImg from '../../public/img/left-sidebar/2.jpg'
-import PriceFilterRange from "@/components/priceFilterRange/PriceFilterRange"
 
 import { ProducrData } from "../../product"
 
@@ -52,7 +51,7 @@ function LeftSideBar() {
                                 </button>
                             </div>
                             {/*Price Filter  */}
-                            <PriceFilterRange/>
+                            <PriceFilter/>
                             {/* Sidebar Category */}
                             <SidebarCategory list={['Accesasories (6)', 'Computer (4)', 'Covid-19 (2)', 'Electronics (6)', 'Frame Sunglasses (12)', 'Furniture (7)', 'Genuine Leather (9) ']}/>
                             {/* Left Sidebar Color */}

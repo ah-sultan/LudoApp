@@ -1,33 +1,75 @@
 import Image from 'next/image'
+import { memo, useState } from 'react';
+import Offcanvas from '../offcanvas/Offcanvas'
+
+
+// React Icons 
 import { FaStar, FaRegHeart, FaFacebookF, FaTwitter, FaGoogle, FaInstagram } from 'react-icons/fa'
 import { FiRefreshCw } from 'react-icons/fi'
 
-// Images
-import img1 from '../../../public/img/quick-view/1.jpg'
+// Swiper JS  
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+import { FreeMode, Navigation, Thumbs } from "swiper";
 
 
 function QuickView(props) {
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const product = props.product
-  const images = product.images.slice(0,4)
+  const images = product.images
 
   return (
     <>
+    <Offcanvas display={props.showModal ? 'block' : undefined}/>
       <div className={`fixed left-0 right-0 top-0 bottom-0 z-[120] w-full h-full overflow-scroll ${props.showModal ? 'block' : 'hidden'}`}>
-        <div className="absolute z-[-1] w-full h-[100vh] before:content-[''] before:absolute before:bg-[rgba(0,0,0,0.8)] before:w-full before:h-full before:left-0 before:top-0 before:bottom-0 before:block before:z-[-1]" onClick={() => props.modalHandler(false)}>
+        <div className="absolute z-[-1] w-full h-full top-0 bottom-0 left-0 right-0" onClick={() => props.modalHandler(false)}>
         </div>
         <div className="w-[960px] mx-auto p-[35px] mb-100px">
           <div className="p-4 bg-white flex rounded  gap-x-6">
             {/* Images Section */}
             <div className="w-1/2">
               <div>
-                <Image src={product.thumbnail} alt="img-1" width={500} height={500} />
+                {/* Main Image Section */}
+                <Swiper
+                   spaceBetween={10}
+                   thumbs={{swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null}}
+                   modules={[FreeMode, Navigation, Thumbs]}
+                   className="mySwiper2"
+                  
+                >
+                  {
+                    images.map((image, index) => 
+                    <SwiperSlide key={index}>
+                      <Image src={image} alt="products"/>
+                    </SwiperSlide>
+                  )
+                  }
+                </Swiper>
               </div>
-              <div className="grid grid-cols-4 my-4 mx-auto gap-2.5 w-[95%]">
-                {
-                  images.map((img, id) => <Image key={id} src={img} width={100} height={100} alt="img"/>)
-                }
+              {/* Thumb Images */}
+              <div className="px-2 mt-6">
+              <Swiper
+                onSwiper={setThumbsSwiper}
+                spaceBetween={10}
+                slidesPerView={4}
+                freeMode={true}
+                watchSlidesProgress={true}
+                modules={[FreeMode, Navigation, Thumbs]}
+                className="mySwiper"
 
+              >
+                  {
+                    images.map((image, index) => 
+                      <SwiperSlide key={index}>
+                        <Image src={image} alt="img-1" width={500} height={500} className="w-full"/>
+                      </SwiperSlide>
+                    )
+                  }
+                </Swiper>
               </div>
             </div>
             {/* Text Section  */}
@@ -79,4 +121,4 @@ function QuickView(props) {
   )
 }
 
-export default QuickView
+export default memo(QuickView)
