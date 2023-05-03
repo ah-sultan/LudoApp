@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+
 function LoginModal(props) {
 
     const showLoginModal = {
@@ -5,6 +7,14 @@ function LoginModal(props) {
         transform : 'scale(1)',
         top : '0px'
     }
+
+    useEffect(() => {
+        if(props.loginBoxVisibility){
+            document.body.style.overflow = 'hidden';
+          }else{
+            document.body.style.overflow = 'unset';
+          }
+    })
 
   return (
     <>
@@ -19,8 +29,8 @@ function LoginModal(props) {
                     <h4 className="text-sm leading-1.2 font-semibold text-white uppercase mb-7">Log in your account</h4>
                     <div>
                         <form action="#">
-                            <input type="text" placeholder="Usearname" className="w-full h-50px px-25px rounded bg-white text-base leading-loose text-white mb-6"/>
-                            <input type="password" placeholder="Password" className="w-full h-50px px-25px rounded bg-white text-base leading-loose text-white mb-6"/>
+                            <input type="text" placeholder="Usearname" className="w-full h-50px px-25px rounded bg-white text-base leading-loose text-dark-700 mb-6"/>
+                            <input type="password" placeholder="Password" className="w-full h-50px px-25px rounded bg-white text-base leading-loose text-dark-700 mb-6"/>
                             <div className="flex items-center justify-between mb-6">
                                 <div className="flex items-center">
                                     <input type="checkbox" className="w-5 h-5"/>

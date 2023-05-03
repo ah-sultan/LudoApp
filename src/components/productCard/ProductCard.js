@@ -13,7 +13,9 @@ function ProductCard(props) {
         setShowModal(value)
     }
 
+    const discountPrice = props.price - 10/100
     const rating = props.rating > 0 ? Math.floor(props.rating) : 0
+    
 
     return (
         <>
@@ -56,11 +58,13 @@ function ProductCard(props) {
                     </h6>
                     <div>
                         <span className="text-base leading-none font-semibold text-dark-950">${props.price}</span>
-                        <span className="text-sm leading-none font-semibold line-through ml-2.5 text-tGreay-150">${props.price - 10 / 100}</span>
+                        <span className="text-sm leading-none font-semibold line-through ml-2.5 text-tGreay-150">${discountPrice.toFixed(2)}</span>
                     </div>
                 </div>
             </div>
+
             <QuickView modalHandler={modalHandler} showModal={showModal} product={props} />
+            
         </>
     )
 }

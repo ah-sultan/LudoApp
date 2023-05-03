@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import img1 from '../../../public/img/cart/1.jpg'
 import Offcanvas from '../offcanvas/Offcanvas'
+import { useEffect } from 'react'
 
 
 function SiteCartCard(props){
@@ -27,6 +28,14 @@ function SiteCartCard(props){
 
 
 function SideCart(props) {
+
+    useEffect(() => {
+        if(props.offCanvasVisibilty){
+            document.body.style.overflow = 'hidden';
+          }else{
+            document.body.style.overflow = 'unset';
+        }
+    })
      
 
   return (

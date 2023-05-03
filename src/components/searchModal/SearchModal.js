@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { BiSearch } from "react-icons/bi"
 
 
@@ -9,6 +10,14 @@ function SearchModal(props) {
         transform : "scale(1)",
         top : '0px'
     }
+
+    useEffect(() => {
+        if(props.searchBoxVisibility){
+            document.body.style.overflow = 'hidden';
+          }else{
+            document.body.style.overflow = 'unset';
+        }
+    })
 
   return (
     <>
@@ -23,7 +32,7 @@ function SearchModal(props) {
                     <div>
                         <form action="#">
                             <div className="relative h-45px">
-                                <input type="text" placeholder="Search here..." className="w-[99%] h-50px px-5 rounded bg-white text-sm leading-loose text-white"/>
+                                <input type="text" placeholder="Search here..." className="w-[99%] h-50px px-5 rounded bg-white text-sm leading-loose text-dark-700"/>
                                 <button className="center-child w-60px h-50px absolute right-0 top-0 bottom-0 bg-primary-900 text-white text-lg rounded-e hover:bg-black">
                                     <BiSearch/>
                                 </button>

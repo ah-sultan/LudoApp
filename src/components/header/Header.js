@@ -10,33 +10,11 @@ import LoginModal from '../login/LoginModal';
 import SearchModal from '../searchModal/SearchModal';
 import SideCart from '../sideCard/SideCart';
 import Offcanvas from '../offcanvas/Offcanvas';
+import { headerData } from './headerdata';
 
 
 // Images
 import whiteLogo from '../../../public/img/header/white-logo.webp'
-
-
-const shopMegamenu = [
-  {
-    title: "Shop Page",
-    navlink: [['Shop 4 Column', '/FourColumn'], ['Shop Left Sidebar', '/LeftSideBar']]
-  },
-  {
-    title: "product Details Page",
-    navlink: [['Product Single', '/SingleProduct'], ['Product Variable', '/VariableProduct']]
-  },
-
-  {
-    title: "Other Shop Pages",
-    navlink: [['Cart Page', '/Cart'], ['Checkout Page', '/Checkout'], ['Account Page', '/Account'], ['Login & Register Page', '/Login'],]
-  },
-
-  {
-    title: "Other Shop Pages",
-    navlink: [['404 Page', 'url'], ['Privacy Policy', '/Privacy'], ['Faq Page', '/Faq'], ['Coming Soon Page'],]
-  },
-
-]
 
 function Header() {
   const [stickyNav, setStickyNav] = useState(false)
@@ -44,7 +22,19 @@ function Header() {
   const [showLoginModal, setShowLoginModal] = useState(false)
   const [showSearchModal, setShowSearchModal] = useState(false)
   const [showNav, setShowNav] = useState(false)
-  const [showSubNav, setShowSubNav] = useState(undefined)
+
+  // Responsive Subnav Handler
+  const [showSubNav, setShowSubNav] = useState("0");
+
+    const subNavToggler = (index) => {
+     if (showSubNav === index) {
+      return setShowSubNav("0");
+     }
+     setShowSubNav(index);
+
+    
+}
+
     
   const siteCartToggler = (value) => {
     setShowSideCart(value)
@@ -66,6 +56,12 @@ function Header() {
 
     window.addEventListener('scroll',stickyNavHandler )
 
+    if(showNav){
+      document.body.style.overflow = 'hidden';
+    }else{
+      document.body.style.overflow = 'unset';
+    }
+
   })
 
   return (
@@ -76,7 +72,7 @@ function Header() {
           <p className="text-center text-white text-sm ">HELLO EVERYONE! 25% Off All Products </p>
         </div>
         <div className="container">
-          <div className="flex justify-between items-center relative py-5 lg:py-0">
+          <div className="flex justify-between items-center relative py-2.5 lg:py-0">
             
             {/* Logo --------- */}
             <a href="#">
@@ -91,22 +87,32 @@ function Header() {
                   <span className="bg-white w-5 h-0.5 inline-block absolute trns-1 duration-500 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 rotate-45 group-hover/line:rotate-0"></span>
                 </button>
               </div>
-            <ul className="lg:flex items-center gap-x-50px">
-              <li className="relative"><a href="/" className="nav-link">Home</a></li>
-              <li className="group"><a href="#" className="nav-link" onClick={() => setShowSubNav('Shop')}>
-                Shop <span className="lg:hidden">+</span>
-                <TfiAngleDown className=" hidden lg:inline-block ml-1" /> </a>
-                <Megamenu shopMegamenu={shopMegamenu} showSubNav={showSubNav === "Shop" ?  subNavHndler: undefined }/>
-              </li>
-              <li className="relative group"><a href="#" className="nav-link">Blogs 
-              <span className="lg:hidden">+</span>
-                  <TfiAngleDown className="hidden lg:inline-block ml-1" />  
-              </a>
-                <Dropdown item={[['Blog Grid Page', '/AllBlog'], ['Blog Single Page', '/BlogDetails'],]} />
-              </li>
-              <li className="relative"><a href="/About" className="nav-link">About Us</a></li>
-              <li className="relative"><a href="/Contact" className="nav-link">Contact US </a></li>
-            </ul>
+              {/* Navbar Nav */}
+                <ul className="lg:flex items-center gap-x-50px mt-4 lg:mt-0">
+                    {
+                        headerData.map((item, index) =>
+
+                            <li key={index} className="relative group" style={item.megaMenu ? {position : "static"} : undefined} >
+                                <a href={item.url}  className={`nav-link ${showSubNav === index ? "text-primary-900" : undefined}`} onClick={() => subNavToggler(index)}>{item.title}
+                                    {
+                                        item.dropdown || item.megaMenu? <TfiAngleDown className=" hidden lg:inline-block ml-1" /> : null
+                                    }
+
+                                    {
+                                      item.dropdown || item.megaMenu? <span className={`lg:hidden trns-1 ${showSubNav === index ? "rotate-45" : undefined}`}>+</span> : null
+                                    }
+                                    
+                                </a>
+                                {
+                                    item.dropdown? <Dropdown id="blogNav" item={item.dropdown} showNav={showSubNav === index ? true : false} /> : null
+                                }  
+                                {
+                                    item.megaMenu? <Megamenu shopMegamenu={item.megaMenu} showNav={showSubNav === index ? true : false} /> : null
+                                }                                                      
+                            </li>
+                        )
+                    }
+                </ul>
             </div>
             {/* Navbar Button --------- */}
             <div className="flex items-center gap-x-2.5 sm:gap-x-5">
@@ -122,7 +128,8 @@ function Header() {
                 <CgMenu/>
               </button>
               {/* Navbar Components */}
-              <Offcanvas display={showNav ? "block" : "none"}/>
+              {}
+              <Offcanvas display={showNav ? "block" : "none"} zIndex={100}/>
               <SideCart offCanvasVisibilty={showSideCart} cartHandler={siteCartToggler} />
               <LoginModal loginModalhandler={loginModalhandler} loginBoxVisibility={showLoginModal}/>
               <SearchModal searchModalhandler={searchModalhandler} searchBoxVisibility={showSearchModal}/>

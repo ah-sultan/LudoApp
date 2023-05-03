@@ -8,13 +8,15 @@ import { useState } from 'react'
 
 function ProductCardList(props) {
     const [showModal, setShowModal] = useState(false)
+
+
+    const discountPrice = props.price - 30/100
     const rating = Math.floor(props.rating)
 
 
     function modalHandler(value) {
         setShowModal(value)
     }
-    console.log(showModal)
     return (
         <>
             <div className="w-full flex flex-col md:flex-row gap-y-8 gap-x-7">
@@ -47,7 +49,7 @@ function ProductCardList(props) {
                     <p className="text-sm leading-6 text-[#6c6c6c] mb-5 line-clamp-2">{props.description}</p>
                     <div>
                         <span className="text-base leading-none font-semibold text-dark-950">${props.price}</span>
-                        <span className="text-sm leading-none font-semibold line-through ml-2.5 text-tGreay-150">${props.price - 10 / 100}</span>
+                        <span className="text-sm leading-none font-semibold line-through ml-2.5 text-tGreay-150">${discountPrice.toFixed(2)}</span>
                     </div>
 
                     <div className="flex mt-5 gap-x-2.5">
@@ -64,7 +66,9 @@ function ProductCardList(props) {
                     <button className="btn-primary mt-30px w-[170px] h-50px text-sm leading-[45px] trns-1">Add To Cart</button>
                 </div>
             </div>
-            <QuickView modalHandler={modalHandler} showModal={showModal} product={props}/>
+            {
+                showModal? <QuickView modalHandler={modalHandler} showModal={showModal} product={props} /> : undefined
+            }
         </>
     )
 }

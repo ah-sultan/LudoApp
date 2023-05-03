@@ -10,7 +10,7 @@ function Privacy() {
         <THead/>
         <Header/>
         <main>
-            <Breadcrumb title="Privacy & Policy"/>
+            <Breadcrumb pages="home" title="Privacy & Policy"/>
             <section className="py-60px lg:py-20 xl:py-100px">
                 <div className="container">
                     <div>

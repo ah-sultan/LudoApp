@@ -7,6 +7,8 @@ import ProductDetails from "@/components/productDetails/ProductDetails"
 import ReletedProducts from "@/components/reletedProduct/ReletedProducts"
 import THead from "@/components/thead/THead"
 
+import { ProductData } from "../../product"
+
 function VariableProduct() {
   return (
    <>
@@ -14,9 +16,9 @@ function VariableProduct() {
    <Header/>
    <main>
     <Breadcrumb title="Products" pages="Home"/>
-    <ProductDetails color={['#D28200', '#505050', '#FF1616', '#ECECEC']} size={['m','l', 'xl','xl']} variable={true}/>
+    <ProductDetails product={ProductData[2]} variable={true}/>
     <DescriptionReview/>
-    <ReletedProducts/>
+    <ReletedProducts product={ProductData}/>
    </main>
     <Footer/>
     <BackTop/>

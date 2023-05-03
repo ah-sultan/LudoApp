@@ -50,8 +50,12 @@
     z-index: 102;
   }
   .nav-link{
-    @apply text-base sm:text-sm capitalize sm:uppercase font-semibold flex justify-between items-center border-b border-solid border-[#eee] lg:border-0 py-2.5 leading-7 lg:leading-100px text-tGreay-600 hover:text-primary-900
+    @apply text-base sm:text-sm capitalize sm:uppercase font-semibold flex justify-between items-center border-b border-solid border-[#eee] lg:border-0 py-2.5 lg:py-0 leading-7 lg:leading-100px text-tGreay-600 hover:text-primary-900
   }
+
+  .showSubNav{
+    @apply !visible !h-auto !scale-y-100
+}
   .hero-ctg{
     @apply md:text-lg font-semibold pl-50px block mb-15px text-tGreay-500 relative before:content-[""] before:absolute before:w-30px before:h-3px before:block before:bg-primary-900 before:top-1/2 before:left-0
   

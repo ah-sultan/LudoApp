@@ -7,14 +7,12 @@ import {TfiAngleLeft, TfiAngleRight} from 'react-icons/tfi'
 
 
 // images 
-import productImg from '../../../public/img/products/1.jpg'
-
 
 const ReletedProducts = (props) => {
   return (
     <>
-        <section>
-            <div className="container pb-100px">
+        <section className="py-60px lg:py-20 xl:py-100px">
+            <div className="container">
                 <h2 className="section-title text-center ">Related Products</h2>
                 <div className="pt-60px">
                     <div className="group/btn relative">

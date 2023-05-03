@@ -17,10 +17,9 @@ import { PriceFilter,ColorFilter, SidebarCategory, SizeFilter, TagFilter } from 
 
 
 // images 
-import productImg from '../../public/img/products/1.jpg'
 import bannerImg from '../../public/img/left-sidebar/2.jpg'
 
-import { ProducrData } from "../../product"
+import { ProductData } from "../../product"
 
 function LeftSideBar() {
     const [viewType, setViewType] = useState('grid')
@@ -28,7 +27,7 @@ function LeftSideBar() {
     function pViewHandler(value) {
         setViewType(value)
     }
-    const products = ProducrData
+    const products = ProductData
   
     const showGridTab = viewType === 'grid' ? { visibility: 'visible', opacity: 1, height: 'auto' } : undefined
     const showlistTab = viewType === 'list' ? { visibility: 'visible', opacity: 1, height: 'auto' } : undefined

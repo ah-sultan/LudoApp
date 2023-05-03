@@ -16,8 +16,9 @@ function SingleProduct() {
    <Header/>
    <main>
     <Breadcrumb title="Products" pages="Home"/>
-    <ProductDetails/>
+    <ProductDetails product={ProductData[2]}/>
     <DescriptionReview/>
+    <ReletedProducts product={ProductData}/>
    </main>
    <footer>
     <Footer/>

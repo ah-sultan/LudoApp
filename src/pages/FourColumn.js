@@ -5,8 +5,7 @@ import Footer from "@/components/footer/Footer"
 import Header from "@/components/header/Header"
 import THead from "@/components/thead/THead"
 
-import { ProducrData } from "../../product"
-
+import { ProductData } from "../../product"
 function FourColumn() {
   return (
     <>
@@ -14,7 +13,7 @@ function FourColumn() {
       <Header />
       <main>
         <Breadcrumb title="Shop" pages="home" />
-        <Category product={ProducrData}/>
+        <Category product={ProductData}/>
       </main>
       <Footer />
       <BackTop/>
