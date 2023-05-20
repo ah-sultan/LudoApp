@@ -1,4 +1,4 @@
-import Meta from "@/components/thead/Meta"
+import Meta from "@/components/meta/Meta"
 import BlogDetailsCard from "@/components/blog/BlogDetailsCard"
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
 import BlogCommentCard from "@/components/blog/BlogCommentCard"

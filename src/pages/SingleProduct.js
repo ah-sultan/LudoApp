@@ -1,4 +1,4 @@
-import Meta from "@/components/thead/Meta"
+import Meta from "@/components/meta/Meta"
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
 import DescriptionReview from "@/components/descriptionReview/DescriptionReview"
 import ProductDetails from "@/components/productDetails/ProductDetails"

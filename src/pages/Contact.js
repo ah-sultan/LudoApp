@@ -1,5 +1,5 @@
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
-import Meta from "@/components/thead/Meta"
+import Meta from "@/components/meta/Meta"
 
 // icons 
 import { FaPhone, FaEnvelope, FaLocationArrow, FaArrowRight } from "react-icons/fa"

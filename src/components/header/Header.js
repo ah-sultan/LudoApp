@@ -73,9 +73,7 @@ function Header() {
       document.body.style.overflow = 'unset';
     }
 
-    dispatch(fetchCetagory())
-
-  }, [dispatch])
+  }, )
 
   return (
     <>

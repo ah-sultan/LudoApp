@@ -3,14 +3,20 @@ import { BsStarFill, BsHeart, BsSearch } from 'react-icons/bs'
 import { SlRefresh } from 'react-icons/sl'
 import QuickView from '../quickView/QuickView'
 import { useState } from 'react'
-// Images
 
+
+// Redux Features
+import { useDispatch } from 'react-redux'
+import { showQuickView } from '@/feature/quickView/quickViewSlice'
 
 function ProductCardList(props) {
     const [showModal, setShowModal] = useState(false)
 
+    // Redux fetures
+    const dispatch = useDispatch()
 
-    const discountPrice = props.price - 30/100
+    const mainPrice = parseInt(props.price)
+    const discountPrice = mainPrice - 30/100
     const rating = Math.floor(props.rating)
 
 
@@ -48,7 +54,7 @@ function ProductCardList(props) {
                     </h6>
                     <p className="text-sm leading-6 text-[#6c6c6c] mb-5 line-clamp-2">{props.description}</p>
                     <div>
-                        <span className="text-base leading-none font-semibold text-dark-950">${props.price}</span>
+                        <span className="text-base leading-none font-semibold text-dark-950">${mainPrice.toFixed(2)}</span>
                         <span className="text-sm leading-none font-semibold line-through ml-2.5 text-tGreay-150">${discountPrice.toFixed(2)}</span>
                     </div>
 
@@ -56,7 +62,7 @@ function ProductCardList(props) {
                         <a href="#" className="product-card-action bg-[#d6d6d6]">
                             <BsHeart className="text-xl" />
                         </a>
-                        <button type="button" onClick={() => modalHandler(true)} className="product-card-action bg-[#d6d6d6]">
+                        <button type="button" onClick={() => dispatch(showQuickView(props))} className="product-card-action bg-[#d6d6d6]">
                             <BsSearch className="text-xl" />
                         </button>
                         <a href="#" className="product-card-action bg-[#d6d6d6]">
@@ -66,9 +72,6 @@ function ProductCardList(props) {
                     <button className="btn-primary mt-30px w-[170px] h-50px text-sm leading-[45px] trns-1">Add To Cart</button>
                 </div>
             </div>
-            {
-                showModal? <QuickView modalHandler={modalHandler} showModal={showModal} product={props} /> : undefined
-            }
         </>
     )
 }

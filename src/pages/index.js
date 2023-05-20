@@ -5,7 +5,7 @@ import Products from '@/components/products/Products'
 import Newarrivals from '@/components/newarrivals/Newarrivals'
 import Deal from '@/components/deal/Deal'
 import Blog from '@/components/blog/Blog'
-import Meta from '@/components/thead/Meta'
+import Meta from '@/components/meta/Meta'
 
 export default function Home({ products }) {
 
@@ -24,6 +24,8 @@ export default function Home({ products }) {
     </>
   )
 }
+
+
 
 export async function getStaticProps() {
   // Fetch data from external API

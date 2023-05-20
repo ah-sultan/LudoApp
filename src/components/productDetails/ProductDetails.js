@@ -19,7 +19,8 @@ function Pdetails(props) {
 
     const product = props.product
     const images = product.images
-
+    const mainPrice = parseInt(product.price)
+    const discountPrice = mainPrice - 10/100
     const rate = Math.floor(product.rating)
 
     return (
@@ -40,7 +41,7 @@ function Pdetails(props) {
                                 {
                                     images.map((image, index) =>
                                         <SwiperSlide key={index}>
-                                            <Image src={image} alt="products" className="w-full" />
+                                            <Image src={image} alt="products" className="w-full" width={300} height={350}/>
                                         </SwiperSlide>
                                     )
                                 }
@@ -70,8 +71,8 @@ function Pdetails(props) {
                     </div>
                     {/* Text Section  */}
                     <div className="lg:w-1/2">
-                        <h4 className="text-2xl md:text-30px leading-normal font-semibold text-black mb-18px">{product.title}</h4>
-                        <h6 className="text-primary-900 text-2xl leading-tight mb-5">{product.price}</h6>
+                        <h4 className="text-2xl md:text-30px leading-normal font-semibold text-black mb-18px capitalize">{product.title}</h4>
+                        <h6 className="text-primary-900 text-2xl leading-tight mb-5">${mainPrice.toFixed(2)} <del className="text-lg text-tGreay-300">${discountPrice.toFixed(2)}</del></h6>
                         {/* Reviews Section */}
                         <div>
                             <div className="inline-flex gap-x-1.5 mr-3">
@@ -86,29 +87,26 @@ function Pdetails(props) {
                             <span className="text-sm md:text-base leading-none text-tGreay-150 font-normal">( {product.reviews} Customer Review )</span>
                         </div>
 
-                        {/* Product types ======================*/}
-                        <div style={props.variable ? { display: "block" } : { display: "none" }}>
-                            {/* Product Colors */}
-                            <div className="flex items-center mt-35px mb-15px">
-                                <span className="text-lg leading-relaxed font-semibold text-dark-300 inline-block min-w-[70px]">Color:</span>
-                                <div>
-                                    {
-                                        props.variable ? product.colorHex.map((color, id) => {
-                                            return <button key={id} className={`w-[36px] h-[36px] rounded-full outline outline-offset-2 outline-solid outline-[#d9d9d9] outline-1 mr-2  hover:outline-primary-900 focus:outline-primary-900`} style={{ background: color }}></button>
-                                        }) : undefined
-                                    }
-                                </div>
+                        {/* Product Colors */}
+                        <div className="flex items-center mt-35px mb-15px">
+                            <span className="text-lg leading-relaxed font-semibold text-dark-300 inline-block min-w-[70px]">Color:</span>
+                            <div>
+                                {
+                                    props.variable ? product.colorHex.map((color, id) => {
+                                        return <button key={id} className={`w-[36px] h-[36px] rounded-full outline outline-offset-2 outline-solid outline-[#d9d9d9] outline-1 mr-2  hover:outline-primary-900 focus:outline-primary-900`} style={{ background: color }}></button>
+                                    }) : undefined
+                                }
                             </div>
-                            {/* Product Size */}
-                            <div className="flex items-center mt-35px mb-15px">
-                                <span className="text-lg leading-relaxed font-semibold text-dark-300 inline-block min-w-[70px]">Size:</span>
-                                <div>
-                                    {
-                                        props.variable ? product.size.map((size, id) => {
-                                            return <button key={id} className={`w-[36px] h-[36px] bg-[#D6D6D6] rounded-full outline outline-offset-2 outline-solid outline-[#d9d9d9] outline-1 mr-2 text-base text-dark-300 uppercase font-bold hover:outline-primary-900 focus:outline-primary-900`}>{size}</button>
-                                        }) : undefined
-                                    }
-                                </div>
+                        </div>
+                        {/* Product Size */}
+                        <div className="flex items-center mt-35px mb-15px">
+                            <span className="text-lg leading-relaxed font-semibold text-dark-300 inline-block min-w-[70px]">Size:</span>
+                            <div>
+                                {
+                                    props.variable ? product.size.map((size, id) => {
+                                        return <button key={id} className={`w-[36px] h-[36px] bg-[#D6D6D6] rounded-full outline outline-offset-2 outline-solid outline-[#d9d9d9] outline-1 mr-2 text-base text-dark-300 uppercase font-bold hover:outline-primary-900 focus:outline-primary-900`}>{size}</button>
+                                    }) : undefined
+                                }
                             </div>
                         </div>
 
@@ -119,7 +117,7 @@ function Pdetails(props) {
                         <div className="flex gap-x-2 sm:gap-x-2.5 mb-30px">
                             <div className="w-70px md:w-20 h-50px rounded-[5px] bg-dark-500 flex items-center justify-between px-2">
                                 <button type="button" className="text-white text-lg leading-5 font-medium">-</button>
-                                <input type="text" value={count} onChange={(e) => e.target.value} className="border-0 bg-transparent text-sm leading-[50px] max-w-[30px] text-white text-center font-normal" />
+                                <input type="text" className="border-0 bg-transparent text-sm leading-[50px] max-w-[30px] text-white text-center font-normal" />
                                 <button type="button" className="text-white text-lg leading-5 font-medium">+</button>
                             </div>
                             <button className="px-2.5 sm:px-35px rounded-[5px] h-50px bg-primary-900 text-white font-semibold text-[12px] sm:text-sm leading-relaxed block uppercase hover:bg-black trns-1 tracking-widest">Add To Cart</button>

@@ -1,6 +1,11 @@
 import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+
+// redux Feature
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCetagory } from '@/feature/cetagory/cetagorySlice';
+import Link from 'next/link';
 
 export function PriceFilter() {
     const defultValue = 100
@@ -52,19 +57,26 @@ export function PriceFilter() {
 }
 
 export function SidebarCategory(props) {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(fetchCetagory())
+    }, [dispatch])
+
+    // redux feature
+    const cetagory = useSelector((data) => data.cetagory )
   return (
     <>
         <div className="py-10 px-30px rounded-[10px] bg-[#fafafa] mb-9">
             <h5 className="sidebar-title mb-5">Category</h5>
             <ul>
                 {
-                    props.list.map((list, id) => {
+                    cetagory.status === "success" ? cetagory.data.map((list, id) => {
                         return(
                             <li key={id} className="mt-1">
-                                <a href="#" className="hover:text-primary-900 text-[#737070] text-base leading-none">{list}</a>
+                                <Link href="/list" className="hover:text-primary-900 text-[#737070] text-base capitalize leading-none">{list}</Link>
                             </li>
                         )
-                    })
+                    }) : null
                 }
             </ul>
         </div>

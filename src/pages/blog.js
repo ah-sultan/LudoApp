@@ -1,6 +1,6 @@
 import BlogCard from "@/components/blog/BlogCard"
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
-import Meta from "@/components/thead/Meta"
+import Meta from "@/components/meta/Meta"
 import { BiChevronLeft, BiChevronRight } from 'react-icons/bi'
 
 import blogImg from '../../public/img/blog/1.jpg'

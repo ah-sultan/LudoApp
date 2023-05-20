@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
-import Meta from "@/components/thead/Meta"
+import Meta from "@/components/meta/Meta"
 
 
 function Accordion(props) {

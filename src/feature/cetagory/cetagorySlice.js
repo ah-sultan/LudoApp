@@ -4,9 +4,10 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchCetagory = createAsyncThunk('cetagory/fetchCetagory', async () => {
     const res = await fetch(`https://api.npoint.io/44d9930f29cc64084a3a`)
-    const cetagoryData = res.json()
-
-    return cetagoryData
+    const cetagoryData = await res.json()
+    const cetagory = cetagoryData.map((data) => data.category )
+    const uniqueCetagory = Array.from(new Set(cetagory));
+    return uniqueCetagory
 })
 
 const cetagorySlice = createSlice({

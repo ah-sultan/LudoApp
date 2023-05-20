@@ -7,6 +7,7 @@ import { useState } from 'react'
 // Redux Feature
 import { useDispatch } from 'react-redux'
 import { showQuickView } from '@/feature/quickView/quickViewSlice'
+import Link from 'next/link'
 function ProductCard(props) {
     const [showModal, setShowModal] = useState(false)
 
@@ -27,23 +28,23 @@ function ProductCard(props) {
             <div className="group w-full">
                 {/* Product Images */}
                 <div className="relative thumb">
-                    <a href="#" className="block overflow-hidden">
+                    <Link href="#" className="block overflow-hidden">
                         <Image width={320} height={100} src={props.thumbnail} alt="productImg" className="w-full trns-1 group-hover:scale-110 group-hover:rotate-3" />
-                    </a>
+                    </Link>
                     <div className="badge absolute top-18px -left-0.5">
                         <span className="gradient-primary text-3 text-xs px-2 rounded-[3px] leading-[19px] text-white font-semibold mb-2.5 block">{props.brand}</span>
                         <span className="bg-black uppercase text-3 text-xs px-2 rounded-[3px] leading-[19px] text-white font-semibold mb-2.5 block">-10%</span>
                     </div>
                     <div className="absolute top-18px right-18px">
-                        <a href="#" className="product-card-action">
+                        <button type="button" className="product-card-action">
                             <BsHeart className="text-xl" />
-                        </a>
+                        </button>
                         <button type="button" onClick={() => dispatch(showQuickView(props))} className="product-card-action xl:translate-y-5 xl:invisible xl:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible">
                             <BsSearch className="text-xl" />
                         </button>
-                        <a href="#" className="product-card-action xl:translate-y-5 xl:invisible xl:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible">
+                        <button type="bu" className="product-card-action xl:translate-y-5 xl:invisible xl:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible">
                             <SlRefresh className="text-xl" />
-                        </a>
+                        </button>
                     </div>
                     <button className="btn-primary absolute left-0 right-0 bottom-0 mx-auto w-[60%] h-50px text-sm leading-[45px] invisible opacity-0 group-hover:visible group-hover:bottom-5 group-hover:opacity-100 trns-1">Add To Cart</button>
                 </div>
@@ -59,7 +60,7 @@ function ProductCard(props) {
                         <span className="inline-block text-sm leading-none text-tGreay-150 ml-1.5">( {props.reviews} Review)</span>
                     </div>
                     <h6 className="my-2.5">
-                        <a href="#" className="text-base leading-1.2 font-medium !capitalize text-dark-950 hover:!text-primary-900 group-hover:text-[#474747]">{props.title}</a>
+                        <Link href={`/shop/product/[id]`} as={`/shop/product/${props.id}`}  className="text-base leading-1.2 font-medium !capitalize text-dark-950 hover:!text-primary-900 group-hover:text-[#474747]">{props.title}</Link>
                     </h6>
                     <div>
                         <span className="text-base leading-none font-semibold text-dark-950">${mainPrice.toFixed(2)}</span>

@@ -4,7 +4,7 @@ import { useState } from "react"
 import { SlRefresh } from 'react-icons/sl'
 import { FaSearch } from 'react-icons/fa'
 
-import Meta from "@/components/thead/Meta"
+import Meta from "@/components/meta/Meta"
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
 import ShopTopBar from "@/components/shopTopBar/ShopTopBar"
 import ProductCard from "@/components/productCard/ProductCard"
@@ -18,7 +18,7 @@ import bannerImg from '../../public/img/left-sidebar/2.jpg'
 
 import { ProductData } from "../../product"
 
-function LeftSideBar() {
+function leftSideBar() {
     const [viewType, setViewType] = useState('grid')
 
     function pViewHandler(value) {
@@ -47,7 +47,7 @@ function LeftSideBar() {
                             {/*Price Filter  */}
                             <PriceFilter />
                             {/* Sidebar Category */}
-                            <SidebarCategory list={['Accesasories (6)', 'Computer (4)', 'Covid-19 (2)', 'Electronics (6)', 'Frame Sunglasses (12)', 'Furniture (7)', 'Genuine Leather (9) ']} />
+                            <SidebarCategory />
                             {/* Left Sidebar Color */}
                             <ColorFilter color={['#D28200', '#505050', '#FF1616', '#ECBBBF']} />
                             {/* Left Side Size */}
@@ -101,4 +101,4 @@ function LeftSideBar() {
     )
 }
 
-export default LeftSideBar
+export default leftSideBar

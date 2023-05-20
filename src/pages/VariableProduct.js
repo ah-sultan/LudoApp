@@ -1,6 +1,6 @@
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
 import DescriptionReview from "@/components/descriptionReview/DescriptionReview"
-import Meta from "@/components/thead/Meta"
+import Meta from "@/components/meta/Meta"
 import ProductDetails from "@/components/productDetails/ProductDetails"
 import ReletedProducts from "@/components/reletedProduct/ReletedProducts"
 

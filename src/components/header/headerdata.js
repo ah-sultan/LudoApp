@@ -1,17 +1,3 @@
-import { store } from "@/feature/store"
-
-const data = store.getState()
-const getCetagory = data.cetagory.data
-const cetagory = getCetagory.map((data) => data.category)
-const uniqueCetagory = Array.from(new Set(cetagory));
-
-const cetagoryMenu = uniqueCetagory.map((list) => {
-  return {
-    title: list,
-    url: list
-  }
-})
-
 
 export const shopMegamenu = [
   {
@@ -48,6 +34,7 @@ export const headerData = [
     url: "/",
     megaMenu: shopMegamenu
   },
+  
   {
     id: 0,
     title: "Blogs",
@@ -67,12 +54,6 @@ export const headerData = [
     ]
   },
 
-  {
-    id: 0,
-    title: 'cetagory',
-    url: "/",
-    dropdown: cetagoryMenu
-  },
   {
     id: 0,
     title: "About US",

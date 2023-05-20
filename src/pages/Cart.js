@@ -1,6 +1,6 @@
 
 import Image from "next/image"
-import Meta from "@/components/thead/Meta"
+import Meta from "@/components/meta/Meta"
 import { useEffect, useState } from "react"
 
 
