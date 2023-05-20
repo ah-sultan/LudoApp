@@ -16,9 +16,9 @@ function Meta(props) {
 }
 
 Meta.defaultProps = {
-  title: 'Islamic home Decore',
-  descripton: 'Islamic home Decore',
-  keywords: 'Islamic, home, Decore',
+  title: "Fashion",
+  descripton: 'Fashion',
+  keywords: 'Fashion',
 }
 
 export default Meta

@@ -1,11 +1,8 @@
 import { TfiAngleDown } from 'react-icons/tfi'
+import { useState } from 'react'
 
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
-import Header from "@/components/header/Header"
-import THead from "@/components/thead/THead"
-import { useState } from 'react'
-import Footer from '@/components/footer/Footer'
-import BackTop from '@/components/backtop/BackTop'
+
 
 const faqContent = [
     {
@@ -91,29 +88,24 @@ function Faq() {
     console.log(activAcc)
     return (
         <>
-            <THead />
-            <Header />
-            <main>
-                <Breadcrumb pages="home" title="FAQ" />
-                <section className="py-60px lg:py-20 xl:py-100px">
-                    <div className="container">
-                        <div className="lg:w-9/12 mx-auto">
-                            <h3 className="text-black text-2xl sm:text-22px leading-1.3 font-semibold mb-4">Below are frequently asked questions, you may find the answer for yourself </h3>
-                            <p className="text-base leading-relaxed text-tGreay-300 mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id erat sagittis, faucibus metus malesuada, eleifend turpis. Mauris semper augue id nisl aliquet, a porta lectus mattis. Nulla at tortor augue. In eget enim diam. Donec gravida tortor sem, ac fermentum nibh rutrum sit amet. Nulla convallis mauris vitae congue consequat. Donec interdum nunc purus, vitae vulputate arcu fringilla quis. Vivamus iaculis euismod dui.</p>
-                            {/* Faq Section */}
-                            <div className="mt-30px">
-                                {
-                                    faqContent.map((items, index) => {
-                                        return <FaqAccordion key={index} index={index} id={items.id} title={items.title} text={items.text} activAcc={activAcc} handleItem={handleItem} />
-                                    })
-                                }
-                            </div>
+            <Meta title="faq" />
+            <Breadcrumb pages="home" title="FAQ" />
+            <section className="py-60px lg:py-20 xl:py-100px">
+                <div className="container">
+                    <div className="lg:w-9/12 mx-auto">
+                        <h3 className="text-black text-2xl sm:text-22px leading-1.3 font-semibold mb-4">Below are frequently asked questions, you may find the answer for yourself </h3>
+                        <p className="text-base leading-relaxed text-tGreay-300 mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id erat sagittis, faucibus metus malesuada, eleifend turpis. Mauris semper augue id nisl aliquet, a porta lectus mattis. Nulla at tortor augue. In eget enim diam. Donec gravida tortor sem, ac fermentum nibh rutrum sit amet. Nulla convallis mauris vitae congue consequat. Donec interdum nunc purus, vitae vulputate arcu fringilla quis. Vivamus iaculis euismod dui.</p>
+                        {/* Faq Section */}
+                        <div className="mt-30px">
+                            {
+                                faqContent.map((items, index) => {
+                                    return <FaqAccordion key={index} index={index} id={items.id} title={items.title} text={items.text} activAcc={activAcc} handleItem={handleItem} />
+                                })
+                            }
                         </div>
                     </div>
-                </section>
-            </main>
-        <Footer/>
-        <BackTop/>
+                </div>
+            </section>
         </>
     )
 }

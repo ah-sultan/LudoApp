@@ -1,4 +1,6 @@
 import Image from 'next/image'
+import Link from 'next/link';
+
 import { useEffect, useState } from 'react';
 import { CiSearch, CiHeart } from 'react-icons/ci';
 import { CgShoppingBag, CgMenu } from 'react-icons/cg'
@@ -13,12 +15,16 @@ import Offcanvas from '../offcanvas/Offcanvas';
 import { headerData } from './headerdata';
 
 
+// redux feature
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCetagory } from '@/feature/cetagory/cetagorySlice';
+
 // Images
 import whiteLogo from '../../../public/img/header/white-logo.webp'
-import Link from 'next/link';
 
 function Header() {
   const [stickyNav, setStickyNav] = useState(false)
+  const [navData, setNavdata] = useState([])
   const [showSideCart, setShowSideCart] = useState(false)
   const [showLoginModal, setShowLoginModal] = useState(false)
   const [showSearchModal, setShowSearchModal] = useState(false)
@@ -26,6 +32,10 @@ function Header() {
 
   // Responsive Subnav Handler
   const [showSubNav, setShowSubNav] = useState("0");
+
+  // Redux Feature
+  const dispatch = useDispatch()
+  const data = useSelector((data) => data.cetagory)
 
   const subNavToggler = (index) => {
     if (showSubNav === index) {
@@ -63,7 +73,9 @@ function Header() {
       document.body.style.overflow = 'unset';
     }
 
-  })
+    dispatch(fetchCetagory())
+
+  }, [dispatch])
 
   return (
     <>

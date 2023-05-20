@@ -1,16 +1,11 @@
-import BackTop from '@/components/backtop/BackTop'
 import Breadcrumb from '@/components/breadcrumb/Breadcrumb'
-import Footer from '@/components/footer/Footer'
-import Header from '@/components/header/Header'
-import THead from '@/components/thead/THead'
+import Meta from '@/components/thead/Meta'
 
 function Privacy() {
-  return (
-    <>
-        <THead/>
-        <Header/>
-        <main>
-            <Breadcrumb pages="home" title="Privacy & Policy"/>
+    return (
+        <>
+            <Meta title="privacy" />
+            <Breadcrumb pages="home" title="Privacy & Policy" />
             <section className="py-60px lg:py-20 xl:py-100px">
                 <div className="container">
                     <div>
@@ -35,11 +30,8 @@ function Privacy() {
                     </div>
                 </div>
             </section>
-        </main>
-        <Footer/>
-        <BackTop/>
-    </>
-  )
+        </>
+    )
 }
 
 export default Privacy

@@ -14,7 +14,7 @@ function Megamenu(props) {
 
     useEffect(() => {
         setIsTrue(props.showNav)
-    })
+    },)
 
     const handleToggle = (index) => {
         if (clicked === index) {
@@ -41,7 +41,7 @@ function Megamenu(props) {
                                             {
                                                 navlist.navlink.map(([title, url], id) => {
                                                     return (
-                                                        <li key={id} className="border-tGreay-100 border-b lg:border-0"><Link href={url} className="py-2 lg:py-0 text-sm inline-block leading-[30px] text-dark-700 lg:text-black font-normal trns-1 duration-500 hover:text-primary-900 lg:hover:pl-2.5">{title}</Link></li>
+                                                        <li key={id} className="border-tGreay-100 border-b lg:border-0"><Link href={url || `/`} className="py-2 lg:py-0 text-sm inline-block leading-[30px] text-dark-700 lg:text-black font-normal trns-1 duration-500 hover:text-primary-900 lg:hover:pl-2.5">{title}</Link></li>
                                                     )
                                                 })
                                             }
@@ -53,17 +53,17 @@ function Megamenu(props) {
                     </div>
                     <div className="pt-5 hidden lg:grid grid-cols-3 gap-x-30px">
                         <div>
-                            <Link href="#" className="block overflow-hidden ">
+                            <Link href="/" className="block overflow-hidden ">
                                 <Image src={img1} alt="img-1" className="hover:scale-110 trns-1 w-full" />
                             </Link>
                         </div>
                         <div>
-                            <Link href="#" className="block overflow-hidden ">
+                            <Link href="/" className="block overflow-hidden ">
                                 <Image src={img2} alt="img-1" className="hover:scale-110 trns-1 w-full" />
                             </Link>
                         </div>
                         <div>
-                            <Link href="#" className="block overflow-hidden ">
+                            <Link href="/" className="block overflow-hidden ">
                                 <Image src={img3} alt="img-1" className="hover:scale-110 trns-1 w-full" />
                             </Link>
                         </div>

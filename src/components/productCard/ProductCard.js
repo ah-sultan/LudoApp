@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import { BsStarFill, BsHeart, BsSearch } from 'react-icons/bs'
 import { SlRefresh } from 'react-icons/sl'
-import QuickView from '../quickView/QuickView'
 import { useState } from 'react'
-// Images
 
 
+// Redux Feature
+import { useDispatch } from 'react-redux'
+import { showQuickView } from '@/feature/quickView/quickViewSlice'
 function ProductCard(props) {
     const [showModal, setShowModal] = useState(false)
 
@@ -13,8 +14,12 @@ function ProductCard(props) {
         setShowModal(value)
     }
 
-    const discountPrice = props.price - 10 / 100
+    const mainPrice = parseInt(props.price)
+    const discountPrice = mainPrice - 10 / 100
     const rating = props.rating > 0 ? Math.floor(props.rating) : 0
+
+    //Redux Feature    
+    const dispatch = useDispatch()
 
 
     return (
@@ -33,7 +38,7 @@ function ProductCard(props) {
                         <a href="#" className="product-card-action">
                             <BsHeart className="text-xl" />
                         </a>
-                        <button type="button" onClick={() => modalHandler(true)} className="product-card-action xl:translate-y-5 xl:invisible xl:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible">
+                        <button type="button" onClick={() => dispatch(showQuickView(props))} className="product-card-action xl:translate-y-5 xl:invisible xl:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible">
                             <BsSearch className="text-xl" />
                         </button>
                         <a href="#" className="product-card-action xl:translate-y-5 xl:invisible xl:opacity-0 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible">
@@ -57,7 +62,7 @@ function ProductCard(props) {
                         <a href="#" className="text-base leading-1.2 font-medium !capitalize text-dark-950 hover:!text-primary-900 group-hover:text-[#474747]">{props.title}</a>
                     </h6>
                     <div>
-                        <span className="text-base leading-none font-semibold text-dark-950">${props.price}</span>
+                        <span className="text-base leading-none font-semibold text-dark-950">${mainPrice.toFixed(2)}</span>
                         <span className="text-sm leading-none font-semibold line-through ml-2.5 text-tGreay-150">${discountPrice.toFixed(2)}</span>
                     </div>
                 </div>

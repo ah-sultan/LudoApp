@@ -4,16 +4,13 @@ import { useState } from "react"
 import { SlRefresh } from 'react-icons/sl'
 import { FaSearch } from 'react-icons/fa'
 
-import Header from "@/components/header/Header"
-import THead from "@/components/thead/THead"
+import Meta from "@/components/thead/Meta"
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
 import ShopTopBar from "@/components/shopTopBar/ShopTopBar"
 import ProductCard from "@/components/productCard/ProductCard"
 import ProductCardList from "@/components/productCard/ProductCardList"
-import Footer from "@/components/footer/Footer"
-import BackTop from "@/components/backtop/BackTop"
 
-import { PriceFilter,ColorFilter, SidebarCategory, SizeFilter, TagFilter } from "@/components/sidebarWidget/SidebarWidget"
+import { PriceFilter, ColorFilter, SidebarCategory, SizeFilter, TagFilter } from "@/components/sidebarWidget/SidebarWidget"
 
 
 // images 
@@ -28,37 +25,35 @@ function LeftSideBar() {
         setViewType(value)
     }
     const products = ProductData
-  
+
     const showGridTab = viewType === 'grid' ? { visibility: 'visible', opacity: 1, height: 'auto' } : undefined
     const showlistTab = viewType === 'list' ? { visibility: 'visible', opacity: 1, height: 'auto' } : undefined
-  return (
-    <>
-        <THead/>
-        <Header/>
-        <main>
-            <Breadcrumb title="Shop" pages="Home"/>
+    return (
+        <>
+            <Meta title="cetagory" />
+            <Breadcrumb title="Shop" pages="Home" />
             <div className="container">
                 <div className="flex flex-col lg:flex-row gap-x-6 py-60px lg:py-20 xl:py-100px">
-                {/* Left Side Product Filter Area =======*/}
+                    {/* Left Side Product Filter Area =======*/}
                     <div className="w-full lg:w-3/12 order-last lg:order-first mt-60px lg:mt-0">
                         <div>
                             {/* Search Box */}
                             <div className="flex items-center px-15px border border-[#cfcfcf] rounded-lg mb-10">
-                                <input type="text" placeholder="Seach" className="h-60px w-full text-base leading-[50px] italic text-[#969696] pr-4"/>
+                                <input type="text" placeholder="Seach" className="h-60px w-full text-base leading-[50px] italic text-[#969696] pr-4" />
                                 <button className="border-l border-solid border-[#cfcfcf] pl-15px">
-                                    <FaSearch className="text-lg text-[#cfcfcf] hover:text-primary-900"/>
+                                    <FaSearch className="text-lg text-[#cfcfcf] hover:text-primary-900" />
                                 </button>
                             </div>
                             {/*Price Filter  */}
-                            <PriceFilter/>
+                            <PriceFilter />
                             {/* Sidebar Category */}
-                            <SidebarCategory list={['Accesasories (6)', 'Computer (4)', 'Covid-19 (2)', 'Electronics (6)', 'Frame Sunglasses (12)', 'Furniture (7)', 'Genuine Leather (9) ']}/>
+                            <SidebarCategory list={['Accesasories (6)', 'Computer (4)', 'Covid-19 (2)', 'Electronics (6)', 'Frame Sunglasses (12)', 'Furniture (7)', 'Genuine Leather (9) ']} />
                             {/* Left Sidebar Color */}
-                            <ColorFilter color={['#D28200','#505050', '#FF1616', '#ECBBBF']}/>
+                            <ColorFilter color={['#D28200', '#505050', '#FF1616', '#ECBBBF']} />
                             {/* Left Side Size */}
-                            <SizeFilter size={['sm','m','l','m']}/>
+                            <SizeFilter size={['sm', 'm', 'l', 'm']} />
                             {/* Tag Filter */}
-                            <TagFilter tag={['Fashion','Organic','Old Fashion','Men','Fashion','Dress'  ]}/>
+                            <TagFilter tag={['Fashion', 'Organic', 'Old Fashion', 'Men', 'Fashion', 'Dress']} />
                             <div>
                                 <div className=" group/img overflow-hidden relative rounded-lg">
                                     <Image src={bannerImg} alt="img1" className="group-hover/img:rotate-3 group-hover/img:scale-110 w-full trns-1" />
@@ -69,13 +64,13 @@ function LeftSideBar() {
                                 </div>
                             </div>
 
-                            </div>
                         </div>
+                    </div>
 
                     {/* Right Side Product Area ===========*/}
                     <div className="w-full lg:w-9/12">
-                    <ShopTopBar pViewHandler={pViewHandler} viewTypeBtn={viewType} />
-                    {/* Grid View */}
+                        <ShopTopBar pViewHandler={pViewHandler} viewTypeBtn={viewType} />
+                        {/* Grid View */}
                         <div className="xs:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-30px overflow-hidden grid invisible opacity-0 h-0 trns-1" style={showGridTab}>
                             {
                                 products.map((product, index) => {
@@ -96,16 +91,14 @@ function LeftSideBar() {
                             }
                         </div>
                         <div className="text-center mt-60px">
-                        <button className="btn-primary text-base font-bold leading-none w-[210px] h-[65px] ">Load More <SlRefresh className="inline-block ml-4" /> </button>
+                            <button className="btn-primary text-base font-bold leading-none w-[210px] h-[65px] ">Load More <SlRefresh className="inline-block ml-4" /> </button>
                         </div>
                     </div>
                 </div>
             </div>
-        </main>
-        <BackTop/>
-        <Footer/>
-    </>
-  )
+
+        </>
+    )
 }
 
 export default LeftSideBar

@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../header/Header'
 import Footer from '../footer/Footer'
-import Portal from '../Portal/portal'
+import Portal from '../Portal/Portal'
 
 function Layout({ children }) {
     return (
