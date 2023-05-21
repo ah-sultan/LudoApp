@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
-export function PriceFilter() {
+function PriceFilter() {
     const defultValue = 100
     const [minValue, setMinValue] = useState(0)
     const [maxValue, setMaxValue] = useState(defultValue)
@@ -50,3 +50,5 @@ export function PriceFilter() {
         </div>
     )
 }
+
+export default PriceFilter

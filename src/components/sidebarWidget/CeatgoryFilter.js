@@ -1,4 +1,4 @@
-export function SidebarCategory(props) {
+function CetagoryFilter(props) {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchProduct())
@@ -29,3 +29,5 @@ export function SidebarCategory(props) {
         </>
     )
 }
+
+export default CetagoryFilter

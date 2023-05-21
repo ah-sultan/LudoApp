@@ -9,14 +9,18 @@ import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
 import ShopTopBar from "@/components/shopTopBar/ShopTopBar"
 import ProductCard from "@/components/productCard/ProductCard"
 import ProductCardList from "@/components/productCard/ProductCardList"
+import CetagoryFilter from "@/components/sidebarWidget/CeatgoryFilter"
+import PriceFilter from "@/components/sidebarWidget/PriceFilter"
+import ColorFilter from "@/components/sidebarWidget/ColorFilter"
+import SizeFilter from "@/components/sidebarWidget/SizeFilter"
+import TagFilter from "@/components/sidebarWidget/TagFilter"
 
-import { PriceFilter, ColorFilter, SidebarCategory, SizeFilter, TagFilter } from "@/components/sidebarWidget/SidebarWidget"
 
-
-// images 
+// Images =======================================
 import bannerImg from '../../public/img/left-sidebar/2.jpg'
 
 import { ProductData } from "../../product"
+
 
 function LeftSideBar() {
     const [viewType, setViewType] = useState('grid')
@@ -29,7 +33,7 @@ function LeftSideBar() {
     const showGridTab = viewType === 'grid' ? { visibility: 'visible', opacity: 1, height: 'auto' } : undefined
     const showlistTab = viewType === 'list' ? { visibility: 'visible', opacity: 1, height: 'auto' } : undefined
 
-    // Const Product Filtering
+    // Const Product Filtering =======================================
     return (
         <>
             <Meta title="cetagory" />
@@ -49,7 +53,7 @@ function LeftSideBar() {
                             {/*Price Filter  */}
                             <PriceFilter />
                             {/* Sidebar Category */}
-                            <SidebarCategory />
+                            <CetagoryFilter />
                             {/* Left Sidebar Color */}
                             <ColorFilter color={['#D28200', '#505050', '#FF1616', '#ECBBBF']} />
                             {/* Left Side Size */}
