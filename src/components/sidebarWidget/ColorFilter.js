@@ -1,13 +1,24 @@
+
+// Redux Feature
+import { useSelector } from "react-redux"
+
 function ColorFilter(props) {
+
+
+    // redux feature
+    const product = useSelector((data) => data.products)
+    const colors = product.data.flatMap((list) => list.colorHex)
+    const uniqueColors = Array.from(new Set(colors));
+
     return (
         <>
             <div className="py-10 px-30px rounded-[10px] bg-[#fafafa] mb-10">
                 <h5 className="sidebar-title mb-5">Color</h5>
-                <div>
+                <div className="flex flex-wrap gap-4">
                     {
-                        props.color.map((color, id) => {
+                        uniqueColors.map((color, id) => {
                             return (
-                                <button key={id} className={`w-[36px] h-[36px] lg:w-8 lg:h-8 xl:w-[36px] xl:h-[36px] rounded-full outline outline-offset-2 outline-solid outline-[#d9d9d9] outline-1 mr-2.5 last:mr-0  hover:outline-primary-900 focus:outline-primary-900`} style={{ background: color }}></button>
+                                <button key={id} className={`w-8 h-8 rounded-full outline outline-offset-2 outline-solid outline-gray-400 outline-1   hover:outline-primary-900 focus:outline-primary-900`} style={{ background: color.toString()}}></button>
                             )
                         })
                     }
@@ -19,3 +30,28 @@ function ColorFilter(props) {
 
 
 export default ColorFilter
+
+
+
+
+
+
+
+
+const data = [
+    {
+        color : ['red', 'green', 'blue']
+    },
+    {
+        color : ['Chain', 'lime', 'aqua']
+    },
+    {
+        color : ['tomato', 'green', 'white']
+    },
+    {
+        color : ['red', 'yellow', 'blue']
+    },
+    {
+        color : ['red', 'green', 'pink']
+    }
+]

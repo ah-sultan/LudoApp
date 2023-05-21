@@ -15,25 +15,29 @@ import ColorFilter from "@/components/sidebarWidget/ColorFilter"
 import SizeFilter from "@/components/sidebarWidget/SizeFilter"
 import TagFilter from "@/components/sidebarWidget/TagFilter"
 
+// redux Filter
+import { useSelector } from "react-redux"
 
 // Images =======================================
 import bannerImg from '../../public/img/left-sidebar/2.jpg'
 
-import { ProductData } from "../../product"
 
-
-function LeftSideBar() {
+function LeftSideBar({productData}) {
     const [viewType, setViewType] = useState('grid')
 
     function pViewHandler(value) {
         setViewType(value)
     }
-    const products = ProductData
 
     const showGridTab = viewType === 'grid' ? { visibility: 'visible', opacity: 1, height: 'auto' } : undefined
     const showlistTab = viewType === 'list' ? { visibility: 'visible', opacity: 1, height: 'auto' } : undefined
 
-    // Const Product Filtering =======================================
+    // Redux Feature 
+    const filterData = useSelector((data)=>  data.filter)
+
+    // Const Product Filtering ===============
+    const products = productData 
+
     return (
         <>
             <Meta title="cetagory" />
@@ -55,7 +59,7 @@ function LeftSideBar() {
                             {/* Sidebar Category */}
                             <CetagoryFilter />
                             {/* Left Sidebar Color */}
-                            <ColorFilter color={['#D28200', '#505050', '#FF1616', '#ECBBBF']} />
+                            <ColorFilter/>
                             {/* Left Side Size */}
                             <SizeFilter size={['sm', 'm', 'l', 'm']} />
                             {/* Tag Filter */}
@@ -82,7 +86,7 @@ function LeftSideBar() {
                                 products.map((product, index) => {
                                     const { id, brand, rating, title, reviews, thumbnail, price, description, category, sku, images } = product
 
-                                    return <ProductCard key={index} id={id} brand={brand} title={title} rating={rating} reviews={reviews} thumbnail={thumbnail} price={price} description={description} category={category} sku={sku} images={images} />
+                                    return <ProductCard key={index} id={id} brand={brand} title={title} rating={parseInt(rating)} reviews={reviews} thumbnail={thumbnail} price={price} description={description} category={category} sku={sku} images={images} />
                                 })
                             }
                         </div>
@@ -92,7 +96,7 @@ function LeftSideBar() {
                                 products.map((product, index) => {
                                     const { id, brand, rating, title, reviews, thumbnail, price, description, category, sku, images } = product
 
-                                    return <ProductCardList key={index} id={id} brand={brand} title={title} rating={rating} reviews={reviews} thumbnail={thumbnail} price={price} description={description} category={category} sku={sku} images={images} />
+                                    return <ProductCardList key={index} id={id} brand={brand} title={title} rating={parseInt(rating)} reviews={reviews} thumbnail={thumbnail} price={price} description={description} category={category} sku={sku} images={images} />
                                 })
                             }
                         </div>
@@ -108,3 +112,14 @@ function LeftSideBar() {
 }
 
 export default LeftSideBar
+
+
+export async function getStaticProps() {
+    // Fetch data from external API
+    const res = await fetch(`https://api.npoint.io/44d9930f29cc64084a3a`)
+    const productData = await res.json()
+  
+    // Pass data to the page via props
+    return { props: { productData } }
+  }
+  

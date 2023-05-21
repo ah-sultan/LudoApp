@@ -1,3 +1,10 @@
+import { useEffect } from "react"
+
+// Redux Features
+import { useDispatch, useSelector } from "react-redux"
+import { fetchProduct } from "@/feature/product/productSlice"
+import { setCetagory } from "@/feature/filter/filterSlice"
+
 function CetagoryFilter(props) {
     const dispatch = useDispatch()
     useEffect(() => {
@@ -7,7 +14,6 @@ function CetagoryFilter(props) {
     // redux feature
     const product = useSelector((data) => data.products)
     const cetagory = product.data.map((list) => list.category)
-
     const uniqueCetagory = Array.from(new Set(cetagory));
 
     return (
@@ -18,8 +24,8 @@ function CetagoryFilter(props) {
                     {
                         product.status === "success" ? uniqueCetagory.map((list, id) => {
                             return (
-                                <li key={id} className="mt-1">
-                                    <Link href="/list" className="hover:text-primary-900 text-[#737070] text-base capitalize leading-none">{list}</Link>
+                                <li key={id} className="mt-1" onClick={()=> dispatch(setCetagory(list))}>
+                                    <span className="hover:text-primary-900 text-[#737070] text-base capitalize leading-none">{list}</span>
                                 </li>
                             )
                         }) : null
@@ -31,3 +37,31 @@ function CetagoryFilter(props) {
 }
 
 export default CetagoryFilter
+
+
+const data = [
+    {
+        title : 'title 1',
+        cetagory : 'velt'
+    },
+    {
+        title : 'title 2',
+        cetagory : 'velt'
+    },
+    {
+        title : 'title 3',
+        cetagory : 'root'
+    },
+    {
+        title : 'title 4',
+        cetagory : 'velt'
+    },
+    {
+        title : 'title 5',
+        cetagory : 'markey'
+    },
+    {
+        title : 'title 6',
+        cetagory : 'velt'
+    },
+];

@@ -17,7 +17,7 @@ function ProductCard(props) {
 
     const mainPrice = parseInt(props.price)
     const discountPrice = mainPrice - 10 / 100
-    const rating = props.rating > 0 ? Math.floor(props.rating) : 0
+    const rating = props.rating > 0 ? Math.floor(props.rating) : 0 || 0
 
     //Redux Feature    
     const dispatch = useDispatch()

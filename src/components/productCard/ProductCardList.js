@@ -17,7 +17,10 @@ function ProductCardList(props) {
 
     const mainPrice = parseInt(props.price)
     const discountPrice = mainPrice - 30/100
-    const rating = Math.floor(props.rating)
+    const getRating = parseInt(props.rating)
+    const rating = getRating < 0 ? 0 : Math.floor(getRating)
+
+    console.log(typeof getRating)
 
 
     function modalHandler(value) {
@@ -30,7 +33,7 @@ function ProductCardList(props) {
                 <div className="md:w-5/12 lg:w-4/12">
                     <div className="relative thumb">
                         <a href="#" className="block overflow-hidden">
-                            <Image src={props.thumbnail} alt="productImg" className="trns-1 group-hover:scale-110 group-hover:rotate-3 w-full" />
+                            <Image width={300} height={400} src={props.thumbnail} alt="productImg" className="trns-1 group-hover:scale-110 group-hover:rotate-3 w-full" />
                         </a>
                         <div className="badge absolute top-18px -left-0.5">
                             <span className="gradient-primary text-3 text-xs px-2 rounded-[3px] leading-[19px] text-white font-semibold mb-2.5 block">{props.discount}</span>
