@@ -18,7 +18,7 @@ import bannerImg from '../../public/img/left-sidebar/2.jpg'
 
 import { ProductData } from "../../product"
 
-function leftSideBar() {
+function LeftSideBar() {
     const [viewType, setViewType] = useState('grid')
 
     function pViewHandler(value) {
@@ -28,6 +28,8 @@ function leftSideBar() {
 
     const showGridTab = viewType === 'grid' ? { visibility: 'visible', opacity: 1, height: 'auto' } : undefined
     const showlistTab = viewType === 'list' ? { visibility: 'visible', opacity: 1, height: 'auto' } : undefined
+
+    // Const Product Filtering
     return (
         <>
             <Meta title="cetagory" />
@@ -101,4 +103,4 @@ function leftSideBar() {
     )
 }
 
-export default leftSideBar
+export default LeftSideBar

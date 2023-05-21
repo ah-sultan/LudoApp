@@ -60,7 +60,7 @@ function ProductCard(props) {
                         <span className="inline-block text-sm leading-none text-tGreay-150 ml-1.5">( {props.reviews} Review)</span>
                     </div>
                     <h6 className="my-2.5">
-                        <Link href={`/shop/product/[id]`} as={`/shop/product/${props.id}`}  className="text-base leading-1.2 font-medium !capitalize text-dark-950 hover:!text-primary-900 group-hover:text-[#474747]">{props.title}</Link>
+                        <Link href={`/shop/[cetagory]/[id]`} as={`/shop/${props.category}/${props.id}`} className="text-base leading-1.2 font-medium !capitalize text-dark-950 hover:!text-primary-900 group-hover:text-[#474747]">{props.title}</Link>
                     </h6>
                     <div>
                         <span className="text-base leading-none font-semibold text-dark-950">${mainPrice.toFixed(2)}</span>

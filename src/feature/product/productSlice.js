@@ -2,16 +2,14 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 
 
-export const fetchCetagory = createAsyncThunk('cetagory/fetchCetagory', async () => {
+export const fetchProduct = createAsyncThunk('cetagory/fetchCetagory', async () => {
     const res = await fetch(`https://api.npoint.io/44d9930f29cc64084a3a`)
-    const cetagoryData = await res.json()
-    const cetagory = cetagoryData.map((data) => data.category )
-    const uniqueCetagory = Array.from(new Set(cetagory));
-    return uniqueCetagory
+    const productData = await res.json()
+    return productData
 })
 
-const cetagorySlice = createSlice({
-    name: "cetagory",
+const productSlice = createSlice({
+    name: "products",
     initialState: {
         status: 'isLoading',
         data: [],
@@ -21,15 +19,15 @@ const cetagorySlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchCetagory.pending, (state, action) => {
+            .addCase(fetchProduct.pending, (state, action) => {
                 state.status = 'loading'
             })
-            .addCase(fetchCetagory.fulfilled, (state, action) => {
+            .addCase(fetchProduct.fulfilled, (state, action) => {
                 state.status = 'success',
                     state.data = action.payload
             })
 
-            .addCase(fetchCetagory.rejected, (state, action) => {
+            .addCase(fetchProduct.rejected, (state, action) => {
                 state.status = 'failed',
                     state.data = [],
                     state.error = action.error
@@ -37,4 +35,4 @@ const cetagorySlice = createSlice({
     }
 })
 
-export default cetagorySlice.reducer
+export default productSlice.reducer

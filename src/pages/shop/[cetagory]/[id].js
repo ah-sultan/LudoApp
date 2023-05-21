@@ -5,9 +5,9 @@ import ProductDetails from "@/components/productDetails/ProductDetails"
 import ReletedProducts from "@/components/reletedProduct/ReletedProducts"
 
 
-function VariableProduct({product, relatedProduct}) {
+function VariableProduct({ product, relatedProduct }) {
 
- const relatedProductArray = relatedProduct.filter(data => data.brand === product.brand && data.category === product.category)
+  const relatedProductArray = relatedProduct.filter(data => data.brand === product.brand && data.category === product.category)
 
   return (
     <>
@@ -24,7 +24,7 @@ function VariableProduct({product, relatedProduct}) {
 
 export default VariableProduct
 
-export async function getStaticProps (context) {
+export async function getStaticProps(context) {
   const resRelated = await fetch(`https://api.npoint.io/44d9930f29cc64084a3a`)
   const relatedProduct = await resRelated.json()
 
@@ -42,11 +42,15 @@ export async function getStaticProps (context) {
 
 export async function getStaticPaths() {
 
-  
+
   const response = await fetch('https://api.npoint.io/44d9930f29cc64084a3a');
   const products = await response.json();
   const paths = products.map((product) => ({
-    params: { id: product.id.toString() },
+    params: {
+      id: product.id.toString(),
+      cetagory: product.category,
+
+    },
   }));
 
   return {

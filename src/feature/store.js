@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import quickViewSlice from './quickView/quickViewSlice';
-import cetagorySlice from './cetagory/cetagorySlice';
+import productSlice from './product/productSlice';
 
 export const store = configureStore({
     reducer: {
         quickView: quickViewSlice,
-        cetagory: cetagorySlice,
+        products: productSlice,
     }
 })
 

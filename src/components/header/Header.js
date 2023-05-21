@@ -17,7 +17,7 @@ import { headerData } from './headerdata';
 
 // redux feature
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCetagory } from '@/feature/cetagory/cetagorySlice';
+import { fetchCetagory } from '@/feature/product/productSlice';
 
 // Images
 import whiteLogo from '../../../public/img/header/white-logo.webp'
@@ -73,7 +73,7 @@ function Header() {
       document.body.style.overflow = 'unset';
     }
 
-  }, )
+  },)
 
   return (
     <>
