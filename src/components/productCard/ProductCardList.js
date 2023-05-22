@@ -16,16 +16,12 @@ function ProductCardList(props) {
     const dispatch = useDispatch()
 
     const mainPrice = parseInt(props.price)
-    const discountPrice = mainPrice - 30/100
+    const discountPrice = mainPrice - 30 / 100
     const getRating = parseInt(props.rating)
-    const rating = getRating < 0 ? 0 : Math.floor(getRating)
-
-    console.log(typeof getRating)
+    const rating = getRating > 5 ? 5 : Math.floor(getRating)
 
 
-    function modalHandler(value) {
-        setShowModal(value)
-    }
+
     return (
         <>
             <div className="w-full flex flex-col md:flex-row gap-y-8 gap-x-7">

@@ -22,7 +22,7 @@ import { useSelector } from "react-redux"
 import bannerImg from '../../public/img/left-sidebar/2.jpg'
 
 
-function LeftSideBar({productData}) {
+function LeftSideBar({ productData }) {
     const [viewType, setViewType] = useState('grid')
 
     function pViewHandler(value) {
@@ -33,15 +33,15 @@ function LeftSideBar({productData}) {
     const showlistTab = viewType === 'list' ? { visibility: 'visible', opacity: 1, height: 'auto' } : undefined
 
     // Redux Feature 
-    const filterData = useSelector((data)=>  data.filter)
+    const filterData = useSelector((data) => data.filter)
 
     // Const Product Filtering ===============
-    const products = productData 
+    const products = productData.filter((product) => product.category === filterData.cetagory && product.hexColor === filterData.hexColor)
 
     return (
         <>
             <Meta title="cetagory" />
-            <Breadcrumb title="Shop" pages="Home" />
+            <Breadcrumb title="Shop" pages="Home " />
             <div className="container">
                 <div className="flex flex-col lg:flex-row gap-x-6 py-60px lg:py-20 xl:py-100px">
                     {/* Left Side Product Filter Area =======*/}
@@ -59,7 +59,7 @@ function LeftSideBar({productData}) {
                             {/* Sidebar Category */}
                             <CetagoryFilter />
                             {/* Left Sidebar Color */}
-                            <ColorFilter/>
+                            <ColorFilter />
                             {/* Left Side Size */}
                             <SizeFilter size={['sm', 'm', 'l', 'm']} />
                             {/* Tag Filter */}
@@ -118,8 +118,7 @@ export async function getStaticProps() {
     // Fetch data from external API
     const res = await fetch(`https://api.npoint.io/44d9930f29cc64084a3a`)
     const productData = await res.json()
-  
+
     // Pass data to the page via props
     return { props: { productData } }
-  }
-  
+}
