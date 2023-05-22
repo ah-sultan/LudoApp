@@ -29,7 +29,7 @@ function ShopTopBar(props) {
 
     return (
         <div className="w-full rounded-[10px] py-2 px-6 sm:px-30px border border-[#cfcfcf] flex flex-wrap items-center justify-between mb-60px">
-            <p className="font-normal text-base text-[#474747]"><span className="text-primary-900">10</span> Product Found of <span className="text-primary-900">50</span></p>
+            <p className="font-normal text-base text-[#474747]"><span className="text-primary-900">{props.viewProduct}</span> Product Found of <span className="text-primary-900">{props.totalProdact}</span></p>
             <div className="center-child gap-x-5">
                 <button className={`text-lg text-[#9e9e9e] ${props.viewTypeBtn === 'grid' ? 'text-primary-900' : undefined}`} onClick={() => props.pViewHandler('grid')}>
                     <BsGrid3X3GapFill />
