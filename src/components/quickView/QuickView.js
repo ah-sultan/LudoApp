@@ -40,7 +40,7 @@ function QuickView(props) {
   const images = product.images
   const mainPrice = parseInt(product.price) || 0
   const discountPrice = mainPrice - 10 / 100
-  const rate = Math.floor(product.rating)
+  const rate = product.rating > 5 ? 0 : Math.floor(parseInt(product.rating))
 
   return (
     <>
