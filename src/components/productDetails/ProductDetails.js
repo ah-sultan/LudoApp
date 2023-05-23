@@ -14,7 +14,7 @@ import { FreeMode, Navigation, Thumbs } from "swiper";
 
 // Redux features
 import { useSelector, useDispatch } from 'react-redux';
-import { addToCart } from '@/feature/cart/cartSlice';
+import { addToCart, decraseItemQuantity } from '@/feature/cart/cartSlice';
 
 function Pdetails(props) {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -29,8 +29,8 @@ function Pdetails(props) {
     const dispatch = useDispatch()
     const cartQuantity = useSelector((data) => data.cart.items)
     const [Getquantity] = cartQuantity.filter((data) => data.id === product.id)
-    const quantity = Getquantity.quantity
-
+    const quantity = Getquantity === undefined ? 0 : Getquantity.quantity
+    
     const cartItems = {
         id: product.id,
         title: product.title,
@@ -138,7 +138,7 @@ function Pdetails(props) {
                         {/* Button Section */}
                         <div className="flex gap-x-2 sm:gap-x-2.5 mb-30px">
                             <div className="w-70px md:w-20 h-50px rounded-[5px] bg-dark-500 flex items-center justify-between px-2">
-                                <button type="button" className="text-white text-lg leading-5 font-medium">-</button>
+                                <button onClick={() => dispatch(decraseItemQuantity(product.id))} type="button" className="text-white text-lg leading-5 font-medium">-</button>
                                 <div className="border-0 bg-transparent text-sm leading-[50px] max-w-[30px] text-white text-center font-normal">{quantity}</div>
                                 <button onClick={addToCartHandler} type="button" className="text-white text-lg leading-5 font-medium">+</button>
                             </div>

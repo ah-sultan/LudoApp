@@ -19,6 +19,14 @@ const cartSlice = createSlice({
             }
         },
 
+        incraseItemQuantity: (state, action) => {
+            const existingItem = state.items.find((item) => item.id === action.payload)
+
+            if (existingItem) {
+                existingItem.quantity > 0 ? existingItem.quantity += 1 : existingItem.quantity = 0
+            }
+        },
+
         decraseItemQuantity: (state, action) => {
             const existingItem = state.items.find((item) => item.id === action.payload)
 
@@ -27,12 +35,17 @@ const cartSlice = createSlice({
             }
         },
         removeFromCart: (state, action) => {
-            const { id } = action.payload
-            state.items = state.items.filter(item => item.id !== 0)
+            const currentItem = state.items.filter(item => item.id !== action.payload)
+            state.items =  currentItem
+            console.log(currentItem)
+        },
+
+        clearCart : (state) => {
+            state.items = []
         }
     }
 })
 
-export const { addToCart, decraseCartItem, removeFromCart } = cartSlice.actions
+export const { addToCart, decraseItemQuantity, incraseItemQuantity, removeFromCart, clearCart } = cartSlice.actions
 
 export default cartSlice.reducer

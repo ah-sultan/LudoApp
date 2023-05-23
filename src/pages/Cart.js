@@ -3,40 +3,52 @@ import Image from "next/image"
 import Meta from "@/components/meta/Meta"
 import { useEffect, useState } from "react"
 
+import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
 
-import img1 from '../../public/img/cart/1.jpg'
+// Redux Features
+import { useDispatch, useSelector } from "react-redux"
+import { removeFromCart, incraseItemQuantity, clearCart, decraseItemQuantity } from "@/feature/cart/cartSlice"
+import Link from "next/link"
 
 function CartCard(props) {
-  const [count, setCount] = useState(0)
-  useEffect(() => {
-    if (count <= 0) {
-      setCount(0)
-    }
-  })
+
+  const dispatch = useDispatch()
+
+  const title = props.title
+  const image = props.thumbnail
+  const price = parseInt(props.price)
+  const quantity = props.quantity
+  const totalPrice  = price * quantity
+  const size = "xl"
+
+
   return (
     <div className="flex items-center w-full mb-6 pb-6 border-b border-tGreay-100">
       <div className="rounded overflow-hidden basis-[20%]">
-        <Image src={img1} width={150} height={300} />
+        <Image src={image} width={150} height={300} />
       </div>
       <div className="pl-4 md:pl-6 basis-[80%]">
         <div className="flex justify-between items-center">
-          <h5 className="text-sm md:text-lg text-dark-900 font-semibold ">Rey Nylon Backpack</h5>
-          <span className="center-child py-0.5 md:py-0.5 px-1 md:px-2 border border-black rounded-sm text-[12px] leading-none md:text-sm">$50</span>
+          <h5 className="text-sm md:text-lg text-dark-900 font-semibold line-camp-1 pr-4">{title}</h5>
+          <span className="center-child py-0.5 md:py-0.5 px-1 md:px-2 border border-black rounded-sm text-[12px] leading-none md:text-sm">${price}</span>
         </div>
         <div className="flex items-center md:mt-2 mb-3 md:mb-7">
-          <span className="text-[12px] md:text-sm text-tGreay-900 leading-relaxed font-normal">Red</span>
-          <span className="h-3 md:h-5 border-l border-tGreay-300 mx-4"></span>
-          <span className="text-[12px] md:text-sm text-tGreay-900 leading-relaxed font-normal">XL</span>
+          <span className="text-[12px] md:text-sm text-tGreay-900 leading-relaxed font-normal">{size}</span>
+
         </div>
         <div className="flex justify-between items-start border-t border-tGreay-300 pt-3">
-          <div className="border-y border-black w-20 md:w-24 items-center flex justify-between">
-            <button type="button" className="px-2 py-2 text-black text-base leading-none border-x border-black border-solid" onClick={() => setCount(count - 1)}>-</button>
-            <span className="flex-[3] text-sm leading-none text-black inline-block text-center">{count}</span>
-            <button type="button" className="px-2 py-2 text-black text-base leading-none border-x border-black border-solid" onClick={() => setCount(count + 1)}>+</button>
+          <div className="flex gap-x-2 items-center">
+            <div className="border-y border-black w-20 md:w-24 items-center flex justify-between">
+              <button onClick={() => dispatch(decraseItemQuantity(props.id))} type="button" className="px-2 py-2 text-black text-base leading-none border-x border-black border-solid" >-</button>
+              <span className="flex-[3] text-sm leading-none text-black inline-block text-center">{quantity}</span>
+              <button onClick={() => dispatch(incraseItemQuantity(props.id))} type="button" className="px-2 py-2 text-black text-base leading-none border-x border-black border-solid">+</button>
+            </div>
+            <span onClick={() => dispatch(removeFromCart(props.id))} className="text-tGreay-300 text-sm">Remove</span>
           </div>
+         
           <p className="pt-2 text-sm md:text-base leading-1.2 text-dark-650 font-bold">
             <span className="mr-2 inline-block">Total:</span>
-            <span>$70</span>
+            <span>${totalPrice}</span>
           </p>
         </div>
       </div>
@@ -45,6 +57,11 @@ function CartCard(props) {
 }
 
 function Cart() {
+
+// Redux Feature ==============
+const cartData = useSelector((items) => items.cart.items)
+const dispatch = useDispatch()
+
   return (
     <>
       <Meta title="cart" />
@@ -54,13 +71,16 @@ function Cart() {
           <h4 className="text-20px sm:text-2xl leading-4 font font-semibold mb-30px">Your cart items</h4>
           <div className="flex flex-col lg:flex-row">
             <div className="pt-30px border-t border-tGreay-100 lg:w-7/12">
-              <CartCard />
-              <CartCard />
-              <CartCard />
+              {
+                cartData.map((item, index) => (
+                  <CartCard key={index} id={item.id} title={item.title} thumbnail={item.thumbnail} quantity={item.quantity} price={item.price}/>
+                ))
+              }
+
               <div className="grid md:grid-cols-3 gap-3">
-                <button className="bg-black hover:bg-primary-900 h-45px text-sm uppercase text-white leading-none center-child">Continue Shopping</button>
+                <Link href="/" className="bg-black hover:bg-primary-900 h-45px text-sm uppercase text-white leading-none center-child">Continue Shopping</Link>
                 <button className="bg-black hover:bg-primary-900 h-45px text-sm uppercase text-white leading-none center-child">Update Cart</button>
-                <button className="bg-primary-900 h-45px text-sm uppercase text-white leading-none center-child">Clear Cart</button>
+                <button onClick={() => dispatch(clearCart())} className="bg-primary-900 h-45px text-sm uppercase text-white leading-none center-child">Clear Cart</button>
               </div>
             </div>
             <div className="lg:w-5/12 lg:pl-12 mt-30px lg:mt-0">

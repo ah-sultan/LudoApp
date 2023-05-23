@@ -34,8 +34,12 @@ function Header() {
   const [showSubNav, setShowSubNav] = useState("0");
 
   // Redux Feature
-  const dispatch = useDispatch()
-  const data = useSelector((data) => data.cetagory)
+  const cartData = useSelector((data) => data.cart.items)
+  let totalQuantity = 0
+
+  const quanTttyHandler = cartData.forEach(total => {
+    totalQuantity += total.quantity
+  })
 
   const subNavToggler = (index) => {
     if (showSubNav === index) {
@@ -132,7 +136,7 @@ function Header() {
               <button><CiHeart className="text-black text-20px sm:text-25px hover:text-primary-900" /></button>
               <button className="relative" onClick={() => siteCartToggler(true)}>
                 <CgShoppingBag className="text-black text-20px sm:text-25px hover:text-primary-900" />
-                <span className="bg-primary-900 text-white h-21px w-21px text-11px rounded-full center-child absolute -top-2.5 font-semibold -right-7px">01</span>
+                <span className="bg-primary-900 text-white h-21px w-21px text-11px rounded-full center-child absolute -top-2.5 font-semibold -right-7px">{totalQuantity}</span>
               </button>
               {/* Mobile Nav Btn */}
               <button className="ml-3.5 lg:hidden text-2xl" onClick={() => setShowNav(true)}>
