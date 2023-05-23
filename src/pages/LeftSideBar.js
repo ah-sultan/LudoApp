@@ -37,11 +37,18 @@ function LeftSideBar({ productData }) {
     const filterData = useSelector((data) => data.filter)
 
     // Const Product Filtering ===============
-    const getProducts = productData.filter(item => 
-        filterData.cetagory === null ? item : item.category === filterData.cetagory && filterData.color === null ? item : item.colorHex.includes(filterData.color))
+    const getProducts = productData.filter(item => {
+
+        const hasCetagory = filterData.cetagory === null ? item : item.category === filterData.cetagory
+        const hasColor = filterData.color === null ? item : item.colorHex.includes(filterData.color)
+        const hasPrice = filterData.price === null ? item : item.price > filterData.price.minPrice && item.price < filterData.price.maxPrice
+        // const hasPrice = item.price > 30 && item.price < 40
+
+        return hasCetagory && hasColor && hasPrice
+    })
 
     const products = getProducts.slice(0, viewProduct)
-    
+
 
     return (
         <>
@@ -84,7 +91,7 @@ function LeftSideBar({ productData }) {
 
                     {/* Right Side Product Area ===========*/}
                     <div className="w-full lg:w-9/12">
-                        <ShopTopBar pViewHandler={pViewHandler} viewTypeBtn={viewType} totalProdact={getProducts.length} viewProduct={viewProduct}/>
+                        <ShopTopBar pViewHandler={pViewHandler} viewTypeBtn={viewType} totalProdact={getProducts.length} viewProduct={viewProduct} />
                         {/* Grid View */}
                         <div className="xs:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-30px overflow-hidden grid invisible opacity-0 h-0 trns-1" style={showGridTab}>
                             {
@@ -106,7 +113,7 @@ function LeftSideBar({ productData }) {
                             }
                         </div>
                         <div className="text-center mt-60px">
-                            <button onClick={() => setViewProduct(viewProduct  + 10)} className="btn-primary text-base font-bold leading-none w-[210px] h-[65px] ">Load More <SlRefresh className="inline-block ml-4" /> </button>
+                            <button onClick={() => setViewProduct(viewProduct + 10)} className="btn-primary text-base font-bold leading-none w-[210px] h-[65px] ">Load More <SlRefresh className="inline-block ml-4" /> </button>
                         </div>
                     </div>
                 </div>
@@ -127,3 +134,44 @@ export async function getStaticProps() {
     // Pass data to the page via props
     return { props: { productData } }
 }
+
+
+
+// const data = [
+//     {
+//         items: 'Items 1',
+//         price: 50,
+//         color: ['red', 'green', 'yellow'],
+//         cetagory: 'light',
+//     },
+//     {
+//         items: 'Items 1',
+//         price: 20,
+//         color: ['red', 'green', 'yellow', 'blue'],
+//         cetagory: 'light',
+//     },
+//     {
+//         items: 'Items 1',
+//         price: 40,
+//         color: ['red', 'green', 'yellow', 'blue'],
+//         cetagory: 'Mat',
+//     },
+//     {
+//         items: 'Items 1',
+//         price: 50,
+//         color: ['red', 'green', 'yellow'],
+//         cetagory: 'Mat',
+//     },
+//     {
+//         items: 'Items 1',
+//         price: 80,
+//         color: ['red', 'green', 'blue', 'yellow'],
+//         cetagory: 'light',
+//     },
+//     {
+//         items: 'Items 1',
+//         price: 50,
+//         color: ['red', 'green', 'yellow'],
+//         cetagory: 'dark',
+//     },
+// ]

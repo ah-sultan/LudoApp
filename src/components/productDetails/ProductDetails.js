@@ -12,16 +12,38 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
+// Redux features
+import { useSelector, useDispatch } from 'react-redux';
+import { addToCart } from '@/feature/cart/cartSlice';
+
 function Pdetails(props) {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
-
 
     const product = props.product
     const images = product.images
     const mainPrice = parseInt(product.price)
-    const discountPrice = mainPrice - 10/100
+    const discountPrice = mainPrice - 10 / 100
     const rate = Math.floor(product.rating)
+
+    // redux features 
+    const dispatch = useDispatch()
+    const cartQuantity = useSelector((data) => data.cart.items)
+    const [Getquantity] = cartQuantity.filter((data) => data.id === product.id)
+    const quantity = Getquantity.quantity
+
+    const cartItems = {
+        id: product.id,
+        title: product.title,
+        thumbnail: product.thumbnail,
+        price: product.price,
+
+    }
+
+    const addToCartHandler = () => {
+        dispatch(addToCart(cartItems))
+    }
+
+
 
     return (
         <section className="py-60px lg:py-20 xl:py-100px">
@@ -41,7 +63,7 @@ function Pdetails(props) {
                                 {
                                     images.map((image, index) =>
                                         <SwiperSlide key={index}>
-                                            <Image src={image} alt="products" className="w-full" width={300} height={350}/>
+                                            <Image src={image} alt="products" className="w-full" width={300} height={350} />
                                         </SwiperSlide>
                                     )
                                 }
@@ -117,10 +139,11 @@ function Pdetails(props) {
                         <div className="flex gap-x-2 sm:gap-x-2.5 mb-30px">
                             <div className="w-70px md:w-20 h-50px rounded-[5px] bg-dark-500 flex items-center justify-between px-2">
                                 <button type="button" className="text-white text-lg leading-5 font-medium">-</button>
-                                <input type="text" className="border-0 bg-transparent text-sm leading-[50px] max-w-[30px] text-white text-center font-normal" />
-                                <button type="button" className="text-white text-lg leading-5 font-medium">+</button>
+                                <div className="border-0 bg-transparent text-sm leading-[50px] max-w-[30px] text-white text-center font-normal">{quantity}</div>
+                                <button onClick={addToCartHandler} type="button" className="text-white text-lg leading-5 font-medium">+</button>
                             </div>
-                            <button className="px-2.5 sm:px-35px rounded-[5px] h-50px bg-primary-900 text-white font-semibold text-[12px] sm:text-sm leading-relaxed block uppercase hover:bg-black trns-1 tracking-widest">Add To Cart</button>
+                            {/* Add To Cart Button */}
+                            <button onClick={addToCartHandler} className="px-2.5 sm:px-35px rounded-[5px] h-50px bg-primary-900 text-white font-semibold text-[12px] sm:text-sm leading-relaxed block uppercase hover:bg-black trns-1 tracking-widest">Add To Cart</button>
                             <button className="w-50px h-50px rounded-[5px] center-child bg-dark-400 text-white text-lg hover:bg-black trns-1"><FaRegHeart /></button>
                             <button className="w-50px h-50px rounded-[5px] center-child bg-dark-400 text-white text-lg hover:bg-black trns-1"><FiRefreshCw /></button>
                         </div>

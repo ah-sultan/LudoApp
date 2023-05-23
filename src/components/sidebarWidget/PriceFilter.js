@@ -1,15 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Slider, { Range } from 'rc-slider';
 import 'rc-slider/assets/index.css';
+
+// redux Feature 
+import { useDispatch, useSelector } from 'react-redux';
+import { setPrice } from '@/feature/filter/filterSlice';
 
 function PriceFilter() {
     const defultValue = 100
     const [minValue, setMinValue] = useState(0)
     const [maxValue, setMaxValue] = useState(defultValue)
+
+    // Redux feature============
+    const dispatch = useDispatch()
+    const priceValue = useSelector((data) => data.filter.price)
+
     const onSliderChange = (value) => {
         setMinValue(value[0])
         setMaxValue(value[1])
+        dispatch(setPrice({
+            minPrice: value[0],
+            maxPrice: value[1]
+        }))
     }
+
     return (
         <div className="py-10 px-30px rounded-[10px] bg-[#fafafa] mb-10">
             <h5 className="sidebar-title mb-5">Price Filter</h5>

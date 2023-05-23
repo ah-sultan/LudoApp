@@ -1,25 +1,27 @@
 import Image from 'next/image'
-import img1 from '../../../public/img/cart/1.jpg'
 import Offcanvas from '../offcanvas/Offcanvas'
 import { useEffect } from 'react'
-import Link from 'next/link'
+import { useSelector, useDispatch } from 'react-redux'
+import { removeFromCart } from '@/feature/cart/cartSlice'
 
 
 function SiteCartCard(props) {
+    const dispatch = useDispatch()
+    console.log(props.id)
     return (
         <>
             <div className="flex">
                 <div className="flex-1">
                     <a href="#">
-                        <Image src={props.img} alt="img" />
+                        <Image src={props.img} alt="img" width={120} height={200} />
                     </a>
                 </div>
                 <div className="pl-15px flex-[3] xs:flex-[2]">
                     <div className="flex items-center justify-between mb-2.5">
-                        <Link href="#" className="text-sm leading-relaxed font-normal text-black hover:text-primary-900">{props.title}</Link>
-                        <button className="text-lg leading-relaxed font-normal text-black hover:text-primary-900" type="button">×</button>
+                        <h6 className="text-sm leading-relaxed font-normal text-black hover:text-primary-900">{props.title.substring(0, 30)}</h6>
+                        <button onClick={() => dispatch(removeFromCart(props.id))} className="text-lg leading-relaxed font-normal text-black hover:text-primary-900" type="button">×</button>
                     </div>
-                    <h6 className="text-sm leading-relaxed font-normal text-[#474747]">1 x <span className="text-lg leading-relaxed font-medium text-primary-900">${props.price}</span></h6>
+                    <h6 className="text-sm leading-relaxed font-normal text-[#474747]">{props.quantity} x <span className="text-lg leading-relaxed font-medium text-primary-900">${props.price}</span></h6>
                 </div>
             </div>
         </>
@@ -36,8 +38,10 @@ function SideCart(props) {
         } else {
             document.body.style.overflow = 'unset';
         }
-    })
+    }, [props.offCanvasVisibilty])
 
+    // Redux Feature
+    const cartData = useSelector((data) => data.cart.items)
 
     return (
         <>
@@ -53,15 +57,16 @@ function SideCart(props) {
                     </div>
                     {/* Product Card */}
                     <ul>
-                        <li className="pb-30px mb-30px border-b border-b-[#ebebeb] last:mb-0 last:border-0">
-                            <SiteCartCard img={img1} title="Women's Elizabeth Coat" price="43.28" />
-                        </li>
-                        <li className="pb-30px mb-30px border-b border-b-[#ebebeb] last:mb-0 last:border-0">
-                            <SiteCartCard img={img1} title="Women's Elizabeth Coat" price="43.28" />
-                        </li>
-                        <li className="pb-30px mb-30px border-b border-b-[#ebebeb] last:mb-0 last:border-0">
-                            <SiteCartCard img={img1} title="Women's Elizabeth Coat" price="43.28" />
-                        </li>
+
+                        {
+                            cartData.map((data, index) => {
+                                return (
+                                    <li key={index} className="pb-30px mb-30px border-b border-b-[#ebebeb] last:mb-0 last:border-0">
+                                        <SiteCartCard id={parseInt(data.id)} img={data.thumbnail} title={data.title} price={data.price} quantity={data.quantity} />
+                                    </li>
+                                )
+                            })
+                        }
                     </ul>
                     {/* Button */}
                     <div>

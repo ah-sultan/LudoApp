@@ -16,31 +16,35 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
 // Redux Feature
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { hideQuickView } from '@/feature/quickView/quickViewSlice';
+import { addToCart, decraseItemQuantity } from '@/feature/cart/cartSlice';
 
 function QuickView(props) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-  const [count, setCount] = useState(0)
-
-
-  // Redux feature
-  const dispach = useDispatch()
-
-  useEffect(() => {
-    if (count <= 0) {
-      setCount(0)
-    }
-
-  })
-
-
 
   const product = props.product
   const images = product.images
   const mainPrice = parseInt(product.price) || 0
   const discountPrice = mainPrice - 10 / 100
   const rate = product.rating > 5 ? 0 : Math.floor(parseInt(product.rating))
+
+  // Redux feature
+  const dispach = useDispatch()
+  const cartQuantity = useSelector((data) => data.cart.items)
+  const [Getquantity] = cartQuantity.filter((data) => data.id === product.id)
+  const quantity = Getquantity === undefined ? 0 : Getquantity.quantity
+
+  const cartItem = {
+    id: product.id,
+    title: product.title,
+    thumbnail: product.thumbnail,
+    price: product.price
+  }
+
+  const addToCartHandler = () => {
+    dispach(addToCart(cartItem))
+  }
 
   return (
     <>
@@ -118,11 +122,12 @@ function QuickView(props) {
               {/* Button Section */}
               <div className="flex gap-x-2 sm:gap-x-2.5 mb-30px">
                 <div className="w-20 h-50px rounded-[5px] bg-dark-500 flex items-center justify-between px-2">
-                  <button type="button" className="text-white text-lg leading-5 font-medium" onClick={() => setCount(count - 1)}>-</button>
-                  <input type="text" value={count} onChange={(e) => setCount(e.target.value)} className="border-0 bg-transparent text-sm leading-[50px] max-w-[30px] text-white text-center font-normal" />
-                  <button type="button" className="text-white text-lg leading-5 font-medium" onClick={() => setCount(count + 1)}>+</button>
+                  <button onClick={() => dispach(decraseItemQuantity(product.id))} type="button" className="text-white text-lg leading-5 font-medium">-</button>
+                  <div className="border-0 bg-transparent text-sm leading-[50px] max-w-[30px] text-white text-center font-normal">{quantity}</div>
+                  <button onClick={addToCartHandler} type="button" className="text-white text-lg leading-5 font-medium">+</button>
                 </div>
-                <button className="px-2.5 sm:px-35px rounded-[5px] h-50px bg-primary-900 text-white font-semibold text-[12px] sm:text-sm leading-relaxed block uppercase hover:bg-black trns-1 tracking-widest">Add To Cart</button>
+                {/*  Add To Cart Button ========== */}
+                <button onClick={addToCartHandler} className="px-2.5 sm:px-35px rounded-[5px] h-50px bg-primary-900 text-white font-semibold text-[12px] sm:text-sm leading-relaxed block uppercase hover:bg-black trns-1 tracking-widest">Add To Cart</button>
                 <button className="w-50px h-50px rounded-[5px] center-child bg-dark-400 text-white text-lg hover:bg-black trns-1"><FaRegHeart /></button>
                 <button className="w-50px h-50px rounded-[5px] center-child bg-dark-400 text-white text-lg hover:bg-black trns-1"><FiRefreshCw /></button>
               </div>

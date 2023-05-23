@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { BsStarFill, BsHeart, BsSearch } from 'react-icons/bs'
 import { SlRefresh } from 'react-icons/sl'
 import { useState } from 'react'
@@ -7,13 +8,10 @@ import { useState } from 'react'
 // Redux Feature
 import { useDispatch } from 'react-redux'
 import { showQuickView } from '@/feature/quickView/quickViewSlice'
-import Link from 'next/link'
-function ProductCard(props) {
-    const [showModal, setShowModal] = useState(false)
+import { addToCart } from '@/feature/cart/cartSlice'
 
-    function modalHandler(value) {
-        setShowModal(value)
-    }
+function ProductCard(props) {
+
 
     const mainPrice = parseInt(props.price)
     const discountPrice = mainPrice - 10 / 100
@@ -22,6 +20,15 @@ function ProductCard(props) {
     //Redux Feature    
     const dispatch = useDispatch()
 
+    const cartItems = {
+        id: props.id,
+        title: props.title,
+        thumbnail: props.thumbnail,
+        price: props.price
+    }
+    const addToCartHandler = () => {
+        dispatch(addToCart(cartItems))
+    }
 
     return (
         <>
@@ -46,7 +53,7 @@ function ProductCard(props) {
                             <SlRefresh className="text-xl" />
                         </button>
                     </div>
-                    <button className="btn-primary absolute left-0 right-0 bottom-0 mx-auto w-[60%] h-50px text-sm leading-[45px] invisible opacity-0 group-hover:visible group-hover:bottom-5 group-hover:opacity-100 trns-1">Add To Cart</button>
+                    <button onClick={addToCartHandler} className="btn-primary absolute left-0 right-0 bottom-0 mx-auto w-[60%] h-50px text-sm leading-[45px] invisible opacity-0 group-hover:visible group-hover:bottom-5 group-hover:opacity-100 trns-1">Add To Cart</button>
                 </div>
                 {/* Product Description */}
                 <div className="content pt-30px">

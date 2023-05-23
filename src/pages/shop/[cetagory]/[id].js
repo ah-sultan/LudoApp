@@ -15,9 +15,7 @@ function VariableProduct({ product, relatedProduct }) {
       <Breadcrumb title="Products" pages="Home" />
       <ProductDetails product={product} variable={true} />
       <DescriptionReview />
-      {
-        <ReletedProducts product={relatedProductArray} />
-      }
+      <ReletedProducts product={relatedProductArray} />
     </>
   )
 }

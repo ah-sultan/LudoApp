@@ -7,20 +7,19 @@ import ProductReviews from './ProductReviews'
 
 function DescriptionReview() {
     const [active, setActive] = useState('description')
-    console.log(active)
 
     const tabBtn = [
         {
-           action: "information",
-           title : "Information"
+            action: "information",
+            title: "Information"
         },
         {
             action: "description",
-            title : "Description"
+            title: "Description"
         },
         {
             action: "reviews",
-            title : "Reviews (02)"
+            title: "Reviews (02)"
         },
     ]
 
@@ -30,8 +29,8 @@ function DescriptionReview() {
                 <div className="h-60px flex justify-center rounded-[5px] bg-light-700 gap-x-2.5">
 
                     {
-                        tabBtn.map((btn, index) => 
-                        <button key={index} className={`text-sm md:text-lg leading-6 bg-transparent text-dark-400 font-semibold trns-1 py-18px px-2.5 md:px-5 hover:text-white hover:bg-primary-900 ${active === btn.action ? '!bg-primary-900 !text-white' : undefined}`} onClick={() => setActive(btn.action)}>{btn.title}</button>
+                        tabBtn.map((btn, index) =>
+                            <button key={index} className={`text-sm md:text-lg leading-6 bg-transparent text-dark-400 font-semibold trns-1 py-18px px-2.5 md:px-5 hover:text-white hover:bg-primary-900 ${active === btn.action ? '!bg-primary-900 !text-white' : undefined}`} onClick={() => setActive(btn.action)}>{btn.title}</button>
                         )
                     }
                 </div>
