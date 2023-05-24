@@ -7,7 +7,7 @@ import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
 
 // Redux Features
 import { useDispatch, useSelector } from "react-redux"
-import { removeFromCart, incraseItemQuantity, clearCart, decraseItemQuantity } from "@/feature/cart/cartSlice"
+import { addToCart, removeFromCart, incraseItemQuantity, clearCart, decraseItemQuantity } from "@/feature/cart/cartSlice"
 import Link from "next/link"
 
 function CartCard(props) {
@@ -18,7 +18,7 @@ function CartCard(props) {
   const image = props.thumbnail
   const price = parseInt(props.price)
   const quantity = props.quantity
-  const totalPrice  = price * quantity
+  const totalPrice = price * quantity
   const size = "xl"
 
 
@@ -41,11 +41,11 @@ function CartCard(props) {
             <div className="border-y border-black w-20 md:w-24 items-center flex justify-between">
               <button onClick={() => dispatch(decraseItemQuantity(props.id))} type="button" className="px-2 py-2 text-black text-base leading-none border-x border-black border-solid" >-</button>
               <span className="flex-[3] text-sm leading-none text-black inline-block text-center">{quantity}</span>
-              <button onClick={() => dispatch(incraseItemQuantity(props.id))} type="button" className="px-2 py-2 text-black text-base leading-none border-x border-black border-solid">+</button>
+              <button onClick={() => dispatch(addToCart(props))} type="button" className="px-2 py-2 text-black text-base leading-none border-x border-black border-solid">+</button>
             </div>
             <span onClick={() => dispatch(removeFromCart(props.id))} className="text-tGreay-300 text-sm">Remove</span>
           </div>
-         
+
           <p className="pt-2 text-sm md:text-base leading-1.2 text-dark-650 font-bold">
             <span className="mr-2 inline-block">Total:</span>
             <span>${totalPrice}</span>
@@ -58,9 +58,29 @@ function CartCard(props) {
 
 function Cart() {
 
-// Redux Feature ==============
-const cartData = useSelector((items) => items.cart.items)
-const dispatch = useDispatch()
+  // Redux Feature ==============
+  const cartData = useSelector((items) => items.cart.items)
+  const dispatch = useDispatch()
+
+
+  let totalPrice = 0
+  let totalQuantity = 0
+
+  cartData.forEach(items => {
+
+    let totalProductsPrice = items.price * items.quantity
+    totalPrice += totalProductsPrice
+
+    totalQuantity += items.quantity
+
+  });
+
+  const totalProduct = totalPrice
+  const standard = 50
+  const express = 90
+  const grandTotalPrice = totalProduct + standard + express
+  const grandTotal = grandTotalPrice.toFixed(2)
+
 
   return (
     <>
@@ -68,18 +88,18 @@ const dispatch = useDispatch()
       <Breadcrumb pages="home" title="cart" />
       <div className="container">
         <div className="py-60px lg:py-20 xl:py-100px">
-          <h4 className="text-20px sm:text-2xl leading-4 font font-semibold mb-30px">Your cart items</h4>
+          <h4 className="text-20px sm:text-2xl leading-4 font font-semibold mb-30px">Your cart items: {totalQuantity}</h4>
           <div className="flex flex-col lg:flex-row">
             <div className="pt-30px border-t border-tGreay-100 lg:w-7/12">
               {
                 cartData.map((item, index) => (
-                  <CartCard key={index} id={item.id} title={item.title} thumbnail={item.thumbnail} quantity={item.quantity} price={item.price}/>
+                  <CartCard key={index} id={item.id} title={item.title} thumbnail={item.thumbnail} quantity={item.quantity} price={item.price} />
                 ))
               }
 
               <div className="grid md:grid-cols-3 gap-3">
                 <Link href="/" className="bg-black hover:bg-primary-900 h-45px text-sm uppercase text-white leading-none center-child">Continue Shopping</Link>
-                <button className="bg-black hover:bg-primary-900 h-45px text-sm uppercase text-white leading-none center-child">Update Cart</button>
+                <button onClick={() => updateCartHandler} className="bg-black hover:bg-primary-900 h-45px text-sm uppercase text-white leading-none center-child">Update Cart</button>
                 <button onClick={() => dispatch(clearCart())} className="bg-primary-900 h-45px text-sm uppercase text-white leading-none center-child">Clear Cart</button>
               </div>
             </div>
@@ -102,7 +122,7 @@ const dispatch = useDispatch()
                 </div>
                 <p className="text-black text-base flex justify-between mt-6 mb-5">
                   <span>Total products </span>
-                  <span className="font-bold">$260.00</span>
+                  <span className="font-bold">${totalProduct.toFixed(2)}</span>
                 </p>
                 <div>
                   <form action="#">
@@ -111,13 +131,13 @@ const dispatch = useDispatch()
                         <label htmlFor="Standard">
                           <input type="checkbox" name="Standard" id="Standard" className="mr-2" /> Standard
                         </label>
-                        <span>$20.00</span>
+                        <span>${standard.toFixed(2)}</span>
                       </li>
                       <li className="text-base text-tGreay-300 flex justify-between mb-2.5">
                         <label htmlFor="Standard">
                           <input type="checkbox" name="Standard" id="Standard" className="mr-2" /> Express
                         </label>
-                        <span>$20.00</span>
+                        <span>${express.toFixed(2)}</span>
                       </li>
 
                     </ul>
@@ -125,7 +145,7 @@ const dispatch = useDispatch()
                 </div>
                 <h6 className="flex items-center justify-between text-base md:text-xl text-primary-900 font-bold mt-10">
                   <span>Grand Total</span>
-                  <span> $260.00</span>
+                  <span> ${grandTotal}</span>
                 </h6>
                 <button className="bg-black hover:bg-primary-900 h-45px w-full text-sm uppercase text-white leading-none center-child block mt-7">Proceed to Checkout</button>
               </div>

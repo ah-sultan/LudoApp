@@ -36,11 +36,10 @@ const cartSlice = createSlice({
         },
         removeFromCart: (state, action) => {
             const currentItem = state.items.filter(item => item.id !== action.payload)
-            state.items =  currentItem
-            console.log(currentItem)
+            state.items = currentItem
         },
 
-        clearCart : (state) => {
+        clearCart: (state) => {
             state.items = []
         }
     }

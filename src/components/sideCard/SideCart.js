@@ -42,15 +42,15 @@ function SideCart(props) {
     }, [props.offCanvasVisibilty])
 
     // Redux Feature
-    const cartData = useSelector((data) => data.cart.items)    
+    const cartData = useSelector((data) => data.cart.items)
     let totalQuantity = 0
-    const totalIemQuantity =  cartData.forEach(item => {
+    const totalIemQuantity = cartData.forEach(item => {
         totalQuantity += item.quantity
     })
 
     const getTotalQuantity = totalQuantity
 
-    
+
     return (
         <>
             <Offcanvas display={props.offCanvasVisibilty ? "block" : "none"} />
@@ -67,19 +67,19 @@ function SideCart(props) {
                     <ul className="self-start">
 
                         {
-                           cartData.length === 0 ? <h5 className="text-2xl text-gray-600 mt-8 text-center">Your Cart Empty</h5> :  cartData.map((data, index) => {
-                            return (
-                                <li key={index} className="pb-30px mb-30px border-b border-b-[#ebebeb] last:mb-0 last:border-0">
-                                    <SiteCartCard id={data.id} img={data.thumbnail} title={data.title} price={data.price} quantity={data.quantity} />
-                                </li>
-                            )
-                        })
+                            cartData.length === 0 ? <h5 className="text-2xl text-gray-600 mt-8 text-center">Your Cart Empty</h5> : cartData.map((data, index) => {
+                                return (
+                                    <li key={index} className="pb-30px mb-30px border-b border-b-[#ebebeb] last:mb-0 last:border-0">
+                                        <SiteCartCard id={data.id} img={data.thumbnail} title={data.title} price={data.price} quantity={data.quantity} />
+                                    </li>
+                                )
+                            })
                         }
                     </ul>
                     {/* Button */}
                     <div className="mt-full self-end">
-                        <Link href="/cart" className="py-2.5 px-15px block text-base leading-relaxed text-white text-center trns-1 bg-black hover:bg-primary-900 mb-30px">View Cart</Link>
-                        <Link href="/checkout" className="py-2.5 px-15px block text-base leading-relaxed text-white text-center trns-1  bg-primary-900">Check Out</Link>
+                        <Link onClick={() => props.cartHandler(false)} href="/cart" className="py-2.5 px-15px block text-base leading-relaxed text-white text-center trns-1 bg-black hover:bg-primary-900 mb-30px">View Cart</Link>
+                        <Link onClick={() => props.cartHandler(false)} href="/checkout" className="py-2.5 px-15px block text-base leading-relaxed text-white text-center trns-1  bg-primary-900">Check Out</Link>
                     </div>
                 </div>
             </div>
