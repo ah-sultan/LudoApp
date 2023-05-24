@@ -12,7 +12,7 @@ function VariableProduct({ products }) {
       <Breadcrumb title="Products" pages="Home" />
       <ProductDetails product={products[2]} variable={true} />
       <DescriptionReview />
-      <ReletedProducts product={productsclaer.slice(0, 6)} />
+      <ReletedProducts product={products.slice(0, 6)} />
     </>
   )
 }
