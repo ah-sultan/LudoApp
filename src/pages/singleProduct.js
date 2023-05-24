@@ -4,18 +4,28 @@ import DescriptionReview from "@/components/descriptionReview/DescriptionReview"
 import ProductDetails from "@/components/productDetails/ProductDetails"
 import ReletedProducts from "@/components/reletedProduct/ReletedProducts"
 
-import { ProductData } from "../../product"
 
-function SingleProduct() {
+function SingleProduct({products}) {
   return (
     <>
       <Meta title="product" />
       <Breadcrumb title="Products" pages="Home" />
-      <ProductDetails product={ProductData[2]} />
+      <ProductDetails product={products[2]} />
       <DescriptionReview />
-      <ReletedProducts product={ProductData} />
+      <ReletedProducts product={products} />
     </>
   )
 }
 
 export default SingleProduct
+
+export async function getStaticProps() {
+  // Fetch data from external API
+  const res = await fetch(`https://api.npoint.io/44d9930f29cc64084a3a`)
+  const products = await res.json()
+
+  // Pass data to the page via props
+  return { props: { products } }
+}
+
+
