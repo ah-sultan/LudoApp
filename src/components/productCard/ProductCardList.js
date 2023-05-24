@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import { BsStarFill, BsHeart, BsSearch } from 'react-icons/bs'
 import { SlRefresh } from 'react-icons/sl'
-import QuickView from '../quickView/QuickView'
 import { useState } from 'react'
 
 
@@ -10,7 +9,6 @@ import { useDispatch } from 'react-redux'
 import { showQuickView } from '@/feature/quickView/quickViewSlice'
 
 function ProductCardList(props) {
-    const [showModal, setShowModal] = useState(false)
 
     // Redux fetures
     const dispatch = useDispatch()
@@ -49,7 +47,7 @@ function ProductCardList(props) {
                         <span className="inline-block text-sm leading-none text-tGreay-150 ml-1.5">( {props.reviews} Review)</span>
                     </div>
                     <h6 className="mb-2.5 mt-3.5">
-                        <a href="#" className="text-lg leading-1.2 font-normal text-dark-950 hover:!text-primary-900 group-hover:text-[#474747]">{props.title}</a>
+                        <Link href={`/shop/[id]`} as={`/shop/${props.id}`}  className="text-lg leading-1.2 font-normal text-dark-950 hover:!text-primary-900 group-hover:text-[#474747]">{props.title}</Link>
                     </h6>
                     <p className="text-sm leading-6 text-[#6c6c6c] mb-5 line-clamp-2">{props.description}</p>
                     <div>
@@ -58,15 +56,15 @@ function ProductCardList(props) {
                     </div>
 
                     <div className="flex mt-5 gap-x-2.5">
-                        <a href="#" className="product-card-action bg-[#d6d6d6]">
+                        <button className="product-card-action bg-[#d6d6d6]">
                             <BsHeart className="text-xl" />
-                        </a>
+                        </button>
                         <button type="button" onClick={() => dispatch(showQuickView(props))} className="product-card-action bg-[#d6d6d6]">
                             <BsSearch className="text-xl" />
                         </button>
-                        <a href="#" className="product-card-action bg-[#d6d6d6]">
+                        <button  className="product-card-action bg-[#d6d6d6]">
                             <SlRefresh className="text-xl" />
-                        </a>
+                        </button>
                     </div>
                     <button className="btn-primary mt-30px w-[170px] h-50px text-sm leading-[45px] trns-1">Add To Cart</button>
                 </div>
