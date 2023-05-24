@@ -14,7 +14,7 @@ function Megamenu(props) {
 
     useEffect(() => {
         setIsTrue(props.showNav)
-    },)
+    }, [isTrue])
 
     const handleToggle = (index) => {
         if (clicked === index) {

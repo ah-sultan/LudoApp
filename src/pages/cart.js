@@ -25,7 +25,7 @@ function CartCard(props) {
   return (
     <div className="flex items-center w-full mb-6 pb-6 border-b border-tGreay-100">
       <div className="rounded overflow-hidden basis-[20%]">
-        <Image src={image} width={150} height={300} />
+        <Image src={image} width={150} height={300} alt={title} />
       </div>
       <div className="pl-4 md:pl-6 basis-[80%]">
         <div className="flex justify-between items-center">

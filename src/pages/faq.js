@@ -2,6 +2,7 @@ import { TfiAngleDown } from 'react-icons/tfi'
 import { useState } from 'react'
 
 import Breadcrumb from "@/components/breadcrumb/Breadcrumb"
+import Meta from '@/components/meta/Meta'
 
 
 const faqContent = [
