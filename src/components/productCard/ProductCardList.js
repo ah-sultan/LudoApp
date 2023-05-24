@@ -1,8 +1,7 @@
 import Image from 'next/image'
 import { BsStarFill, BsHeart, BsSearch } from 'react-icons/bs'
 import { SlRefresh } from 'react-icons/sl'
-import { useState } from 'react'
-
+import Link from 'next/link'
 
 // Redux Features
 import { useDispatch } from 'react-redux'
