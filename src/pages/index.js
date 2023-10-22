@@ -1,38 +1,22 @@
-import Hero from '@/components/hero/Hero'
-import Banner from '@/components/banner/Banner'
-import Feature from '@/components/feature/Feature'
-import Products from '@/components/products/Products'
-import Newarrivals from '@/components/newarrivals/Newarrivals'
-import Deal from '@/components/deal/Deal'
-import Blog from '@/components/blog/Blog'
-import Meta from '@/components/meta/Meta'
+import LudoWrapper from "@/Component/LudoWrapper";
+import StartPlay from "@/Component/StartPlay";
 
-export default function Home({ products }) {
+export default function Home() {
+
 
   return (
 
     <>
-
-      <Meta />
-      <Hero />
-      <Feature />
-      <Products product={products} />
-      <Banner />
-      <Newarrivals product={products} />
-      <Deal />
-      <Blog />
+        <div className="h-screen w-screen bg-white flex justify-center items-center relative">
+          <div className="absolute top-4 right-12">
+          <StartPlay/>
+          </div>
+          <LudoWrapper/>
+        </div>
     </>
   )
 }
 
 
 
-export async function getStaticProps() {
-  // Fetch data from external API
-  const res = await fetch(`https://api.npoint.io/44d9930f29cc64084a3a`)
-  const products = await res.json()
-
-  // Pass data to the page via props
-  return { props: { products } }
-}
 

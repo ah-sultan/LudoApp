@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+.player1 {
+  --primary-color : red
+}
+
+.player2 {
+  --primary-color : green
+}
+
+.player3 {
+  --primary-color : blue
+}
+
+.player4 {
+  --primary-color : black
+}
 
 
 @layer base{
@@ -39,163 +54,29 @@
   input:focus{
     outline: 0;
   }
+  
 
 }
+
 
 @layer components {
 
-  .navbarSticky{
-    @apply fixed top-0 w-full animate-stickyNav;
-    box-shadow: 2px 4px 8px rgba(51,51,51,.25);
-    z-index: 102;
-  }
-  .nav-link{
-    @apply text-base sm:text-sm capitalize sm:uppercase font-semibold flex justify-between items-center border-b border-solid border-[#eee] lg:border-0 py-2.5 lg:py-0 leading-7 lg:leading-100px text-tGreay-600 hover:text-primary-900
+
+  .finisher.player1{
+    background: #F9C8C8;
   }
 
-  .showSubNav{
-    @apply !visible !h-auto !scale-y-100
-}
-  .hero-ctg{
-    @apply md:text-lg font-semibold pl-50px block mb-15px text-tGreay-500 relative before:content-[""] before:absolute before:w-30px before:h-3px before:block before:bg-primary-900 before:top-1/2 before:left-0
-  
-  }
-  .hero-title-1{
-    @apply text-xl md:text-3xl lg:text-7xl font-light mb-2.5 text-tGreay-500 uppercase leading-1.2
+  .finisher.player2{
+    background: #B5F3B5;
   }
 
-  .hero-title-2{
-    @apply text-3xl  md:text-4xl lg:text-7xl font-bold mb-47px text-tGreay-500 uppercase leading-1.2
-  }
-  .btn-primary{
-    @apply text-sm md:text-base leading-none text-white font-normal inline-block rounded-[50px] uppercase;
-    background: linear-gradient(155deg, #fd3f6b 0%, #fd7863 98%, #f3dfe0 100%);
-    
+  .finisher.player3{
+    background: #BABAF7;
+   
   }
 
-  .btn-primary:hover{
-    box-shadow: 0 5px 15px 0 rgba(153,63,107,.5);
+  .finisher.player4{
+    background: #DDDDDD;
   }
-  
-  .hero-card{
-    @apply flex w-[252px] h-[156px] bg-white p-25px justify-between rounded-md absolute bottom-[106px] right-0;
-    box-shadow: 0px 0px 29px 0px rgba(0, 0, 0, 0.22);
-  }
-
-  
-  .section-title{
-    @apply text-30px md:text-4xl leading-1.2 mb-11px font-extrabold;
-    background: linear-gradient(-96deg,#fd3d6b 0,#fd7863 98%,#f3dfe0 100%);
-    background: linear-gradient(-96deg,#fd3d6b 0,#fd7863 98%,#f3dfe0 100%);
-    background-clip: border-box;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .product-tab-btn{
-    @apply trns-1 py-9px px-23px rounded-[5px] bg-light-600 hover:gradient-primary text-tGreay-200 hover:text-white uppercase font-semibold text-sm leading-none
-  }
-
-  .product-tab-btn.active {
-    @apply gradient-primary text-white
-  }
-  .product-card-action{
-    @apply text-black hover:text-white block h-10 w-10 rounded-full center-child relative z-[1] overflow-hidden  after:content-[''] after:absolute after:top-0 after:left-0 after:hover:gradient-primary after:block after:w-full after:h-full after:-z-[1] after:trns-1 after:opacity-0 after:hover:opacity-100
-  }
-
-  .product-tab-list-btn{
-    @apply block text-base md:text-lg leading-relaxed text-tGreay-900 pb-2.5 md:pb-0 hover:text-primary-900 font-normal relative after:content-[''] after:block after:absolute after:left-0 after:-bottom-0.5 md:after:-bottom-3.5 after:bg-primary-900 after:h-0.5 after:w-0 after:trns-1 hover:after:w-full
-  }
-
-  .product-tab-list-btn.active{
-    @apply after:w-full 
-  }
-
-  .slider-btn{
-    @apply bg-white h-10 w-10 text-sm leading-[40px] center-child rounded-full t-shadow-1 absolute top-1/2 -translate-y-1/2 hover:bg-primary-900 hover:text-white
-  }
-
-  .offcanvas-overlay{
-    @apply before:content-[""]  before:fixed before:w-full before:right-0 before:top-0 before:bottom-0 before:bg-[rgba(0,0,0,.5)] before:z-[-1];
-
-  }
-
-  .sidebar-title{
-    @apply pl-5 text-lg leading-1.2 text-dark-300  font-semibold relative before:content-[''] before:absolute before:w-11px before:h-11px before:block before:rounded-full before:border-2 before:border-primary-900 before:left-0 before:top-1/2 before:-translate-y-1/2
-  }
-  .paginatio-btn{
-    @apply w-10 h-10 rounded-full bg-light-700 center-child border border-solid  border-tGreay-100 hover:bg-primary-900 trns-1 hover:text-white hover:border-primary-900 hover:shadow-lg hover:shadow-primary-900/30
-  }
-
-  .form-input{
-    @apply w-full border border-tGreay-100 h-45px px-5 text-base leading-[50px] text-dark-700 placeholder:text-[#999] placeholder:text-sm focus:border-primary-900
-  }
-
-  .privacy-title{
-    @apply text-black text-20px sm:text-22px leading-1.2 font-semibold;
-  }
-
-  .privacy-text{
-    @apply text-base leading-relaxed text-tGreay-300 mb-5
-  }
-
-  .blog-title{
-    @apply mb-15px mt-21px text-[28px] lg:text-4xl text-dark-650 leading-relaxed font-bold
-  }
-
-}
-
-@layer utilities{
-  .center-child{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .trns-1{
-    transition: all .3s ease 0s;
-    -webkit-transition: all .3s ease 0s;
-    -moz-transition: all .3s ease 0s;
-    -ms-transition: all .3s ease 0s;
-    -o-transition: all .3s ease 0s;
-}
-
-  .gradient-primary{
-    background: linear-gradient(-155deg,#fd3d6b 0,#fd7863 98%,#f3dfe0 100%)
-  }
-
-  .gradient-dark{
-    background: linear-gradient(155deg,#343434 100%,#343434 100%,#343434 100%);
-  }
-
-  .t-shadow-1{
-    box-shadow: 0 3px 25.5px 4.5px rgba(0,0,0,.06)
-  }
-  .t-shadow-2{
-    box-shadow: 0 5px 15px 0 rgba(153,63,107,.5);
-  }
-  .t-shadow-3{
-    box-shadow: 0 0 3.76px .24px rgba(0,0,0,.15);
-  }
-
-  .t-shadow-4{
-    box-shadow: 0 0 0 1px rgba(68,68,68,.11);
-  }
-
-  .t-shadow-5{
-    box-shadow: 0 0 6px rgba(0,0,0,.1);
-  }
-
-  .t-shadow-6{
-    box-shadow: 0 30px 64px 0 rgba(0,0,0,.05);
-  }
-
-  .t-shadow-7{
-    box-shadow: 0 0 30px 0 rgba(0,0,0,.07);
-  }
-
-  .t-shadow-8{
-    box-shadow: 0 0 41px 1px rgba(0,0,0,.46);
-  }
-
 
 }

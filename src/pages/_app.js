@@ -1,9 +1,8 @@
 import { Noto_Sans } from 'next/font/google'
-import Layout from '@/components/Layout/Layout'
 import '@/styles/globals.css'
-
 import { Provider } from 'react-redux';
 import { store } from '@/feature/store';
+
 
 
 const noto_Sans = Noto_Sans({
@@ -15,14 +14,11 @@ const noto_Sans = Noto_Sans({
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <Provider store={store}>
-        <div className={`${noto_Sans} font-sans`}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </div>
-      </Provider>
-
+        <Provider store={store}>
+            <div className={`${noto_Sans} font-sans`}>
+              <Component {...pageProps} />
+            </div>
+        </Provider>
     </>
   )
 }
