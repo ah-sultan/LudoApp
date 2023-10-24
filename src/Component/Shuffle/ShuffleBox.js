@@ -1,3 +1,5 @@
+import { player1, player2, player3 } from "@/Data/Data"
+import { MainCellType } from "@/feature/MainCellType"
 import { shuffleAction } from "@/feature/cellSlice"
 import { useState } from "react"
 import { useDispatch } from "react-redux"
@@ -11,48 +13,46 @@ const ShuffleBox = ({
   const [count, setCount] = useState(0)
   const [track, setTrack] = useState([])
 
-
-
+  
   const dispatch = useDispatch()
 
-  const ShuffleHandler = () => {
-    const randomNumber = Math.ceil(Math.random() * 6)
-    setNumber(0)
-
-    setTimeout(() => {
-      setNumber(randomNumber)
-      setTrack([...track, randomNumber])
-      dispatch(shuffleAction({
-        currentValue: randomNumber,
-        dicesValue: randomNumber,
-        playerName: playerName,
-      }))
-
-    }, 100)
-
-
-  }
-
-  console.log(track)
-
-  // ----------------------- Draft _________________________________
-
-  // const arr = [6, 6, 5, 5, 6, 6, 5, 2, 6, 4, 3,]
   // const ShuffleHandler = () => {
-
-  //   setCount(count + 1)
+  //   const randomNumber = Math.ceil(Math.random() * 6)
+  //   setNumber(0)
 
   //   setTimeout(() => {
-  //     setNumber(arr[count])
+  //     setNumber(randomNumber)
+  //     setTrack([...track, randomNumber])
   //     dispatch(shuffleAction({
-  //       currentValue: arr[count],
-  //       dicesValue: arr[count],
+  //       currentValue: randomNumber,
+  //       dicesValue: randomNumber,
   //       playerName: playerName,
   //     }))
 
-  //   }, 200)
+  //   }, 100)
+
 
   // }
+
+
+  // ----------------------- Draft _________________________________
+
+  const arr = [6, 6, 1, 5, 6, 6, 5, 2, 6, 4, 3,]
+  const ShuffleHandler = () => {
+
+    setCount(count + 1)
+
+    setTimeout(() => {
+      setNumber(arr[count])
+      dispatch(shuffleAction({
+        currentValue: arr[count],
+        dicesValue: arr[count],
+        playerName: playerName,
+      }))
+
+    }, 200)
+
+  }
 
   return (
     <>

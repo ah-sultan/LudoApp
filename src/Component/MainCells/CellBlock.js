@@ -5,25 +5,25 @@ const CellBlock = ({data, className, reverse}) => {
 
 
 
-  if(data.id === 2){
+  if(data.id === 1){
     return (
       <div className={`${className} border flex justify-center items-center bg-player1 text-xs`} style={{order : reverse}}>
           <CellBody data={data}/>
       </div>
     )
-  } else if(data.id === 15){
+  } else if(data.id === 14){
     return (
       <div className={`${className} border flex justify-center items-center bg-player2 text-xs`} style={{order : reverse}}>
           <CellBody data={data}/>
       </div>
     )
-  } else if(data.id === 28){
+  } else if(data.id === 27){
     return (
       <div className={`${className} border flex justify-center items-center bg-player3 text-xs`} style={{order : reverse}}>
           <CellBody data={data}/>
       </div>
     )
-  } else if(data.id === 41){
+  } else if(data.id === 40){
     return (
       <div className={`${className} border flex justify-center items-center bg-player4 text-xs`} style={{order : reverse}}>
           <CellBody data={data}/>

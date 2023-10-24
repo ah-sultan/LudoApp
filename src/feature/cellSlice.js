@@ -58,7 +58,7 @@ const cellSlice = createSlice({
   reducers: {
 
     /* -----------------------------------------------------
-        Shuffle Action Handler
+        Shuffle Action Reducer
     ------------------------------------------------------*/
 
     shuffleAction: (state, action) => {
@@ -191,6 +191,8 @@ const cellSlice = createSlice({
         const totalFiniSherCellValue = 6
 
         state.playerList.map((player) => {
+          
+
 
           if (player.playerName === action.payload.playerName) {
 
@@ -198,6 +200,8 @@ const cellSlice = createSlice({
             player.playerName = action.payload.playerName
 
             player.playerDices.map((dice) => {
+              const mainCells = state.mainCells.filter((cell) => cell.playerArea.filter((area) => area.playerName === dice.playerName ) )
+              console.log(mainCells)
 
               // Action Dice Finder Condition
               if (dice.id === action.payload.data.id) {
@@ -206,7 +210,8 @@ const cellSlice = createSlice({
                 if (dice.dicesValue[1] === 6) {
 
                   if (dice.inHouse) {
-                    const findMainCell = state.mainCells.find((cell) => cell.id === data.startCell)
+                    // const findMainCell = state.mainCells.find((cell) => cell.id === data.startCell)
+                    const findMainCell = mainCells.find((cell) =>  cell.playerArea.find((area) => area.cellId === data.startCell))
                     if (houseDices.length === 1) {
                       dice.readyAction = true
                       dice.inHouse = false
@@ -483,7 +488,7 @@ const cellSlice = createSlice({
 
                   } else if (dice.inMainCell) {
 
-                    if (houseDices.length === 1) {
+                    if (houseDices.length <= 1) {
 
                       dice.inMainCell = true
                       dice.inHouse = false
@@ -579,43 +584,10 @@ const cellSlice = createSlice({
 
       }
 
-      if (action.payload.playerName === player1) {
-        /*-----------------------------------
-           Player 1
-        ------------------------------------*/
-        cellHandler({
-          startCell: 2,
-          endCell: 52,
-        })
-
-
-      } else if (action.payload.playerName === player2) {
-        /*-----------------------------------
-           Player 2
-        ------------------------------------*/
-        cellHandler({
-          startCell: 15,
-          endCell: 13,
-        })
-
-      } else if (action.payload.playerName === player3) {
-        /*-----------------------------------
-           Player 3
-        ------------------------------------*/
-        cellHandler({
-          startCell: 28,
-          endCell: 26,
-        })
-
-      } else if (action.payload.playerName === player4) {
-        /*-----------------------------------
-           Player 4
-        ------------------------------------*/
-        cellHandler({
-          startCell: 41,
-          endCell: 39,
-        })
-      }
+      cellHandler({
+        startCell: 0,
+        endCell: 50,
+      })
 
     }
 
@@ -624,6 +596,6 @@ const cellSlice = createSlice({
   }
 })
 
-export const { shuffleAction, dicesAction } = cellSlice.actions
+export const { shuffleAction, dicesAction, setPlayerArea } = cellSlice.actions
 
 export default cellSlice

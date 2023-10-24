@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import Dice from "../Dices/Dice"
 
 const CellBody = ({
@@ -6,7 +6,6 @@ const CellBody = ({
 }) => {
 
   const playerList = useSelector((state) => state.cells.playerList)
-
 
 
   return (

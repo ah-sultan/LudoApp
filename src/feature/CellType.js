@@ -1,8 +1,9 @@
 import { FinisherCellName, MainCellName, SuccessCellName, player1, player2, player3, player4 } from "@/Data/Data"
+import { MainCellType } from "./MainCellType"
 
 export const diceList = Array(4).fill().map((_, index) => {
   const cell = {
-    id: index + 1,
+    id: index,
     playerName: null,
     dicesValue: [],
     previousValue: 0,
@@ -20,9 +21,10 @@ export const diceList = Array(4).fill().map((_, index) => {
 
 export const mainCells = Array(52).fill().map((_, index) => {
   const cell = {
-    id: index + 1,
+    id: index,
     cellName: MainCellName,
-    activePlayer: null
+    activePlayer: null,
+    playerArea : MainCellType[index]
   }
 
   return cell
@@ -61,7 +63,7 @@ export const testDices = [
     previousValue: 0,
     currentValue: 0,
     readyAction: false,
-    currentCell: { cellName: FinisherCellName, cellId: 3, },
+    currentCell: { cellName: FinisherCellName, cellId: 1, },
     inHouse: false,
     inMainCell: false,
     inFinisherCell: true,
@@ -75,9 +77,9 @@ export const testDices = [
     previousValue: 0,
     currentValue: 0,
     readyAction: false,
-    currentCell: 0,
-    inHouse: true,
-    inMainCell: false,
+    currentCell: { cellName: MainCellName, cellId: 2 },
+    inHouse: false,
+    inMainCell: true,
     inFinisherCell: false,
     inSuccessCell: false,
   },
