@@ -24,11 +24,13 @@ export const mainCells = Array(52).fill().map((_, index) => {
     id: index,
     cellName: MainCellName,
     activePlayer: null,
-    playerArea : MainCellType[index]
+    playerArea: MainCellType[index]
   }
 
   return cell
 })
+
+const getArere = mainCells.flatMap((area) => area.playerArea.find((cell) => cell.playerName === player1))
 
 
 export const finisherCell = Array(5).fill().map((_, index) => {
@@ -112,3 +114,55 @@ export const testDices = [
     inSuccessCell: false,
   },
 ]
+
+
+const cell = [
+  {
+    id: 0,
+    cellName: 'MainCell',
+    area: [
+      { cellId: 2, playerName: "player1", },
+      { cellId: 12, playerName: "player2", },
+      { cellId: 22, playerName: "player3", },
+      { cellId: 32, playerName: "player4", },
+    ]
+  },
+
+  {
+    id: 1,
+    cellName: 'MainCell',
+    area: [
+      { cellId: 3, playerName: "player1", },
+      { cellId: 13, playerName: "player2", },
+      { cellId: 23, playerName: "player3", },
+      { cellId: 33, playerName: "player4", },
+    ]
+  },
+
+  {
+    id: 3,
+    cellName: 'MainCell',
+    area: [
+      { cellId: 4, playerName: "player1", },
+      { cellId: 42, playerName: "player2", },
+      { cellId: 52, playerName: "player3", },
+      { cellId: 62, playerName: "player4", },
+    ]
+  },
+
+  {
+    id: 4,
+    cellName: 'MainCell',
+    area: [
+      { cellId: 62, playerName: "player1", },
+      { cellId: 63, playerName: "player2", },
+      { cellId: 65, playerName: "player3", },
+      { cellId: 39, playerName: "player4", },
+    ]
+  },
+
+]
+
+// const getArr = cell.filter((mainCe) => mainCe.area.filter((area) => area.playerName === "player1"))
+
+// console.log(getArr)

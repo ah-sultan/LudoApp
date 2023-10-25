@@ -191,7 +191,7 @@ const cellSlice = createSlice({
         const totalFiniSherCellValue = 6
 
         state.playerList.map((player) => {
-          
+
 
 
           if (player.playerName === action.payload.playerName) {
@@ -200,8 +200,8 @@ const cellSlice = createSlice({
             player.playerName = action.payload.playerName
 
             player.playerDices.map((dice) => {
-              const mainCells = state.mainCells.filter((cell) => cell.playerArea.filter((area) => area.playerName === dice.playerName ) )
-              console.log(mainCells)
+              const mainCellsArea = state.mainCells.flatMap((cell) => cell.playerArea.find((area) => area.playerName === dice.playerName))
+
 
               // Action Dice Finder Condition
               if (dice.id === action.payload.data.id) {
@@ -211,7 +211,7 @@ const cellSlice = createSlice({
 
                   if (dice.inHouse) {
                     // const findMainCell = state.mainCells.find((cell) => cell.id === data.startCell)
-                    const findMainCell = mainCells.find((cell) =>  cell.playerArea.find((area) => area.cellId === data.startCell))
+                    const findMainCell = mainCellsArea.find((cell) => cell.id === data.startCell)
                     if (houseDices.length === 1) {
                       dice.readyAction = true
                       dice.inHouse = false
@@ -260,7 +260,7 @@ const cellSlice = createSlice({
                         }
 
                       } else {
-                        const findMainCell = state.mainCells.find((cell) => cell.id === findMainCellId)
+                        const findMainCell = mainCellsArea.find((cell) => cell.id === findMainCellId)
                         dice.readyAction = true
                         dice.inHouse = false
                         dice.inMainCell = true
@@ -281,7 +281,7 @@ const cellSlice = createSlice({
                 } else if (dice.dicesValue[0] === 6) {
 
                   if (dice.inHouse) {
-                    const findMainCell = state.mainCells.find((cell) => cell.id === data.startCell)
+                    const findMainCell = mainCellsArea.find((cell) => cell.id === data.startCell)
                     dice.readyAction = true
                     dice.inHouse = false
                     dice.inMainCell = true
@@ -335,7 +335,7 @@ const cellSlice = createSlice({
 
                       } else {
 
-                        const findMainCell = state.mainCells.find((cell) => cell.id === findMainCellId)
+                        const findMainCell = mainCellsArea.find((cell) => cell.id === findMainCellId)
                         dice.readyAction = true
                         dice.inHouse = false
                         dice.inMainCell = true
@@ -366,7 +366,7 @@ const cellSlice = createSlice({
                     const calCellId = (dice.dicesValue[0] || 0) + dice.currentCell.cellId
                     const getActionId = calCellId >= data.endCell ? data.endCell : calCellId
 
-                    const findMainCell = state.mainCells.find((cell) => cell.id === getActionId)
+                    const findMainCell = mainCellsArea.find((cell) => cell.id === getActionId)
 
 
                     if (calCellId > data.endCell) {

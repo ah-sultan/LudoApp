@@ -13,46 +13,46 @@ const ShuffleBox = ({
   const [count, setCount] = useState(0)
   const [track, setTrack] = useState([])
 
-  
+
   const dispatch = useDispatch()
 
-  // const ShuffleHandler = () => {
-  //   const randomNumber = Math.ceil(Math.random() * 6)
-  //   setNumber(0)
+  const ShuffleHandler = () => {
+    const randomNumber = Math.ceil(Math.random() * 6)
+    setNumber(0)
 
-  //   setTimeout(() => {
-  //     setNumber(randomNumber)
-  //     setTrack([...track, randomNumber])
-  //     dispatch(shuffleAction({
-  //       currentValue: randomNumber,
-  //       dicesValue: randomNumber,
-  //       playerName: playerName,
-  //     }))
+    setTimeout(() => {
+      setNumber(randomNumber)
+      setTrack([...track, randomNumber])
+      dispatch(shuffleAction({
+        currentValue: randomNumber,
+        dicesValue: randomNumber,
+        playerName: playerName,
+      }))
 
-  //   }, 100)
+    }, 100)
 
 
-  // }
+  }
 
 
   // ----------------------- Draft _________________________________
 
-  const arr = [6, 6, 1, 5, 6, 6, 5, 2, 6, 4, 3,]
-  const ShuffleHandler = () => {
+  // const arr = [6, 6, 1, 5, 6, 6, 5, 2, 6, 4, 3,]
+  // const ShuffleHandler = () => {
 
-    setCount(count + 1)
+  //   setCount(count + 1)
 
-    setTimeout(() => {
-      setNumber(arr[count])
-      dispatch(shuffleAction({
-        currentValue: arr[count],
-        dicesValue: arr[count],
-        playerName: playerName,
-      }))
+  //   setTimeout(() => {
+  //     setNumber(arr[count])
+  //     dispatch(shuffleAction({
+  //       currentValue: arr[count],
+  //       dicesValue: arr[count],
+  //       playerName: playerName,
+  //     }))
 
-    }, 200)
+  //   }, 200)
 
-  }
+  // }
 
   return (
     <>
