@@ -14,7 +14,7 @@ const PlayerHouse = ({
         <>
 
 
-            <div className={`border ${state} w-full h-full relative`}>
+            <div className={`border ${state} w-full h-full relative `}>
                 <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs text-black capitalize">{playerName}</span>
                 <div className="h-full w-full grid grid-cols-2 justify-center item-center ">
                     {
@@ -23,7 +23,7 @@ const PlayerHouse = ({
 
                             return (
                                 <div className="flex items-center justify-center" key={index}>
-                                    <div className="flex items-center justify-center p-1 border border-blue-100">
+                                    <div className="flex items-center justify-center p-1 border border-gray-500 rounded-full ">
                                         {data.inHouse == true && <Dice playerName={playerName} data={{ ...data }} />}
                                     </div>
 
