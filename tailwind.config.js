@@ -15,7 +15,7 @@ module.exports = {
     },
 
     screens: {
-      'xs' : '479px',
+      'xs': '479px',
       // => @media (min-width: 479px) { ... }
 
       'sm': '540px',
@@ -33,31 +33,31 @@ module.exports = {
       '2xl': '1200px',
       // => @media (min-width: 1536px) { ... }
     },
-    extend : {
-      colors : {
-        'player1' : '#f9c8c8',
-        'player2' : '#b5f3b5',
-        'player3' : '#babaf7',
-        'player4' : '#ddd',
-        'primary' : 'var(--primary-color)'
+    extend: {
+      colors: {
+        'player1': '#f9c8c8',
+        'player2': '#b5f3b5',
+        'player3': '#BABAF7',
+        'player4': '#ddd',
+        'primary': 'var(--primary-color)'
       },
-      boxShadow : {
-        '20px' : '0,0, 20px rgba(0,0,0,0.2)'
+      boxShadow: {
+        '20px': '0,0, 20px rgba(0,0,0,0.2)'
       },
-      keyframes : {
-        'diceReady' : {
-          "0%" : {transform : "rotateY(0)"},
-          "100%" : {transform : "rotateY(1turn)"},
+      keyframes: {
+        'diceReady': {
+          "0%": { transform: "rotateY(0)" },
+          "100%": { transform: "rotateY(1turn)" },
         },
 
-        "shuffleRotate" : {
-          "0%" : {transform : "scale(0) rotate(0)"},
-          "100%" : {transform : "scale(1) rotate(1turn)"},
+        "shuffleRotate": {
+          "0%": { transform: "scale(0) rotate(0)" },
+          "100%": { transform: "scale(1) rotate(1turn)" },
         }
       },
-      animation : {
-        diceReady : "diceReady 1s linear infinite ",
-        shuffleRotate : "shuffleRotate .2s ease-in-out ",
+      animation: {
+        diceReady: "diceReady 1s linear infinite ",
+        shuffleRotate: "shuffleRotate .2s ease-in-out ",
       }
     }
   },

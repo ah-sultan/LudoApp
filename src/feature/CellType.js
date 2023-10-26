@@ -30,7 +30,6 @@ export const mainCells = Array(52).fill().map((_, index) => {
   return cell
 })
 
-const getArere = mainCells.flatMap((area) => area.playerArea.find((cell) => cell.playerName === player1))
 
 
 export const finisherCell = Array(5).fill().map((_, index) => {
