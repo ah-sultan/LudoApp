@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { finisherCell, diceList, mainCells, successCell, testDices, } from "./CellType";
 import { FinisherCellName, SuccessCellName, inHouse, player1, player2, player3, player4 } from "@/Data/Data";
+import { playerStatus } from "./PlayerListType";
 
 
 
@@ -9,6 +10,7 @@ import { FinisherCellName, SuccessCellName, inHouse, player1, player2, player3, 
 const cellSlice = createSlice({
   name: "cell",
   initialState: {
+    playerStatus: playerStatus,
     playerList: [
       {
         playerName: player1,
@@ -56,6 +58,100 @@ const cellSlice = createSlice({
   },
 
   reducers: {
+
+    /* -----------------------------------------------------
+        Shuffle Action Reducer
+    ------------------------------------------------------*/
+
+    playerStatusAction: (state, action) => {
+
+      state.playerStatus.map((player) => {
+
+        if (player.playerName === action.payload.playerName) {
+
+          /* -----------------------------------------------------*/
+          // IF Payload === 6 && Player Value === 6 
+
+          if (action.payload.currentValue === 6 && player.playerValue[1] === 6) {
+
+            player.playerValue = []
+            player.playerReady = true
+            player.playerWaiting = false
+
+            /* -----------------------------------------------------*/
+            // IF Player Value === 6 
+          } else if (player.playerValue[1] === 6 && player.playerValue.length < 3) {
+
+
+            player.playerValue.push(action.payload.currentValue)
+            player.playerReady = false
+            player.playerWaiting = true
+
+
+            /* -----------------------------------------------------*/
+            // IF Player Value === 6 
+          } else if (player.playerValue[0] === 6 && player.playerValue.length < 2) {
+
+
+            if (action.payload.currentValue === 6) {
+              player.playerValue.push(action.payload.currentValue)
+              player.playerReady = true
+              player.playerWaiting = false
+            } else {
+              player.playerValue.push(action.payload.currentValue)
+              player.playerReady = false
+              player.playerWaiting = true
+            }
+
+            /* -----------------------------------------------------*/
+            // IF Player Value === 6 
+          } else {
+
+            if (action.payload.currentValue === 6) {
+              player.playerValue = []
+              player.playerValue.push(action.payload.currentValue)
+              player.playerReady = true
+              player.playerWaiting = false
+            } else {
+              player.playerValue = []
+              player.playerValue.push(action.payload.currentValue)
+              player.playerReady = false
+              player.playerWaiting = true
+
+              /* ------------------------------
+                Player Status Controling          
+              ------------------------------- */
+              const findPlayer = state.playerList.find((list) => list.playerName === player.playerName)
+              const findHouseDices = findPlayer.playerDices.filter((dice) => dice.inHouse === true)
+
+              if (findHouseDices.length === 4) {
+                if (player.playerName === player1) {
+                  const findPlayer = state.playerStatus.find((find) => find.playerName === player2)
+                  findPlayer.playerReady = true
+                  findPlayer.playerWaiting = false
+                } else if (player.playerName === player2) {
+                  const findPlayer = state.playerStatus.find((find) => find.playerName === player3)
+                  findPlayer.playerReady = true
+                  findPlayer.playerWaiting = false
+                } else if (player.playerName === player3) {
+                  const findPlayer = state.playerStatus.find((find) => find.playerName === player4)
+                  findPlayer.playerReady = true
+                  findPlayer.playerWaiting = false
+                } else if (player.playerName === player4) {
+                  const findPlayer = state.playerStatus.find((find) => find.playerName === player1)
+                  findPlayer.playerReady = true
+                  findPlayer.playerWaiting = false
+                }
+              }
+            }
+
+          }
+
+        }
+
+      })
+
+    },
 
     /* -----------------------------------------------------
         Shuffle Action Reducer
@@ -154,6 +250,7 @@ const cellSlice = createSlice({
                 } else if (dice.inFinisherCell) {
 
                   const geFinisherCellId = action.payload.dicesValue + dice.currentCell.cellId
+                  const findPlayerStatus = state.playerStatus.find((list) => list.playerName === player.playerName)
 
                   if (geFinisherCellId <= totalFiniSherCellValue) {
 
@@ -161,6 +258,27 @@ const cellSlice = createSlice({
 
                   } else {
                     dice.readyAction = false
+
+                    /* ----------------------------------------
+                      Player Status Controlling 
+                    ----------------------------------------- */
+                    if (player.playerName === player1) {
+                      const findPlayer = state.playerStatus.find((find) => find.playerName === player2)
+                      findPlayer.playerReady = true
+                      findPlayer.playerWaiting = false
+                    } else if (player.playerName === player2) {
+                      const findPlayer = state.playerStatus.find((find) => find.playerName === player3)
+                      findPlayer.playerReady = true
+                      findPlayer.playerWaiting = false
+                    } else if (player.playerName === player3) {
+                      const findPlayer = state.playerStatus.find((find) => find.playerName === player4)
+                      findPlayer.playerReady = true
+                      findPlayer.playerWaiting = false
+                    } else if (player.playerName === player4) {
+                      const findPlayer = state.playerStatus.find((find) => find.playerName === player1)
+                      findPlayer.playerReady = true
+                      findPlayer.playerWaiting = false
+                    }
                   }
 
                 } else {
@@ -355,6 +473,31 @@ const cellSlice = createSlice({
                   // IF Value Model === [Others Number] -----------------
                 } else {
 
+                  /* ------------------------------
+                      Player Status Controling          
+                  ------------------------------- */
+                  if (dice.playerName === player1) {
+                    const findPlayer = state.playerStatus.find((find) => find.playerName === player2)
+                    findPlayer.playerReady = true
+                    findPlayer.playerWaiting = false
+                  } else if (dice.playerName === player2) {
+                    const findPlayer = state.playerStatus.find((find) => find.playerName === player3)
+                    findPlayer.playerReady = true
+                    findPlayer.playerWaiting = false
+                  } else if (dice.playerName === player3) {
+                    const findPlayer = state.playerStatus.find((find) => find.playerName === player4)
+                    findPlayer.playerReady = true
+                    findPlayer.playerWaiting = false
+                  } else if (dice.playerName === player4) {
+                    const findPlayer = state.playerStatus.find((find) => find.playerName === player1)
+                    findPlayer.playerReady = true
+                    findPlayer.playerWaiting = false
+                  }
+
+
+                  /* ------------------------------
+                      Dice Action Controling          
+                  ------------------------------- */
                   if (dice.inHouse) {
 
                     dice.readyAction = false
@@ -596,6 +739,6 @@ const cellSlice = createSlice({
   }
 })
 
-export const { shuffleAction, dicesAction, setPlayerArea } = cellSlice.actions
+export const { shuffleAction, dicesAction, setPlayerArea, playerStatusAction } = cellSlice.actions
 
 export default cellSlice

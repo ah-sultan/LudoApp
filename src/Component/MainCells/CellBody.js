@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from "react-redux"
+import { BsStar, BsStars } from 'react-icons/bs'
 import Dice from "../Dices/Dice"
 
 const CellBody = ({
-  data
+  data,
+  isStartCell
 }) => {
 
   const playerList = useSelector((state) => state.cells.playerList)
@@ -11,7 +13,21 @@ const CellBody = ({
   return (
     <>
       <div className="h-full w-full relative">
-        <span className="opacity-30 text-black">{data.id}</span>
+        {isStartCell &&
+
+          <span className="absolute inset-0 justify-center items-center flex">
+            <BsStar className="text-black" />
+          </span>
+        }
+
+        {
+          (data.id === 49 || data.id === 36 || data.id === 23 || data.id === 10) &&
+
+          <span className="absolute inset-0 justify-center items-center flex">
+            <BsStars className="text-black " />
+          </span>
+
+        }
         <div className="absolute inset-0 flex justify-center items-center flex-wrap">
           {
             playerList.map((player) => {
