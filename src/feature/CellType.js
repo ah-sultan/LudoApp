@@ -30,7 +30,6 @@ export const mainCells = Array(52).fill().map((_, index) => {
   return cell
 })
 
-const getArere = mainCells.flatMap((area) => area.playerArea.find((cell) => cell.playerName === player1))
 
 
 export const finisherCell = Array(5).fill().map((_, index) => {
@@ -46,7 +45,7 @@ export const finisherCell = Array(5).fill().map((_, index) => {
 
 export const successCell = Array(4).fill().map((_, index) => {
   const cell = {
-    id: index + 1,
+    id: index ,
     cellName: SuccessCellName,
     dices: ''
   }

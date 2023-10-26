@@ -16,7 +16,7 @@ const SuccessBlock = () => {
               if(player.playerName === player1){
                 return(
                   <div key={index} className=" left-2 top-0 bottom-0 absolute h-full">
-                    <div className="flex flex-col h-full justify-center">
+                    <div className="flex flex-col h-full justify-center gap-4">
                       <SuccessCellMap playerName={player.playerName} cellList={player.cells}/>
                     </div>
                   </div>
@@ -24,7 +24,7 @@ const SuccessBlock = () => {
               }else if(player.playerName === player2){
                 return(
                   <div key={index} className="left-0 top-2 right-0 absolute w-full">
-                    <div className="flex w-full justify-center">
+                    <div className="flex w-full justify-center gap-4">
                       <SuccessCellMap playerName={player.playerName} cellList={player.cells}/>
                     </div>
                   </div>
@@ -32,7 +32,7 @@ const SuccessBlock = () => {
               }else if(player.playerName === player3){
                 return(
                   <div key={index} className="top-0 right-2 bottom-0 absolute h-full">
-                    <div className="flex flex-col h-full justify-center">
+                    <div className="flex flex-col h-full justify-center gap-4">
                     <SuccessCellMap playerName={player.playerName} cellList={player.cells}/>
                     </div>
                   </div>
@@ -40,7 +40,7 @@ const SuccessBlock = () => {
               }else if(player.playerName === player4){
                 return(
                   <div key={index} className="left-0 bottom-2 right-0 absolute w-full">
-                    <div className="flex w-full justify-center">
+                    <div className="flex w-full justify-center gap-4">
                       <SuccessCellMap playerName={player.playerName} cellList={player.cells}/>
                     </div>
                   </div>

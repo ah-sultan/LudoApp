@@ -11,7 +11,7 @@ export const MainCellType = Array(52).fill().map((_, index) => {
 
         {
             playerName: player2,
-            id: index >= 14 ? index - 14 : index + 39
+            id: index >= 14 ? index - 14 : index + 38
         },
 
         {
