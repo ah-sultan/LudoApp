@@ -22,24 +22,21 @@ const LudoWrapper = () => {
     }
     return (
         <>
-            {/* <button onClick={renoveArr} className="btn bg-black px-10 py-3 fixed top-0 left-0 text-white">
-        Remove Arr
-    </button> */}
 
-            {/* <div className="fixed top-0 left-0">
-    Value: {player1Dice.playerDices[0].dicesValue.map((value) => <span>{value}</span>)}
-    </div> */}
-            <div className='w-[550px] h-[550px] p-7 shadow-20 '>
-                <div className='border h-full w-full grid grid-cols-3 grid-rows-3 text-white'>
+            <div className='w-[520px] h-[520px] p-5 shadow-20 rounded-md bg-blue-700'>
+                <div className='border h-full w-full grid grid-cols-3 grid-rows-3 text-white bg-[#F6F5DB]'>
 
-                    {/* Player 1 ===================== */}
-                    <div className="player-house-block order-1 relative">
+
+                    {/* --------------------------------------------------------------
+                        Player 1 Area 
+                    --------------------------------------------------------------  */}
+                    <div className="player-house-block order-1 relative border-primary player1 border-[20px]">
                         <PlayerHouse playerName={player1} />
-                        <div className="absolute top-0 right-full">
-                            <ShuffleBox playerName={player1} />
-                        </div>
-                        <div className="bottom-full left-0 absolute">
-                            <PlayerInfo playerName={player1} />
+                        <div className="absolute bottom-full mb-14 bg-blue-700 rounded-md shadow-20 -left-10 p-2 border-primary player1 border-2">
+                            <div className="flex gap-2">
+                                <ShuffleBox playerName={player1} />
+                                <PlayerInfo playerName={player1} />
+                            </div>
                         </div>
                     </div>
 
@@ -63,14 +60,17 @@ const LudoWrapper = () => {
 
 
 
-                    {/* Player 2 ===================== */}
-                    <div className="player-house-block order-3 relative">
+
+                    {/* --------------------------------------------------------------
+                        Player 2 Area 
+                    --------------------------------------------------------------  */}
+                    <div className="player-house-block order-3 relative border-primary player2 border-[20px]">
                         <PlayerHouse playerName={player2} />
-                        <div className="absolute top-0 left-full">
-                            <ShuffleBox playerName={player2} />
-                        </div>
-                        <div className="bottom-full right-0 absolute">
-                            <PlayerInfo playerName={player2} />
+                        <div className="absolute bottom-full mb-14 bg-blue-700 rounded-md shadow-20 -right-10 p-2 border-primary player2 border-2">
+                            <div className="flex gap-2">
+                                <ShuffleBox playerName={player2} />
+                                <PlayerInfo playerName={player2} />
+                            </div>
                         </div>
                     </div>
 
@@ -93,14 +93,16 @@ const LudoWrapper = () => {
 
 
 
-                    {/* Player 3 ===================== */}
-                    <div className="player-house-block order-9 relative">
+                    {/* --------------------------------------------------------------
+                        Player 3 Area 
+                    --------------------------------------------------------------  */}
+                    <div className="player-house-block order-9 relative border-primary player3 border-[20px]">
                         <PlayerHouse playerName={player3} />
-                        <div className="absolute bottom-0 left-full">
-                            <ShuffleBox playerName={player3} />
-                        </div>
-                        <div className="top-full right-0 absolute">
-                            <PlayerInfo playerName={player3} />
+                        <div className="absolute top-full mt-14 bg-blue-700 rounded-md shadow-20 -right-10 p-2 border-primary player3 border-2">
+                            <div className="flex gap-2">
+                                <ShuffleBox playerName={player3} />
+                                <PlayerInfo playerName={player3} />
+                            </div>
                         </div>
                     </div>
 
@@ -120,17 +122,16 @@ const LudoWrapper = () => {
                         </div>
                     </div>
 
-
-
-
-                    {/* Player 4 ===================== */}
-                    <div className="player-house-block order-7 relative">
+                    {/* --------------------------------------------------------------
+                        Player 4 Area 
+                    --------------------------------------------------------------  */}
+                    <div className="player-house-block order-7 relative border-primary player4 border-[20px]">
                         <PlayerHouse playerName={player4} />
-                        <div className="absolute bottom-0 right-full">
-                            <ShuffleBox playerName={player4} />
-                        </div>
-                        <div className="top-full left-0 absolute">
-                            <PlayerInfo playerName={player4} />
+                        <div className="absolute top-full mt-14 bg-blue-700 rounded-md shadow-20 -left-10 p-2 border-primary player4 border-2">
+                            <div className="flex gap-2">
+                                <ShuffleBox playerName={player4} />
+                                <PlayerInfo playerName={player4} />
+                            </div>
                         </div>
                     </div>
 
@@ -153,6 +154,9 @@ const LudoWrapper = () => {
 
 
                     {/* Success Box ===================== */}
+                    {/* --------------------------------------------------------------
+                        Success Box
+                    --------------------------------------------------------------  */}
                     <div className="order-5 border ">
                         <SuccessBlock />
                     </div>

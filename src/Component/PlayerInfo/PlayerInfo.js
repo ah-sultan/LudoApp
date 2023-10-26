@@ -13,10 +13,10 @@ export const PlayerInfo = ({
     return (
         <>
             <div>
-                <div className="flex items-center gap-2 border border-gray-200 py-0.5 px-1.5 capitalize text-black">
+                <div className="py-0.5 px-1.5 capitalize text-white">
                     <span className="leading-none">{playerName}</span> :
 
-                    <div className="w-20 flex gap-x-1 items-center">
+                    <div className="w-20 flex gap-x-1 items-center pt-1">
                         {
                             dice.dicesValue.map((value, index) => {
                                 return (

@@ -42,7 +42,7 @@ module.exports = {
         'primary': 'var(--primary-color)'
       },
       boxShadow: {
-        '20px': '0,0, 20px rgba(0,0,0,0.2)'
+        '20': '0 0 20px rgba(0,0,0,0.2)'
       },
       keyframes: {
         'diceReady': {
