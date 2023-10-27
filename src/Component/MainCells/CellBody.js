@@ -13,6 +13,7 @@ const CellBody = ({
   return (
     <>
       <div className="h-full w-full relative">
+        <span className="text-black">{data.id}</span>
         {isStartCell &&
 
           <span className="absolute inset-0 justify-center items-center flex">

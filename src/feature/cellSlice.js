@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { finisherCell, diceList, mainCells, successCell, testDices, } from "./CellType";
-import { FinisherCellName, SuccessCellName, inHouse, player1, player2, player3, player4 } from "@/Data/Data";
+import { FinisherCellName, HouseCellName, SuccessCellName, inHouse, player1, player2, player3, player4 } from "@/Data/Data";
 import { playerStatus } from "./PlayerListType";
 
 
@@ -306,11 +306,35 @@ const cellSlice = createSlice({
         endCell,
       }) => {
 
+        const crashedDice = (id, newPlayer) => {
+          const findNewPlayer = state.mainCells.findIndex((cell) => cell.playerArea.find((area) => area.id === id && area.playerName === newPlayer))
+          const filterDices = state.playerList.flatMap((player) => player.playerDices.filter((dice) => dice.inMainCell === true) )
+
+          const idx = findNewPlayer
+          const isStopCell = (idx === 1 || idx === 10 || idx === 14 || idx === 23 || idx === 27 || idx === 36 || idx === 40 || idx === 49) ? false : true
+
+          console.log(findNewPlayer)
+
+            filterDices.map((dice) => {
+
+              const findCurrentPlayer = state.mainCells.findIndex((cell) =>  cell.playerArea.find((area) => area.id === dice.currentCell.cellId && area.playerName === dice.playerName ))
+
+              if(isStopCell && findNewPlayer === findCurrentPlayer && dice.playerName !== newPlayer){
+                dice.inMainCell = false
+                dice.inHouse = true
+                dice.currentCell = {
+                  cellId : dice.id,
+                  cellName : HouseCellName
+                }
+              }
+
+            })
+        }
+
+
         const totalFiniSherCellValue = 6
 
         state.playerList.map((player) => {
-
-
 
           if (player.playerName === action.payload.playerName) {
 
@@ -386,6 +410,8 @@ const cellSlice = createSlice({
                           cellId: findMainCell.id,
                           cellName: findMainCell.cellName,
                         }
+
+                        crashedDice(findMainCell.id, player.playerName)
                       }
 
 
@@ -461,6 +487,8 @@ const cellSlice = createSlice({
                           cellId: findMainCell.id,
                           cellName: findMainCell.cellName,
                         }
+
+                        crashedDice(findMainCell.id, player.playerName)
 
                       }
 
@@ -580,6 +608,8 @@ const cellSlice = createSlice({
                         cellId: findMainCell.id,
                         cellName: findMainCell.cellName,
                       }
+
+                      crashedDice(findMainCell.id, player.playerName)
                     }
 
                   } else if (dice.inFinisherCell) {

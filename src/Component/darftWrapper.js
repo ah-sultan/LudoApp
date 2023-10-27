@@ -23,16 +23,17 @@ const LudoWrapper = () => {
     return (
         <>
 
-            <div className='w-[360px] h-[360px]  sm:w-[480px] xxl:w-[510px] sm:h-[480px] xxl:h-[510px] p-4 xl:p-5 shadow-20 rounded-md bg-blue-700'>
+            {/* <div className='w-[520px] h-[520px] p-5 shadow-20 rounded-md bg-blue-700'> */}
+            <div className='w-fit h-fit p-5 shadow-20 rounded-md bg-blue-700'>
                 <div className='border h-full w-full grid grid-cols-3 grid-rows-3 text-white bg-[#F6F5DB]'>
 
 
                     {/* --------------------------------------------------------------
                         Player 1 Area 
                     --------------------------------------------------------------  */}
-                    <div className="player-house-block order-1 relative border-primary player1 border-8 sm:border-[20px]">
+                    <div className="player-house-block order-1 relative border-primary player1 border-[20px]">
                         <PlayerHouse playerName={player1} />
-                        <div className="absolute bottom-full mb-8 sm:mb-14 bg-blue-700 rounded-md shadow-20 -left-6 sm:-left-10 p-2 border-primary player1 border-2">
+                        <div className="absolute bottom-full mb-14 bg-blue-700 rounded-md shadow-20 -left-10 p-2 border-primary player1 border-2">
                             <div className="flex gap-2">
                                 <ShuffleBox playerName={player1} />
                                 <PlayerInfo playerName={player1} />
@@ -64,9 +65,9 @@ const LudoWrapper = () => {
                     {/* --------------------------------------------------------------
                         Player 2 Area 
                     --------------------------------------------------------------  */}
-                    <div className="player-house-block order-3 relative border-primary player2 border-8 sm:border-[20px]">
+                    <div className="player-house-block order-3 relative border-primary player2 border-[20px]">
                         <PlayerHouse playerName={player2} />
-                        <div className="absolute bottom-full mb-8 sm:mb-14 bg-blue-700 rounded-md shadow-20 -right-6 sm:-right-10 p-2 border-primary player2 border-2">
+                        <div className="absolute bottom-full mb-14 bg-blue-700 rounded-md shadow-20 -right-10 p-2 border-primary player2 border-2">
                             <div className="flex gap-2">
                                 <ShuffleBox playerName={player2} />
                                 <PlayerInfo playerName={player2} />
@@ -96,9 +97,9 @@ const LudoWrapper = () => {
                     {/* --------------------------------------------------------------
                         Player 3 Area 
                     --------------------------------------------------------------  */}
-                    <div className="player-house-block order-9 relative border-primary player3 border-8 sm:border-[20px]">
+                    <div className="player-house-block order-9 relative border-primary player3 border-[20px]">
                         <PlayerHouse playerName={player3} />
-                        <div className="absolute top-full mt-8 sm:mt-14 bg-blue-700 rounded-md shadow-20 -right-6 sm:-right-10 p-2 border-primary player3 border-2">
+                        <div className="absolute top-full mt-14 bg-blue-700 rounded-md shadow-20 -right-10 p-2 border-primary player3 border-2">
                             <div className="flex gap-2">
                                 <ShuffleBox playerName={player3} />
                                 <PlayerInfo playerName={player3} />
@@ -125,9 +126,9 @@ const LudoWrapper = () => {
                     {/* --------------------------------------------------------------
                         Player 4 Area 
                     --------------------------------------------------------------  */}
-                    <div className="player-house-block order-7 relative border-primary player4 border-8 sm:border-[20px]">
+                    <div className="player-house-block order-7 relative border-primary player4 border-[20px]">
                         <PlayerHouse playerName={player4} />
-                        <div className="absolute top-full mt-8 sm:mt-14 bg-blue-700 rounded-md shadow-20 -left-6 sm:-left-10 p-2 border-primary player4 border-2">
+                        <div className="absolute top-full mt-14 bg-blue-700 rounded-md shadow-20 -left-10 p-2 border-primary player4 border-2">
                             <div className="flex gap-2">
                                 <ShuffleBox playerName={player4} />
                                 <PlayerInfo playerName={player4} />

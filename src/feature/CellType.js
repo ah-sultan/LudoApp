@@ -1,4 +1,4 @@
-import { FinisherCellName, MainCellName, SuccessCellName, player1, player2, player3, player4 } from "@/Data/Data"
+import { FinisherCellName, HouseCellName, MainCellName, SuccessCellName, player1, player2, player3, player4 } from "@/Data/Data"
 import { MainCellType } from "./MainCellType"
 
 export const diceList = Array(4).fill().map((_, index) => {
@@ -9,7 +9,10 @@ export const diceList = Array(4).fill().map((_, index) => {
     previousValue: 0,
     currentValue: 0,
     readyAction: false,
-    currentCell: null,
+    currentCell: {
+      cellId : index,
+      cellName : HouseCellName,
+    },
     inHouse: true,
     inMainCell: false,
     inFinisherCell: false,

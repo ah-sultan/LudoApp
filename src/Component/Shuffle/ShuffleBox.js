@@ -47,6 +47,7 @@ const ShuffleBox = ({
 
   // ----------------------- Draft _________________________________
 
+
   const arr = [6, 6, 4, 1, 5, 4, 3, 5, 2, 6, 4, 3, 6, 6, 1, 5, 6, 6, 5, 2, 6, 4, 3,]
   const ShuffleHandler = () => {
 
@@ -78,7 +79,7 @@ const ShuffleBox = ({
       {
         isTrue ?
 
-          <div onClick={() => ShuffleHandler()} className="h-14 w-14 rounded flex justify-center items-center border bg-white shadow-20">
+          <div onClick={() => ShuffleHandler()} className="h-12 w-12 xxl:h-14 xxl:w-14 rounded flex justify-center items-center border bg-white shadow-20">
             <ul className="p-0.5 grid grid-cols-[auto_auto]  justify-center items-center gap-1.5 ">
               {
                 Array(number).fill().map((_, index) => {
@@ -90,7 +91,7 @@ const ShuffleBox = ({
             </ul>
           </div>
           :
-          <div className="h-14 w-14 rounded flex justify-center items-center border bg-white">
+          <div className="h-12 w-12 xxl:h-14 xxl:w-14 rounded flex justify-center items-center border bg-white">
             <BiLock className="text-2xl text-gray-300" />
           </div>
       }
