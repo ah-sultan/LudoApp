@@ -10,6 +10,7 @@ import { playerStatus } from "./PlayerListType";
 const cellSlice = createSlice({
   name: "cell",
   initialState: {
+    winnerList : [],
     playerStatus: playerStatus,
     playerList: [
       {
@@ -58,6 +59,15 @@ const cellSlice = createSlice({
   },
 
   reducers: {
+
+    winnerListAction : (state, action) => {
+      const exitingPlayer = ""
+
+      if(false){
+
+      }
+
+    },
 
     /* -----------------------------------------------------
         Shuffle Action Reducer

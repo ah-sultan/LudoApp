@@ -19,58 +19,58 @@ const ShuffleBox = ({
 
   const dispatch = useDispatch()
 
-  // const ShuffleHandler = () => {
-  //   const randomNumber = Math.ceil(Math.random() * 6)
-  //   setNumber(0)
-
-  //   setTimeout(() => {
-  //     setNumber(randomNumber)
-  //     setTrack([...track, randomNumber])
-  //     dispatch(shuffleAction({
-  //       currentValue: randomNumber,
-  //       dicesValue: randomNumber,
-  //       playerName: playerName,
-  //     }))
-
-  //     // Player Status 
-
-  //     dispatch(playerStatusAction({
-  //       currentValue: randomNumber,
-  //       playerName: playerName,
-  //     }))
-
-  //   }, 100)
-
-
-  // }
-
-
-  // ----------------------- Draft _________________________________
-
-
-  const arr = [6,  4, 1, 5, 4, 3, 5, 2, 6, 4, 3, 6, 6, 1, 5, 6, 6, 5, 2, 6, 4, 3,]
   const ShuffleHandler = () => {
-
-    setCount(count + 1)
+    const randomNumber = Math.ceil(Math.random() * 6)
+    setNumber(0)
 
     setTimeout(() => {
-      setNumber(arr[count])
+      setNumber(randomNumber)
+      setTrack([...track, randomNumber])
       dispatch(shuffleAction({
-        currentValue: arr[count],
-        dicesValue: arr[count],
+        currentValue: randomNumber,
+        dicesValue: randomNumber,
         playerName: playerName,
       }))
 
       // Player Status 
 
       dispatch(playerStatusAction({
-        currentValue: arr[count],
+        currentValue: randomNumber,
         playerName: playerName,
       }))
 
-    }, 200)
+    }, 100)
+
 
   }
+
+
+  // ----------------------- Draft _________________________________
+
+
+  // const arr = [6,  4, 1, 5, 4, 3, 5, 2, 6, 4, 3, 6, 6, 1, 5, 6, 6, 5, 2, 6, 4, 3,]
+  // const ShuffleHandler = () => {
+
+  //   setCount(count + 1)
+
+  //   setTimeout(() => {
+  //     setNumber(arr[count])
+  //     dispatch(shuffleAction({
+  //       currentValue: arr[count],
+  //       dicesValue: arr[count],
+  //       playerName: playerName,
+  //     }))
+
+  //     // Player Status 
+
+  //     dispatch(playerStatusAction({
+  //       currentValue: arr[count],
+  //       playerName: playerName,
+  //     }))
+
+  //   }, 200)
+
+  // }
 
   const isTrue = findPlayerStatus.playerReady === true && findPlayerStatus.playerWaiting === false
 

@@ -9,13 +9,17 @@ const PlayerHouse = ({
 
     const getPLayerList = useSelector((state) => state.cells.playerList)
     const getPlayer = getPLayerList.find((player) => player.playerName === playerName)
+    const getWinnerPlayer = getPlayer.playerDices.filter((dice) => dice.inSuccessCell === true)
+    const isWinner = getWinnerPlayer.length === 4
 
     return (
         <>
 
 
             <div className={`border ${state} w-full h-full relative `}>
-                <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs text-black capitalize">{playerName}</span>
+                <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs text-black capitalize">{
+                    isWinner ? "WINNER" : playerName
+                }</span>
                 <div className="h-full w-full grid grid-cols-2 justify-center item-center ">
                     {
                         getPlayer.playerDices.map((data, index) => {
