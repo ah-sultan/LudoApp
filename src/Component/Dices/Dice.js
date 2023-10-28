@@ -8,6 +8,9 @@ const Dice = ({
   data,
 }) => {
 
+  const getPlayerStatus = useSelector((state) => state.cells.playerStatus)
+  const findPlayerStatus = getPlayerStatus.find((find) => find.playerName === playerName)
+
 
 
 const dispatch = useDispatch()
@@ -24,7 +27,7 @@ const diceHandler = () => {
 
   return (
     <>
-      <div onClick={() => data.readyAction ? diceHandler() : null} className="cursor-pointer" >
+      <div onClick={() => data.readyAction && findPlayerStatus.playerWaiting ? diceHandler() : null} className="cursor-pointer" >
           {playerName === player1 && <DiceBody playerName={playerName} data={{...data}} className={player1ClassName}/>}
           {playerName === player2 && <DiceBody playerName={playerName} data={{...data}} className={player2ClassName}/>}
           {playerName === player3 && <DiceBody playerName={playerName} data={{...data}} className={player3ClassName}/>}

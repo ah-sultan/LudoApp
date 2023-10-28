@@ -19,7 +19,7 @@ const cellSlice = createSlice({
 
       {
         playerName: player2,
-        playerDices: diceList
+        playerDices: testDices
       },
 
       {
@@ -123,8 +123,10 @@ const cellSlice = createSlice({
               ------------------------------- */
               const findPlayer = state.playerList.find((list) => list.playerName === player.playerName)
               const findHouseDices = findPlayer.playerDices.filter((dice) => dice.inHouse === true)
+              const findMainCellDices = findPlayer.playerDices.filter((dice) => dice.inMainCell === true)
+              const findFinisherCellDices = findPlayer.playerDices.filter((dice) => dice.inFinisherCell === true)
 
-              if (findHouseDices.length === 4) {
+              if (findHouseDices.length === 4 || findHouseDices.length === 0 || findFinisherCellDices.length === 0) {
                 if (player.playerName === player1) {
                   const findPlayer = state.playerStatus.find((find) => find.playerName === player2)
                   findPlayer.playerReady = true
@@ -313,7 +315,6 @@ const cellSlice = createSlice({
           const idx = findNewPlayer
           const isStopCell = (idx === 1 || idx === 10 || idx === 14 || idx === 23 || idx === 27 || idx === 36 || idx === 40 || idx === 49) ? false : true
 
-          console.log(findNewPlayer)
 
             filterDices.map((dice) => {
 
@@ -370,6 +371,8 @@ const cellSlice = createSlice({
                         cellId: findMainCell.id,
                         cellName: findMainCell.cellName,
                       }
+
+
                     }
                   } else if (dice.inMainCell) {
 
@@ -398,6 +401,7 @@ const cellSlice = createSlice({
                             cellId: findFinisherCell.id,
                             cellName: findFinisherCell.cellName,
                           }
+
 
                         }
 
