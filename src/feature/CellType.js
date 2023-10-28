@@ -67,7 +67,7 @@ export const testDices = [
     previousValue: 0,
     currentValue: 0,
     readyAction: false,
-    currentCell: { cellName: HouseCellName, cellId: 1, },
+    currentCell: { cellName: MainCellName, cellId: 50, },
     inHouse: false,
     inMainCell: true,
     inFinisherCell: false,
@@ -81,11 +81,11 @@ export const testDices = [
     previousValue: 0,
     currentValue: 0,
     readyAction: false,
-    currentCell: { cellName: successCell, cellId: 2 },
+    currentCell: { cellName: MainCellName, cellId: 41, },
     inHouse: false,
-    inMainCell: false,
+    inMainCell: true,
     inFinisherCell: false,
-    inSuccessCell: true,
+    inSuccessCell: false,
   },
 
   {

@@ -69,8 +69,9 @@ const cellSlice = createSlice({
 
         if (player.playerName === action.payload.playerName) {
 
-          /* -----------------------------------------------------*/
-          // IF Payload === 6 && Player Value === 6 
+          /* -----------------------------------------------------
+               IF Payload === 6 && Player Value === 6 
+           -----------------------------------------------------*/
 
           if (action.payload.currentValue === 6 && player.playerValue[1] === 6) {
 
@@ -78,8 +79,9 @@ const cellSlice = createSlice({
             player.playerReady = true
             player.playerWaiting = false
 
-            /* -----------------------------------------------------*/
-            // IF Player Value === 6 
+            /* -----------------------------------------------------
+              IF Player Value === 6 
+             -----------------------------------------------------*/
           } else if (player.playerValue[1] === 6 && player.playerValue.length < 3) {
 
 
@@ -345,15 +347,17 @@ const cellSlice = createSlice({
             player.playerDices.map((dice) => {
               const mainCellsArea = state.mainCells.flatMap((cell) => cell.playerArea.find((area) => area.playerName === dice.playerName))
 
-
-              // Action Dice Finder Condition
+              /* ------------------------------------
+                Action Dice Finder Condition
+               -------------------------------------- */
               if (dice.id === action.payload.data.id) {
 
-                // IF Value Model === [6,6, Others Number] -----------------
+                /* ---------------------------------------
+                IF Value Model === [6,6, Others Number]
+                ----------------------------------------- */ 
                 if (dice.dicesValue[1] === 6) {
 
                   if (dice.inHouse) {
-                    // const findMainCell = state.mainCells.find((cell) => cell.id === data.startCell)
                     const findMainCell = mainCellsArea.find((cell) => cell.id === data.startCell)
                     if (houseDices.length === 1) {
                       dice.readyAction = true
@@ -425,7 +429,9 @@ const cellSlice = createSlice({
 
                   }
 
-                  // IF Value Model === [6, Others Number] -----------------
+                  /* ---------------------------------------
+                    IF Value Model === [6, Others Number]
+                  ---------------------------------------- */ 
                 } else if (dice.dicesValue[0] === 6) {
 
                   if (dice.inHouse) {
@@ -448,7 +454,7 @@ const cellSlice = createSlice({
                       if (findMainCellId > data.endCell) {
                         const findSuccessCellId = findMainCellId - data.endCell
                         if (findSuccessCellId === (5 + 1)) {
-                          dice.readyAction = true
+                          dice.readyAction = false
                           dice.inHouse = false
                           dice.inMainCell = false
                           dice.dicesValue = []
@@ -502,7 +508,10 @@ const cellSlice = createSlice({
 
                   }
 
-                  // IF Value Model === [Others Number] -----------------
+                
+                  /*--------------------------------------------------
+                   IF Value Model === [Others Number]
+                  --------------------------------------------------*/ 
                 } else {
 
                   /* ------------------------------
@@ -650,11 +659,11 @@ const cellSlice = createSlice({
                 /* ------------------------------------------------
                   Others Dices Without Action
                 ------------------------------------------------ */
-
-
               } else {
 
-                // IF Value Model === [6,6, Others Number] -----------------
+                /* ------------------------------------------------
+                  IF Value Model === [6,6, Others Number]
+                ------------------------------------------------ */
                 if (dice.dicesValue[1] === 6) {
 
                   if (dice.inHouse) {
@@ -686,7 +695,9 @@ const cellSlice = createSlice({
                     dice.inFinisherCell = true
                   }
 
-                  // IF Value Model === [6, Others Number] -----------------
+                  /* ----------------------------------------------
+                    IF Value Model === [6, Others Number] 
+                  ---------------------------------------------- */
                 } else if (dice.dicesValue[0] === 6) {
 
                   if (dice.inHouse) {
@@ -703,11 +714,7 @@ const cellSlice = createSlice({
 
                   } else if (dice.inFinisherCell) {
 
-
                     const getDiceValue = totalFiniSherCellValue - dice.currentCell.cellId
-
-
-
 
                     if (getDiceValue >= dice.dicesValue[1]) {
                       dice.inMainCell = false
@@ -747,9 +754,9 @@ const cellSlice = createSlice({
 
               }
 
-
-
-              // Remove Dices Value
+              /* ------------------------------------------------
+                Remove Dices Value
+              ------------------------------------------------ */ 
               dice.dicesValue.shift(0)
 
             })
