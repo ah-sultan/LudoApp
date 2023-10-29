@@ -13,7 +13,7 @@ const CellBody = ({
   return (
     <>
       <div className="h-full w-full relative">
-        <span className="text-black">{data.id}</span>
+        <span className="text-black/20">{data.id}</span>
         {isStartCell &&
 
           <span className="absolute inset-0 justify-center items-center flex">
@@ -31,9 +31,9 @@ const CellBody = ({
         }
         <div className="absolute inset-0 flex justify-center items-center flex-wrap">
           {
-            playerList.map((player) => {
+            playerList?.map((player) => {
 
-              return player.playerDices.map((dice, index) => {
+              return player?.playerDices?.map((dice, index) => {
 
                 const findId = data.playerArea.find((cell) => cell.playerName === dice.playerName)
 

@@ -11,7 +11,7 @@ const SuccessBlock = () => {
       <div className="h-full w-full flex justify-center items-center relative">
 
         {
-          cellList.map((player, index) => {
+          cellList?.map((player, index) => {
 
             if (player.playerName === player1) {
               return (

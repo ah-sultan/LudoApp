@@ -22,7 +22,7 @@ const PlayerHouse = ({
                 }</span>
                 <div className="h-full w-full grid grid-cols-2 justify-center item-center ">
                     {
-                        getPlayer.playerDices.map((data, index) => {
+                        getPlayer?.playerDices?.map((data, index) => {
 
 
                             return (

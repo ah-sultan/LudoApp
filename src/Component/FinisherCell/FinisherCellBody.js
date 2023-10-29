@@ -15,9 +15,9 @@ const FinisherCellBody = ({
       <span className="text-black">{data.id}</span>
         <div className="absolute inset-0 flex justify-center items-center flex-wrap">
                 {
-                  playerList.map((player) => {
+                  playerList?.map((player) => {
 
-                  return player.playerDices.map((dice,index) => {
+                  return player?.playerDices?.map((dice,index) => {
                     
                       if(dice.inFinisherCell && data.id === dice.currentCell.cellId && playerName === dice.playerName){
                         return(

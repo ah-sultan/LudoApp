@@ -18,7 +18,7 @@ export const PlayerInfo = ({
 
                     <div className="w-20 flex gap-x-1 items-center pt-1">
                         {
-                            dice.dicesValue.map((value, index) => {
+                            dice.dicesValue?.map((value, index) => {
                                 return (
                                     <span className="leading-none" key={index}>
                                         {value}

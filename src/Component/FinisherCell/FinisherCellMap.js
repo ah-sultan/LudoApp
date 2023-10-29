@@ -12,7 +12,7 @@ const FinisherCellMap = ({
   return (
     <>
     {
-        getFinisherCell.map((cell,index) => {
+        getFinisherCell?.map((cell,index) => {
             return(
                 <div style={{order : orderStyle ? 0 - index : 0}}  key={index} className={`${className} finisher border flex justify-center items-center text-xs relative`}>
                     <FinisherCellBody playerName={playerName} data={{...cell}}/>

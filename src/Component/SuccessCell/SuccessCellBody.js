@@ -13,7 +13,7 @@ const SuccessCellBody = ({
       <div className="h-full w-full relative">
           <div className="absolute inset-0 flex justify-center items-center flex-wrap">
               {
-                playerList.map((player) => {
+                playerList?.map((player) => {
 
                   if(player.playerName === playerName){
                     return player.playerDices.map((dice,index) => {

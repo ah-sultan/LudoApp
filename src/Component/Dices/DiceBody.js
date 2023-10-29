@@ -9,10 +9,10 @@ const DiceBody = ({
 
   return (
     <>
-      <div className={`w-3 h-3 rounded-full  border relative text-primary border-primary bg-white shadow dice ${className} ${data.readyAction ? 'shadow-xl' : 'shadow'}`}>
-        <div className={`${data.readyAction ? 'animate-diceReady' : null}`}>
-          <span className={`absolute -top-2 left-1/2 -translate-x-1/2 `}>
-            <MdLocationOn />
+      <div className={`w-3 h-3 rounded-full  border relative text-primary border-primary bg-white shadow dice ${className} ${data?.readyAction ? 'shadow-xl' : 'shadow'}`}>
+        <div className={`${data?.readyAction ? 'animate-diceReady' : null}`}>
+          <span className={`absolute -top-2 left-1/2 -translate-x-1/2 ${data?.readyAction ? 'scale-150 -translate-x-1/2' : ''}`}>
+            <MdLocationOn className={`${data?.readyAction ? 'animate-bounce' : 'none'}`}/>
           </span>
         </div>
       </div>

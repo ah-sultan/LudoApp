@@ -8,6 +8,9 @@ const Dice = ({
   data,
 }) => {
 
+  const getPlayerList = useSelector((state) => state.cells.playerList)
+  const getPlayer = getPlayerList.find((player) => player.playerName === playerName)
+  const getDice = getPlayer.playerDices.filter((dice) => dice.inSuccessCell === true)
   const getPlayerStatus = useSelector((state) => state.cells.playerStatus)
   const findPlayerStatus = getPlayerStatus.find((find) => find.playerName === playerName)
 
@@ -15,19 +18,29 @@ const Dice = ({
 
 const dispatch = useDispatch()
 
+
+const winnerController = () => {
+  if (getDice.length === 4) {
+    dispatch(winnerController({
+      playerName : getPlayer,
+    }))
+  }
+}
+
 const diceHandler = () => {
   dispatch(dicesAction({
     playerName : playerName,
     data : data
   }))
 
+  winnerController()
 
 }
 
 
   return (
     <>
-      <div onClick={() => data.readyAction && findPlayerStatus.playerWaiting ? diceHandler() : null} className="cursor-pointer" >
+      <div onClick={() => data?.readyAction && findPlayerStatus?.playerWaiting ? diceHandler() : null} className="cursor-pointer duration-700" >
           {playerName === player1 && <DiceBody playerName={playerName} data={{...data}} className={player1ClassName}/>}
           {playerName === player2 && <DiceBody playerName={playerName} data={{...data}} className={player2ClassName}/>}
           {playerName === player3 && <DiceBody playerName={playerName} data={{...data}} className={player3ClassName}/>}

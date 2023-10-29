@@ -11,7 +11,7 @@ const SuccessCellMap = ({
   return (
     <>
       {
-        getCell.cells.map((cell, index) => {
+        getCell?.cells?.map((cell, index) => {
           return (
             <div key={index} className="text-black leading-none p-0.5 border rounded-full">
               <SuccessCellBody playerName={playerName} cellId={cell.id} />
