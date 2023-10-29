@@ -82,16 +82,26 @@ const cellSlice = createSlice({
         /* -----------------------------------------------------
           Player Status Handler
         ------------------------------------------------------*/
-        const statusHandler = (isTrue) => {
+        const statusHandler = (data = {
+          enable : false,
+          disable : false,
+          goNext : false
+        }) => {
           const currentPlayer = state.playerStatus.find((find) => find.playerName === player.playerName)
 
-          currentPlayer.playerReady = false
-          currentPlayer.playerWaiting = true
+          
 
-          if(isTrue){
+          if(data.enable){
             currentPlayer.playerReady = true
-          currentPlayer.playerWaiting = false
-          }else{
+            currentPlayer.playerWaiting = false
+          }
+
+          if(data.disable){
+            currentPlayer.playerReady = false
+            currentPlayer.playerWaiting = true
+          }
+          
+          if(data.goNext){
             if (player.playerName === player1) {
               const findPlayer = state.playerStatus.find((find) => find.playerName === player2)
               findPlayer.playerReady = true
@@ -137,6 +147,7 @@ const cellSlice = createSlice({
 
                 dice.dicesValue = []
                 dice.readyAction = false
+                
 
 
               /* --------------------------------------------------
@@ -165,9 +176,12 @@ const cellSlice = createSlice({
                 dice.dicesValue = []
                 dice.dicesValue.push(action.payload.dicesValue)
                 
-
+                
                 if (dice.inHouse) {
+
                   dice.readyAction = true
+                  
+
                 } else if (dice.inMainCell) {
 
                   if (houseDices.length === 0) {
