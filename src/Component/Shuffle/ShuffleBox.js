@@ -5,6 +5,7 @@ import { playerStatusAction, shuffleAction } from "@/feature/cellSlice"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { BsHandIndexFill, BsHandThumbsDown } from "react-icons/bs"
+import Image from "next/image"
 
 
 
@@ -115,8 +116,8 @@ const ShuffleBox = ({
           <div onClick={() => ready && ShuffleHandler()} className="relative h-12 w-12 xxl:h-14 xxl:w-14 rounded flex justify-center items-center border bg-white shadow-20">
             <div className="absolute -top-5 left-1/2 -translate-x-1/2">
               {ready &&
-                <div className="animate-bounce duration-75">
-                  <BsHandIndexFill className="text-3xl text-black  rotate-180" />
+                <div className="duration-75 animate-bounce">
+                  <BsHandIndexFill className="text-4xl text-orange-600  rotate-180" />
                 </div>
               }
             </div>
