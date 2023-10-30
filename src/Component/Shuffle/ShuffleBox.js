@@ -106,7 +106,7 @@ const ShuffleBox = ({
       setReady(false)
     }
 
-  }, [isTrue, findReadyDices, getPlayerDices, findPlayerStatus, getPlayerStatus])
+  }, [isTrue, findReadyDices, getPlayerDices, findPlayerStatus, getPlayerStatus, readyOthersDices.length, playerName])
 
   return (
     <>
