@@ -1,6 +1,6 @@
 import { player1, player2, player3, player4 } from "@/Data/Data";
 
-export const playerStatus = [
+export const playerStatusState = [
 
     {
         id: 0,

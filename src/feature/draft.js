@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { finisherCell, diceList, mainCells, successCell, testDices, } from "./CellType";
+import { finisherCell, diceList, mainCells, successCell, testDices, } from "./initialState/CellType";
 import { FinisherCellName, HouseCellName, SuccessCellName, inHouse, player1, player2, player3, player4 } from "@/Data/Data";
-import { playerStatus } from "./PlayerListType";
-import { player1DiceTest, player2DiceTest, player3DiceTest } from "./DiceTest";
+import { playerStatus } from "./initialState/PlayerListType";
+import { player1DiceTest, player2DiceTest, player3DiceTest } from "./initialState/DiceTest";
 
 
 

@@ -1,7 +1,7 @@
 import { player1, player2, player3 } from "@/Data/Data"
 import { BiLock } from 'react-icons/bi'
-import { MainCellType } from "@/feature/MainCellType"
-import { playerStatusAction, shuffleAction } from "@/feature/cellSlice"
+import { MainCellType } from "@/feature/initialState/MainCellType"
+import { playerStatusAction, shuffleAction, winnerListAction } from "@/feature/cellSlice"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { BsHandIndexFill, BsHandThumbsDown } from "react-icons/bs"
@@ -23,6 +23,7 @@ const ShuffleBox = ({
 
   const getPlayerList = useSelector((state) => state.cells.playerList)
   const findPlayer = getPlayerList.find((player) => player.playerName === playerName)
+  
 
 
   const ShuffleHandler = () => {
@@ -54,7 +55,7 @@ const ShuffleBox = ({
   // ----------------------- Draft _________________________________
 
 
-  // const arr = [6, 4, 2, 2, 6, 3, 5, 2, 6, 4, 3, 6, 6, 1, 5, 6, 6, 5, 2, 6, 4, 3,]
+  // const arr = [2, 4, 2, 2, 6, 3, 5, 2, 6, 4, 3, 6, 6, 1, 5, 6, 6, 5, 2, 6, 4, 3,]
   // const ShuffleHandler = () => {
 
   //   setCount(count + 1)
@@ -106,7 +107,7 @@ const ShuffleBox = ({
       setReady(false)
     }
 
-  }, [isTrue, findReadyDices, getPlayerDices, findPlayerStatus, getPlayerStatus, readyOthersDices.length, playerName])
+  }, [isTrue, findReadyDices, getPlayerDices, findPlayerStatus, getPlayerStatus, readyOthersDices.length, playerName, findPlayer])
 
   return (
     <>

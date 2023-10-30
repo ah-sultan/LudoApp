@@ -1,10 +1,14 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import Dice from "./Dices/Dice"
+import { winnerListAction } from "@/feature/cellSlice"
+import { useEffect } from "react"
 
 const PlayerHouse = ({
     playerName,
     state,
 }) => {
+
+    const dispatch = useDispatch()
 
 
     const getPLayerList = useSelector((state) => state.cells.playerList)
@@ -12,6 +16,12 @@ const PlayerHouse = ({
     const getWinnerPlayer = getPlayer.playerDices.filter((dice) => dice.inSuccessCell === true)
     const isWinner = getWinnerPlayer.length === 4
 
+    useEffect(() => {
+        if(isWinner){
+            dispatch(winnerListAction(playerName))
+        }
+    
+    }, [isWinner, dispatch, playerName])
     return (
         <>
 

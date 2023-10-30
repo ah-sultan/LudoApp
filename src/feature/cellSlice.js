@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { finisherCell, diceList, mainCells, successCell, testDices, } from "./CellType";
-import { FinisherCellName, HouseCellName, SuccessCellName, inHouse, player1, player2, player3, player4 } from "@/Data/Data";
-import { playerStatus } from "./PlayerListType";
-import { player1DiceTest, player2DiceTest, player3DiceTest } from "./DiceTest";
+import { HouseCellName, SuccessCellName, player1, player2, player3, player4 } from "@/Data/Data";
+import { mainCellState } from "./initialState/MainCellState";
+import { playerStatusState } from "./initialState/PlayerStatusState";
+import { playerListState } from "./initialState/PlayerListState";
+import { finisherCellState } from "./initialState/FinisherCellState";
+import { successCellState } from "./initialState/SuccessCellState";
 
 
 
@@ -12,63 +14,32 @@ const cellSlice = createSlice({
   name: "cell",
   initialState: {
     winnerList: [],
-    playerStatus: playerStatus,
-    playerList: [
-      {
-        playerName: player1,
-        playerDices: diceList
-      },
-
-      {
-        playerName: player2,
-        playerDices: diceList
-      },
-
-      {
-        playerName: player3,
-        playerDices: diceList
-      },
-
-      {
-        playerName: player4,
-        playerDices: diceList
-      },
-    ],
-    mainCells: mainCells,
-    finisherCell: finisherCell,
-    successCells: [
-      {
-        playerName: player1,
-        cells: [...successCell]
-      },
-      {
-        playerName: player2,
-        cells: [...successCell]
-      },
-      {
-        playerName: player3,
-        cells: [...successCell]
-      },
-      {
-        playerName: player4,
-        cells: [...successCell]
-      },
-
-    ]
-
-
+    playerStatus: playerStatusState,
+    playerList: playerListState,
+    mainCells: mainCellState,
+    finisherCell: finisherCellState,
+    successCells: successCellState,
   },
+
+
+  
 
   reducers: {
 
+    resetAction : (state) => {
+
+      state.winnerList = []
+      state.playerStatus = playerStatusState
+      state.playerList = playerListState
+      state.mainCells = mainCellState
+      state.finisherCell = finisherCellState
+      state.successCells = successCellState
+
+    },
+
     winnerListAction: (state, action) => {
-      const exitingPlayer = state.winnerList.find((dice) => dice.playerName === action.payload.playerName)
-
-
-      if (exitingPlayer.playerName !== action.payload.playerName) {
-        state.winnerList.push(action.payload.playerName)
-      }
-
+        state.winnerList.push(action.payload)
+      
     },
 
     /* -----------------------------------------------------
@@ -138,7 +109,7 @@ const cellSlice = createSlice({
 
             /* -----------------------------------------------------
               IF Current Value !== 6
-          ------------------------------------------------------*/
+            ------------------------------------------------------*/
           } else {
 
             // ---------------------------------------
@@ -773,6 +744,6 @@ const cellSlice = createSlice({
   }
 })
 
-export const { shuffleAction, dicesAction, setPlayerArea, playerStatusAction } = cellSlice.actions
+export const { shuffleAction, dicesAction, setPlayerArea, playerStatusAction, winnerListAction, resetAction } = cellSlice.actions
 
 export default cellSlice

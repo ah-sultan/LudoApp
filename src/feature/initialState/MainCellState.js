@@ -1,7 +1,7 @@
-import { player1, player2, player3, player4 } from "@/Data/Data"
+import { MainCellName, player1, player2, player3, player4 } from "@/Data/Data"
 
 
-export const MainCellType = Array(52).fill().map((_, index) => {
+const MainCellType = Array(52).fill().map((_, index) => {
 
     const area = [
         {
@@ -29,3 +29,13 @@ export const MainCellType = Array(52).fill().map((_, index) => {
     return area
 })
 
+export const mainCellState = Array(52).fill().map((_, index) => {
+    const cell = {
+      id: index,
+      cellName: MainCellName,
+      activePlayer: null,
+      playerArea: MainCellType[index]
+    }
+  
+    return cell
+  })
