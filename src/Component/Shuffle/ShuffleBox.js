@@ -1,5 +1,6 @@
 import { player1, player2, player3 } from "@/Data/Data"
 import { BiLock } from 'react-icons/bi'
+import { FiLoader } from 'react-icons/fi'
 import { MainCellType } from "@/feature/initialState/MainCellType"
 import { playerStatusAction, shuffleAction, winnerListAction } from "@/feature/cellSlice"
 import { useEffect, useState } from "react"
@@ -122,15 +123,22 @@ const ShuffleBox = ({
                 </div>
               }
             </div>
-            <ul className="p-0.5 grid grid-cols-[auto_auto]  justify-center items-center gap-1.5 ">
-              {
+            {
+              ready ? 
+              <ul className="p-0.5 grid grid-cols-[auto_auto]  justify-center items-center gap-1.5 ">
+              { 
                 Array(number).fill().map((_, index) => {
                   return (
                     <li key={index} className="w-1.5 h-1.5 rounded-full bg-black animate-shuffleRotate"></li>
                   )
                 })
               }
-            </ul>
+            </ul> :
+
+            <div className="h-full w-full flex justify-center items-center">
+              <FiLoader className="text-xl text-black animate-spin"/>
+            </div>
+            }
           </div>
           :
           <div className="h-12 w-12 xxl:h-14 xxl:w-14 rounded flex justify-center items-center border bg-white">
