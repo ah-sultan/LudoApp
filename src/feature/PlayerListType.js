@@ -5,7 +5,6 @@ export const playerStatus = [
     {
         id: 0,
         playerName: player1,
-        playerWaiting: false,
         playerReady: true,
         playerValue: []
     },
@@ -13,7 +12,6 @@ export const playerStatus = [
     {
         id: 1,
         playerName: player2,
-        playerWaiting: true,
         playerReady: false,
         playerValue: []
     },
@@ -21,7 +19,6 @@ export const playerStatus = [
     {
         id: 2,
         playerName: player3,
-        playerWaiting: true,
         playerReady: false,
         playerValue: []
     },
@@ -29,7 +26,6 @@ export const playerStatus = [
     {
         id: 3,
         playerName: player4,
-        playerWaiting: true,
         playerReady: false,
         playerValue: []
     },

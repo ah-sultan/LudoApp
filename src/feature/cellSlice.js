@@ -11,7 +11,7 @@ import { player1DiceTest, player2DiceTest, player3DiceTest } from "./DiceTest";
 const cellSlice = createSlice({
   name: "cell",
   initialState: {
-    winnerList : [],
+    winnerList: [],
     playerStatus: playerStatus,
     playerList: [
       {
@@ -61,13 +61,113 @@ const cellSlice = createSlice({
 
   reducers: {
 
-    winnerListAction : (state, action) => {
+    winnerListAction: (state, action) => {
       const exitingPlayer = state.winnerList.find((dice) => dice.playerName === action.payload.playerName)
-      
 
-      if(exitingPlayer.playerName !== action.payload.playerName){
+
+      if (exitingPlayer.playerName !== action.payload.playerName) {
         state.winnerList.push(action.payload.playerName)
       }
+
+    },
+
+    /* -----------------------------------------------------
+        Shuffle Action Reducer
+    ------------------------------------------------------*/
+
+    playerStatusAction: (state, action) => {
+
+
+      state.playerStatus.map((player) => {
+
+
+        const statusHandler = () => {
+          if (player.playerName === player1) {
+            const findPlayer = state.playerStatus.find((find) => find.playerName === player2)
+            findPlayer.playerReady = true
+            findPlayer.playerWaiting = false
+          } else if (player.playerName === player2) {
+            const findPlayer = state.playerStatus.find((find) => find.playerName === player3)
+            findPlayer.playerReady = true
+            findPlayer.playerWaiting = false
+          } else if (player.playerName === player3) {
+            const findPlayer = state.playerStatus.find((find) => find.playerName === player4)
+            findPlayer.playerReady = true
+            findPlayer.playerWaiting = false
+          } else if (player.playerName === player4) {
+            const findPlayer = state.playerStatus.find((find) => find.playerName === player1)
+            findPlayer.playerReady = true
+            findPlayer.playerWaiting = false
+          }
+        }
+
+        if (player.playerName === action.payload.playerName) {
+
+
+          /* -----------------------------------------------------
+              IF Current Value === 6
+          ------------------------------------------------------*/
+          if (action.payload.currentValue === 6) {
+
+            // ---------------------------------------
+            //  IF Player Value === [6,6]
+            if (player.playerValue[1] === 6) {
+
+              player.playerValue = []
+              player.playerReady = true
+
+
+              // ---------------------------------------
+              //  IF Player Value === [6,6]
+            } else if (player.playerValue[0] === 6) {
+
+              player.playerValue.push(action.payload.currentValue)
+              player.playerReady = true
+
+
+              // ---------------------------------------
+              //  IF Player Value === [Others Number]
+            } else {
+
+              player.playerValue = []
+              player.playerValue.push(action.payload.currentValue)
+              player.playerReady = true
+            }
+
+
+
+            /* -----------------------------------------------------
+              IF Current Value !== 6
+          ------------------------------------------------------*/
+          } else {
+
+            // ---------------------------------------
+            //  IF Player Value === [6,6]
+            if (player.playerValue[1] === 6 && player.playerValue.length < 3) {
+              player.playerValue.push(action.payload.currentValue)
+              player.playerReady = false
+              statusHandler()
+
+              // ---------------------------------------
+              //  IF Player Value === [6]
+            } else if (player.playerValue[0] === 6 && player.playerValue.length < 2) {
+              player.playerValue.push(action.payload.currentValue)
+              player.playerReady = false
+              statusHandler()
+
+              // ---------------------------------------
+              //  IF Player Value === [0]
+            } else {
+              player.playerValue = []
+              player.playerValue.push(action.payload.currentValue)
+              player.playerReady = false
+              statusHandler()
+            }
+          }
+
+        }
+
+      })
 
     },
 
@@ -78,49 +178,6 @@ const cellSlice = createSlice({
     shuffleAction: (state, action) => {
       const totalFiniSherCellValue = 6
       state.playerList.map((player) => {
-
-        /* -----------------------------------------------------
-          Player Status Handler
-        ------------------------------------------------------*/
-        const statusHandler = (data = {
-          enable : false,
-          disable : false,
-          goNext : false
-        }) => {
-          const currentPlayer = state.playerStatus.find((find) => find.playerName === player.playerName)
-
-          
-
-          if(data.enable){
-            currentPlayer.playerReady = true
-            currentPlayer.playerWaiting = false
-          }
-
-          if(data.disable){
-            currentPlayer.playerReady = false
-            currentPlayer.playerWaiting = true
-          }
-          
-          if(data.goNext){
-            if (player.playerName === player1) {
-              const findPlayer = state.playerStatus.find((find) => find.playerName === player2)
-              findPlayer.playerReady = true
-              findPlayer.playerWaiting = false
-            } else if (player.playerName === player2) {
-              const findPlayer = state.playerStatus.find((find) => find.playerName === player3)
-              findPlayer.playerReady = true
-              findPlayer.playerWaiting = false
-            } else if (player.playerName === player3) {
-              const findPlayer = state.playerStatus.find((find) => find.playerName === player4)
-              findPlayer.playerReady = true
-              findPlayer.playerWaiting = false
-            } else if (player.playerName === player4) {
-              const findPlayer = state.playerStatus.find((find) => find.playerName === player1)
-              findPlayer.playerReady = true
-              findPlayer.playerWaiting = false
-            }
-          }
-        }
 
 
         if (player.playerName === action.payload.playerName) {
@@ -134,7 +191,7 @@ const cellSlice = createSlice({
 
 
             /* --------------------------------------------------
-                Dice Value Handling ***
+                Dice Value Handling
             --------------------------------------------------- */
             if (action.payload.currentValue === 6) {
 
@@ -144,23 +201,20 @@ const cellSlice = createSlice({
               --------------------------------------------------- */
               if (dice.dicesValue[1] === 6) {
 
-
                 dice.dicesValue = []
                 dice.readyAction = false
-                
 
-
-              /* --------------------------------------------------
-              dice.dicesValue[0] === 6
-            --------------------------------------------------- */
+                /* --------------------------------------------------
+                dice.dicesValue[0] === 6
+              --------------------------------------------------- */
               } else if (dice.dicesValue[0] === 6) {
 
                 dice.dicesValue.push(action.payload.dicesValue)
 
-                
+
                 if (dice.inHouse) {
+
                   dice.readyAction = true
-                  
 
                 } else if (dice.inMainCell) {
                   if (houseDices.length === 0) {
@@ -175,13 +229,9 @@ const cellSlice = createSlice({
               } else {
                 dice.dicesValue = []
                 dice.dicesValue.push(action.payload.dicesValue)
-                
-                
+
                 if (dice.inHouse) {
-
                   dice.readyAction = true
-                  
-
                 } else if (dice.inMainCell) {
 
                   if (houseDices.length === 0) {
@@ -199,7 +249,7 @@ const cellSlice = createSlice({
 
               /*--------------------------------------------------------
                 dice.dicesValue[1] === 6
-              --------------------------------------------------------*/ 
+              --------------------------------------------------------*/
               if (dice.dicesValue[1] === 6) {
 
                 if (dice.dicesValue.length >= 3) {
@@ -216,6 +266,10 @@ const cellSlice = createSlice({
                 } else {
                   dice.dicesValue.push(action.payload.dicesValue)
                 }
+
+                /* ----------------------------------------
+                  Player Status Controlling 
+                ----------------------------------------- */
 
 
               } else {
@@ -242,6 +296,7 @@ const cellSlice = createSlice({
                     /* ----------------------------------------
                       Player Status Controlling 
                     ----------------------------------------- */
+
                   }
 
                 } else {
@@ -271,26 +326,26 @@ const cellSlice = createSlice({
 
         const crashedDice = (id, newPlayer) => {
           const findNewPlayer = state.mainCells.findIndex((cell) => cell.playerArea.find((area) => area.id === id && area.playerName === newPlayer))
-          const filterDices = state.playerList.flatMap((player) => player.playerDices.filter((dice) => dice.inMainCell === true) )
+          const filterDices = state.playerList.flatMap((player) => player.playerDices.filter((dice) => dice.inMainCell === true))
 
           const idx = findNewPlayer
           const isStopCell = (idx === 1 || idx === 10 || idx === 14 || idx === 23 || idx === 27 || idx === 36 || idx === 40 || idx === 49) ? false : true
 
 
-            filterDices.map((dice) => {
+          filterDices.map((dice) => {
 
-              const findCurrentPlayer = state.mainCells.findIndex((cell) =>  cell.playerArea.find((area) => area.id === dice.currentCell.cellId && area.playerName === dice.playerName ))
+            const findCurrentPlayer = state.mainCells.findIndex((cell) => cell.playerArea.find((area) => area.id === dice.currentCell.cellId && area.playerName === dice.playerName))
 
-              if(isStopCell && findNewPlayer === findCurrentPlayer && dice.playerName !== newPlayer){
-                dice.inMainCell = false
-                dice.inHouse = true
-                dice.currentCell = {
-                  cellId : dice.id,
-                  cellName : HouseCellName
-                }
+            if (isStopCell && findNewPlayer === findCurrentPlayer && dice.playerName !== newPlayer) {
+              dice.inMainCell = false
+              dice.inHouse = true
+              dice.currentCell = {
+                cellId: dice.id,
+                cellName: HouseCellName
               }
+            }
 
-            })
+          })
         }
 
 
@@ -313,7 +368,7 @@ const cellSlice = createSlice({
 
                 /* ---------------------------------------
                 IF Value Model === [6,6, Others Number]
-                ----------------------------------------- */ 
+                ----------------------------------------- */
                 if (dice.dicesValue[1] === 6) {
 
                   if (dice.inHouse) {
@@ -390,7 +445,7 @@ const cellSlice = createSlice({
 
                   /* ---------------------------------------
                     IF Value Model === [6, Others Number]
-                  ---------------------------------------- */ 
+                  ---------------------------------------- */
                 } else if (dice.dicesValue[0] === 6) {
 
                   if (dice.inHouse) {
@@ -467,32 +522,11 @@ const cellSlice = createSlice({
 
                   }
 
-                
+
                   /*--------------------------------------------------
                    IF Value Model === [Others Number]
-                  --------------------------------------------------*/ 
+                  --------------------------------------------------*/
                 } else {
-
-                  /* ------------------------------
-                      Player Status Controling          
-                  ------------------------------- */
-                  if (dice.playerName === player1) {
-                    const findPlayer = state.playerStatus.find((find) => find.playerName === player2)
-                    findPlayer.playerReady = true
-                    findPlayer.playerWaiting = false
-                  } else if (dice.playerName === player2) {
-                    const findPlayer = state.playerStatus.find((find) => find.playerName === player3)
-                    findPlayer.playerReady = true
-                    findPlayer.playerWaiting = false
-                  } else if (dice.playerName === player3) {
-                    const findPlayer = state.playerStatus.find((find) => find.playerName === player4)
-                    findPlayer.playerReady = true
-                    findPlayer.playerWaiting = false
-                  } else if (dice.playerName === player4) {
-                    const findPlayer = state.playerStatus.find((find) => find.playerName === player1)
-                    findPlayer.playerReady = true
-                    findPlayer.playerWaiting = false
-                  }
 
 
                   /* ------------------------------
@@ -715,7 +749,7 @@ const cellSlice = createSlice({
 
               /* ------------------------------------------------
                 Remove Dices Value
-              ------------------------------------------------ */ 
+              ------------------------------------------------ */
               dice.dicesValue.shift(0)
 
             })

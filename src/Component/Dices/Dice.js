@@ -16,35 +16,35 @@ const Dice = ({
 
 
 
-const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
 
-const winnerController = () => {
-  if (getDice.length === 4) {
-    dispatch(winnerController({
-      playerName : getPlayer,
-    }))
+  const winnerController = () => {
+    if (getDice.length === 4) {
+      dispatch(winnerController({
+        playerName: getPlayer,
+      }))
+    }
   }
-}
 
-const diceHandler = () => {
-  dispatch(dicesAction({
-    playerName : playerName,
-    data : data
-  }))
+  const diceHandler = () => {
+    dispatch(dicesAction({
+      playerName: playerName,
+      data: data
+    }))
 
-  winnerController()
+    winnerController()
 
-}
+  }
 
 
   return (
     <>
-      <div onClick={() => data?.readyAction && findPlayerStatus?.playerWaiting ? diceHandler() : null} className="cursor-pointer duration-700" >
-          {playerName === player1 && <DiceBody playerName={playerName} data={{...data}} className={player1ClassName}/>}
-          {playerName === player2 && <DiceBody playerName={playerName} data={{...data}} className={player2ClassName}/>}
-          {playerName === player3 && <DiceBody playerName={playerName} data={{...data}} className={player3ClassName}/>}
-          {playerName === player4 && <DiceBody playerName={playerName} data={{...data}} className={player4ClassName}/>}
+      <div onClick={() => data?.readyAction && findPlayerStatus?.playerReady === false ? diceHandler() : null} className="cursor-pointer duration-700" >
+        {playerName === player1 && <DiceBody playerName={playerName} data={{ ...data }} className={player1ClassName} />}
+        {playerName === player2 && <DiceBody playerName={playerName} data={{ ...data }} className={player2ClassName} />}
+        {playerName === player3 && <DiceBody playerName={playerName} data={{ ...data }} className={player3ClassName} />}
+        {playerName === player4 && <DiceBody playerName={playerName} data={{ ...data }} className={player4ClassName} />}
       </div>
     </>
   )
